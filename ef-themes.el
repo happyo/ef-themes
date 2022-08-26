@@ -57,12 +57,13 @@
     ef-light
     ef-night
     ef-spring
+    ef-my
     ef-summer
     ef-winter)
   "Symbols of all the Ef themes.")
 
 (defconst ef-themes-light-themes
-  '(ef-day ef-light ef-spring ef-summer ef-deuteranopia-light)
+  '(ef-day ef-light ef-spring ef-my ef-summer ef-deuteranopia-light)
   "List of symbols with the light Ef themes.")
 
 (defconst ef-themes-dark-themes

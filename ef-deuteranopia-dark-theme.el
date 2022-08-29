@@ -154,6 +154,9 @@
       (type magenta-cooler)
       (variable cyan-cooler)
 
+      (rx-escape yellow-faint) ; compare with `string'
+      (rx-construct yellow-warmer)
+
       (accent-0 blue-cooler)
       (accent-1 yellow-warmer)
       (accent-2 cyan-warmer)
@@ -164,6 +167,7 @@
       (mail-2 blue-cooler)
       (mail-3 yellow-cooler)
       (mail-4 cyan)
+      (mail-5 cyan-cooler)
 
       (rainbow-0 yellow-warmer)
       (rainbow-1 blue)

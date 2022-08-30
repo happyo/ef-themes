@@ -6,7 +6,7 @@
 ;; Maintainer: Ef-Themes Development <~protesilaos/ef-themes@lists.sr.ht>
 ;; URL: https://git.sr.ht/~protesilaos/ef-themes
 ;; Mailing-List: https://lists.sr.ht/~protesilaos/ef-themes
-;; Version: 0.3.4
+;; Version: 0.4.0
 ;; Package-Requires: ((emacs "27.1"))
 ;; Keywords: faces, theme, accessibility
 
@@ -655,6 +655,24 @@ Helper function for `ef-themes-preview-colors'."
     `(log-view-commit-body (( )))
     `(log-view-file ((,c :inherit bold)))
     `(log-view-message ((,c :foreground ,fg-dim)))
+;;;; company-mode
+    `(company-echo-common ((,c :inherit bold :foreground ,accent-0)))
+    `(company-preview ((,c :background ,bg-dim :foreground ,fg-dim)))
+    `(company-preview-common ((,c :inherit company-echo-common)))
+    `(company-preview-search ((,c :inherit modus-themes-special-calm)))
+    `(company-scrollbar-bg ((,c :background ,bg-active)))
+    `(company-scrollbar-fg ((,c :background ,fg-main)))
+    `(company-template-field ((,c :background ,bg-active :foreground ,fg-intense)))
+    `(company-tooltip ((,c :background ,bg-dim)))
+    `(company-tooltip-annotation ((,c :inherit completions-annotations)))
+    `(company-tooltip-common ((,c :inherit company-echo-common)))
+    `(company-tooltip-deprecated ((,c :inherit company-tooltip :strike-through t)))
+    `(company-tooltip-mouse ((,c :inherit highlight)))
+    `(company-tooltip-scrollbar-thumb ((,c :background ,fg-alt)))
+    `(company-tooltip-scrollbar-track ((,c :background ,bg-alt)))
+    `(company-tooltip-search ((,c :inherit secondary-selection)))
+    `(company-tooltip-search-selection ((,c :inherit secondary-selection :underline t)))
+    `(company-tooltip-selection ((,c :background ,bg-completion)))
 ;;;; compilation
     `(compilation-column-number ((,c :inherit compilation-line-number)))
     `(compilation-error ((,c :inherit error)))
@@ -1245,14 +1263,14 @@ Helper function for `ef-themes-preview-colors'."
     `(org-habit-ready-face ((,c :background ,green-graph-0-bg :foreground "black"))) ; special case
     `(org-habit-ready-future-face ((,c :background ,green-graph-1-bg)))
 ;;;; org-modern
-    `(org-modern-date-active ((,c :inherit org-modern-label :background ,bg-alt)))
-    `(org-modern-date-inactive ((,c :inherit org-modern-label :background ,bg-dim :foreground ,fg-dim)))
+    `(org-modern-date-active ((,c :inherit (ef-themes-fixed-pitch org-modern-label) :background ,bg-alt)))
+    `(org-modern-date-inactive ((,c :inherit (ef-themes-fixed-pitch org-modern-label) :background ,bg-dim :foreground ,fg-dim)))
     `(org-modern-done ((,c :inherit org-modern-label :background ,bg-info :foreground ,info)))
-    `(org-modern-label ((,c :height 0.9 :width condensed :weight regular :underline nil)))
+    `(org-modern-label (( )))
     `(org-modern-priority ((,c :inherit (org-modern-label org-priority) :background ,bg-dim)))
     `(org-modern-statistics ((,c :inherit org-modern-label :background ,bg-dim)))
     `(org-modern-tag ((,c :inherit (org-modern-label org-tag) :background ,bg-dim)))
-    `(org-modern-time-active ((,c :inherit org-modern-label :background ,bg-active :foreground ,fg-intense)))
+    `(org-modern-time-active ((,c :inherit (ef-themes-fixed-pitch org-modern-label) :background ,bg-active :foreground ,fg-intense)))
     `(org-modern-time-inactive ((,c :inherit (org-modern-label org-modern-date-inactive))))
     `(org-modern-todo ((,c :inherit org-modern-label :background ,bg-err :foreground ,err)))
 ;;;; outline-mode

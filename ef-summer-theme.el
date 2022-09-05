@@ -85,6 +85,13 @@
       (bg-magenta  "#ff9fee")
       (bg-cyan     "#88ccff")
 
+      (bg-red-subtle      "#ffc3bf")
+      (bg-green-subtle    "#b9f2c6")
+      (bg-yellow-subtle   "#fff576")
+      (bg-blue-subtle     "#ccdfff")
+      (bg-magenta-subtle  "#ffcdff")
+      (bg-cyan-subtle     "#bfeaff")
+
       ;; Diffs
       (bg-added          "#caf4da")
       (bg-added-faint    "#dff6ea")
@@ -128,6 +135,10 @@
       (border        "#cabfca")
       (cursor        "#cf0090")
       (fg-intense    "#000000")
+
+      (modeline-err     "#9f003f")
+      (modeline-warning "#5f009f")
+      (modeline-info    "#1240af")
 
       ;; Mappings
       (err red-warmer)

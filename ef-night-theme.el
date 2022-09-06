@@ -85,6 +85,13 @@
       (bg-magenta  "#c040cf")
       (bg-cyan     "#027080")
 
+      (bg-red-subtle      "#6a002a")
+      (bg-green-subtle    "#00422a")
+      (bg-yellow-subtle   "#5a3000")
+      (bg-blue-subtle     "#242679")
+      (bg-magenta-subtle  "#50105a")
+      (bg-cyan-subtle     "#004065")
+
       ;; Diffs
       (bg-added          "#002d1f")
       (bg-added-faint    "#001f18")
@@ -129,12 +136,16 @@
       (cursor        "#00ccff")
       (fg-intense    "#ffffff")
 
+      (modeline-err     "#ff8faf")
+      (modeline-warning "#dfcf00")
+      (modeline-info    "#00e06f")
+
       ;; Mappings
       (err red)
       (warning yellow-warmer)
       (info green-cooler)
 
-      (link cyan)
+      (link cyan-warmer)
       (link-alt magenta)
       (date cyan)
       (name blue-warmer)
@@ -149,7 +160,7 @@
       (docstring cyan-faint)
       (string blue-cooler)
       (type magenta-cooler)
-      (variable cyan-warmer)
+      (variable cyan)
 
       (rx-escape green) ; compare with `string'
       (rx-construct magenta-warmer)

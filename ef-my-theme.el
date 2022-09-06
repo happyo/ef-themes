@@ -42,14 +42,14 @@
   (defconst ef-my-palette
     '(;; Basic tones
       (bg-main     "#E0E5DF")
-      (fg-main     "#34494a")
-      (bg-dim      "#e8f0f0")
+      (fg-main     "#22202E")
+      (bg-dim      "#E9D7DF")
       (fg-dim      "#777294")
-      (bg-alt      "#e0e6e3")
-      (fg-alt      "#9d5e7a")
+      (bg-alt      "#CCCCD6")
+      (fg-alt      "#F07C82")
 
-      (bg-active   "#d0d6d3")
-      (bg-inactive "#f0f8f4")
+      (bg-active   "#E2E1E4")
+      (bg-inactive "#BACCD9")
 
       ;; Basic hues for foreground values
       (red             "#C91F37")
@@ -84,7 +84,14 @@
       (bg-blue     "#afdfff")
       (bg-magenta  "#CCA4E3")
       (bg-cyan     "#7397AB")
-      
+
+      (bg-red-subtle      "#ffcfbf")
+      (bg-green-subtle    "#afffbf")
+      (bg-yellow-subtle   "#fff576")
+      (bg-blue-subtle     "#ccdfff")
+      (bg-magenta-subtle  "#ffddff")
+      (bg-cyan-subtle     "#bfefff")
+
       ;; Diffs
       (bg-added          "#dfffe0")
       (bg-added-faint    "#e0ffea")
@@ -114,7 +121,7 @@
 
       ;; Special hues
       (bg-mode-line  "#93D5D7") (fg-mode-line  "#243228")
-      (bg-accent     "#880044") (fg-accent     "#ffffff")
+      (bg-accent     "#880044") (fg-accent     "#FBECDE")
       (bg-completion "#ccedff")
       (bg-hover      "#ffc09f")
       (bg-hover-alt  "#feb5ff")
@@ -128,6 +135,10 @@
       (border        "#b4c4c0")
       (cursor        "#BA2F7B")
       (fg-intense    "#000000")
+
+      (modeline-err     red)
+      (modeline-warning yellow)
+      (modeline-info    blue)
 
       ;; Mappings
       (err red-warmer)

@@ -41,7 +41,7 @@
 
   (defconst ef-my-palette
     '(;; Basic tones
-      (bg-main     "#f6fff9")
+      (bg-main     "#E0E5DF")
       (fg-main     "#34494a")
       (bg-dim      "#e8f0f0")
       (fg-dim      "#777294")
@@ -113,7 +113,7 @@
       (cyan-graph-1-bg    "#afefff")
 
       ;; Special hues
-      (bg-mode-line  "#90e8b0") (fg-mode-line  "#243228")
+      (bg-mode-line  "#93D5D7") (fg-mode-line  "#243228")
       (bg-accent     "#880044") (fg-accent     "#ffffff")
       (bg-completion "#ccedff")
       (bg-hover      "#ffc09f")
@@ -126,7 +126,7 @@
       (bg-info       "#ccf5dd") ; check with info
 
       (border        "#b4c4c0")
-      (cursor        "#DB3F96")
+      (cursor        "#BA2F7B")
       (fg-intense    "#000000")
 
       ;; Mappings

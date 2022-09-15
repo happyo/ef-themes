@@ -65,7 +65,7 @@
   "Symbols of all the Ef themes.")
 
 (defconst ef-themes-light-themes
-  '(ef-day ef-deuteranopia-light ef-duo-light ef-light ef-spring ef-summer)
+  '(ef-day ef-deuteranopia-light ef-duo-light ef-light ef-spring ef-my ef-summer)
   "List of symbols with the light Ef themes.")
 
 (defconst ef-themes-dark-themes

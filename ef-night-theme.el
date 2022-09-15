@@ -1,4 +1,4 @@
-;;; ef-night-theme.el --- Legible dark theme -*- lexical-binding:t -*-
+;;; ef-night-theme.el --- Legible dark theme with mostly green, blue, purple colors -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2022  Free Software Foundation, Inc.
 
@@ -37,7 +37,7 @@
 (eval-and-compile
   (require 'ef-themes)
 
-  (deftheme ef-night "Legible dark theme.")
+  (deftheme ef-night "Legible dark theme with mostly green, blue, purple colors.")
 
   (defconst ef-night-palette
     '(;; Basic tones
@@ -150,6 +150,7 @@
       (date cyan)
       (name blue-warmer)
       (keybind green-cooler)
+      (prompt cyan-cooler)
 
       (builtin green-cooler)
       (comment yellow-faint)

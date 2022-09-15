@@ -4,9 +4,9 @@
 #+language:              en
 #+options:               ':t toc:nil author:t email:t num:t
 #+startup:               content
-#+macro:                 stable-version 0.4.0
-#+macro:                 release-date 2022-08-29
-#+macro:                 development-version 0.5.0-dev
+#+macro:                 stable-version 0.5.0
+#+macro:                 release-date 2022-09-11
+#+macro:                 development-version 0.6.0-dev
 #+export_file_name:      ef-themes.texi
 #+texinfo_filename:      ef-themes.info
 #+texinfo_dir_category:  Emacs misc features
@@ -161,8 +161,8 @@ Everything is in place to set up the package.
 
 ;; The themes we provide:
 ;;
-;; Light: `ef-day', `ef-light', `ef-spring', `ef-summer'.
-;; Dark:  `ef-autumn', `ef-dark', `ef-night', `ef-winter'.
+;; Light: `ef-day', `ef-duo-light', `ef-light', `ef-spring', `ef-summer'.
+;; Dark:  `ef-autumn', `ef-duo-dark', `ef-dark', `ef-night', `ef-winter'.
 ;;
 ;; Also those which are optimized for deuteranopia (red-green color
 ;; deficiency): `ef-deuteranopia-dark', `ef-deuteranopia-light'.
@@ -213,8 +213,13 @@ includes a list with all relevant symbols.  The user can then switch
 between the two specified themes by invoking the ~ef-themes-toggle~
 command.
 
-This is in addition to the other ways of loading a theme, either with
-minibuffer completion or at random ([[#h:58345e8c-2bec-459c-872c-a85a29e9fe97][Commands to load an Ef theme]]).
+If ~ef-themes-to-toggle~ does not specify two Ef themes, inform the user
+about it while prompting with completion for a theme among our
+collection (this is practically the same as the ~ef-themes-select~
+command).
+
+This command is in addition to the other ways of loading a theme, either
+with minibuffer completion or at random ([[#h:58345e8c-2bec-459c-872c-a85a29e9fe97][Commands to load an Ef theme]]).
 
 ** Enable mixed fonts
 :PROPERTIES:
@@ -420,10 +425,6 @@ the current Ef theme.  Calling ~ef-themes-load-random~ with a prefix
 argument (=C-u= by default) makes the command limit the random selection
 to either light or dark themes.  The user is prompted at the minibuffer
 to pick among the two sets.
-
-[ As part of {{{development-version}}} the choice between =light= and
-  =dark= sets in ~ef-themes-load-random~ is done using the function
-  ~read-multiple-choice~.  Before, it was ~completing-read~. ]
 
 The ~ef-themes-load-random~ can also be called from Lisp (e.g. from the
 =init.el= file):
@@ -801,13 +802,13 @@ everything most users need.
 - all-the-icons-dired
 - all-the-icons-ibuffer
 - ansi-color
-- auctex [ Part of {{{development-version}}} ]
+- auctex
 - bongo
 - bookmark
 - calendar and diary
 - change-log and log-view (part of VC)
 - chart
-- company [ Part of {{{development-version}}} ]
+- company
 - compilation
 - completions
 - consult
@@ -819,8 +820,9 @@ everything most users need.
 - dired
 - dired-subtree
 - diredfl
-- dirvish [ Part of {{{development-version}}} ]
-- doom-modeline [ Expanded as part of {{{development-version}}} ]
+- dirvish
+- display-fill-column-indicator-mode [ Part of {{{development-version}}} ]
+- doom-modeline
 - ediff
 - eldoc
 - elfeed
@@ -831,12 +833,12 @@ everything most users need.
 - font-lock
 - git-commit
 - git-rebase
-- gnus [ Added all faces as part of {{{development-version}}} ]
-- image-dired [ Part of {{{development-version}}} ]
+- gnus
+- image-dired
 - info
 - isearch, occur, query-replace
 - keycast
-- lin [ Part of {{{development-version}}} ]
+- lin
 - line numbers (~display-line-numbers-mode~ and global variant)
 - magit
 - man
@@ -853,20 +855,21 @@ everything most users need.
 - outline-mode
 - outline-minor-faces
 - package (M-x list-packages)
-- pulsar [ Part of {{{development-version}}} ]
-- pulse [ Part of {{{development-version}}} ]
+- pulsar
+- pulse
 - rainbow-delimiters
 - rcirc
-- recursion-indicator [ Part of {{{development-version}}} ]
+- recursion-indicator
 - regexp-builder (re-builder)
 - ruler-mode
+- selectrum
 - shell-script-mode (sh-mode)
 - show-paren-mode
 - shr
 - smerge
 - tab-bar-mode
 - tab-line-mode
-- tempel [ Part of {{{development-version}}} ]
+- tempel
 - term
 - textsec
 - transient
@@ -947,8 +950,6 @@ unwillingness to be good Emacs citizens:
   violates our expectation of how the mode-line is supposed to look by
   placing the designated default background in unexpected places.
 
-- selectrum :: use =vertico=.
-
 - solaire :: in principle, it is incompatible with practically every
   theme that is not designed around it.  Emacs does not distinguish
   between "UI" and "syntax" buffers.
@@ -965,7 +966,8 @@ unwillingness to be good Emacs citizens:
 - treemacs :: it has too many dependencies and does too many things.
 
 - web-mode :: I don't use all those Web technologies and cannot test
-  this properly without support from an expert.
+  this properly without support from an expert.  It also defines lots of
+  faces that hardcode color values for no good reason.
 
 The above list is non-exhaustive though you get the idea.
 
@@ -1130,9 +1132,9 @@ matters.
 + Contributions to code or the manual :: Alex Lu, Christopher League,
   Philip Kaludercic.
 
-+ Ideas and/or user feedback :: Alan Schmitt, Anthony Chavez, Iris
-  Garcia, Jean-Philippe Gagné Guay, Jonas Collberg, Spike-Leung, Steve
-  Molitor, Summer Emacs, Zoltán Király.
++ Ideas and/or user feedback :: Alan Schmitt, Anthony Chavez, Daniel
+  Mendler, Iris Garcia, Jean-Philippe Gagné Guay, Jonas Collberg,
+  Spike-Leung, Steve Molitor, Summer Emacs, Zoltán Király.
 
 * GNU Free Documentation License
 :PROPERTIES:

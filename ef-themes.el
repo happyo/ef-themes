@@ -59,7 +59,6 @@
     ef-light
     ef-night
     ef-spring
-    ef-my
     ef-summer
     ef-winter)
   "Symbols of all the Ef themes.")

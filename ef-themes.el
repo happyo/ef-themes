@@ -6,7 +6,7 @@
 ;; Maintainer: Ef-Themes Development <~protesilaos/ef-themes@lists.sr.ht>
 ;; URL: https://git.sr.ht/~protesilaos/ef-themes
 ;; Mailing-List: https://lists.sr.ht/~protesilaos/ef-themes
-;; Version: 0.4.2
+;; Version: 0.5.0
 ;; Package-Requires: ((emacs "27.1"))
 ;; Keywords: faces, theme, accessibility
 
@@ -54,6 +54,8 @@
     ef-day
     ef-deuteranopia-dark
     ef-deuteranopia-light
+    ef-duo-dark
+    ef-duo-light
     ef-light
     ef-night
     ef-spring
@@ -63,11 +65,11 @@
   "Symbols of all the Ef themes.")
 
 (defconst ef-themes-light-themes
-  '(ef-day ef-light ef-spring ef-my ef-summer ef-deuteranopia-light)
+  '(ef-day ef-deuteranopia-light ef-duo-light ef-light ef-spring ef-summer)
   "List of symbols with the light Ef themes.")
 
 (defconst ef-themes-dark-themes
-  '(ef-autumn ef-dark ef-night ef-winter ef-deuteranopia-dark)
+  '(ef-autumn ef-dark ef-deuteranopia-dark ef-duo-dark ef-night ef-winter)
   "List of symbols with the dark Ef themes.")
 
 (defcustom ef-themes-post-load-hook nil
@@ -335,12 +337,14 @@ sequence given SEQ-PRED, using SEQ-DEFAULT as a fallback."
 
 (defvar ef-themes--select-theme-history nil)
 
-(defun ef-themes--select-prompt ()
-  "Minibuffer prompt for `ef-themes-select'."
-  (completing-read "Select Ef Theme: "
-                   (ef-themes--list-known-themes)
-                   nil t nil
-                   'ef-themes--select-theme-history))
+(defun ef-themes--select-prompt (&optional prompt)
+  "Minibuffer prompt for `ef-themes-select'.
+With optional PROMPT string, use it.  Else use a generic prompt."
+  (intern
+   (completing-read (or prompt "Select Ef Theme: ")
+                    (ef-themes--list-known-themes)
+                    nil t nil
+                    'ef-themes--select-theme-history)))
 
 (defun ef-themes--load-theme (theme)
   "Load THEME while disabling other Ef themes.
@@ -353,7 +357,7 @@ Run `ef-themes-post-load-hook'."
 (defun ef-themes-select (theme)
   "Load an Ef THEME using minibuffer completion.
 When called from Lisp, THEME is a symbol."
-  (interactive (list (intern (ef-themes--select-prompt))))
+  (interactive (list (ef-themes--select-prompt)))
   (ef-themes--load-theme theme))
 
 (defun ef-themes--toggle-theme-p ()
@@ -366,16 +370,22 @@ When called from Lisp, THEME is a symbol."
 
 ;;;###autoload
 (defun ef-themes-toggle ()
-  "Toggle between the two `ef-themes-to-toggle'."
+  "Toggle between the two `ef-themes-to-toggle'.
+If `ef-themes-to-toggle' does not specify two Ef themes, inform
+the user about it while prompting with completion for a theme
+among our collection (this is practically the same as the
+`ef-themes-select' command)."
   (interactive)
-  (when-let* ((themes (ef-themes--toggle-theme-p))
-              (one (car themes))
-              (two (cadr themes)))
-    (unless (eq (length themes) 2)
-      (user-error "Can only toggle between two themes"))
-    (if (eq (car custom-enabled-themes) one)
-        (ef-themes--load-theme two)
-      (ef-themes--load-theme one))))
+  (if-let* ((themes (ef-themes--toggle-theme-p))
+            (one (car themes))
+            (two (cadr themes)))
+      (if (eq (car custom-enabled-themes) one)
+          (ef-themes--load-theme two)
+        (ef-themes--load-theme one))
+    (ef-themes--load-theme
+     (ef-themes--select-prompt
+      (concat "Set two `ef-themes-to-toggle'; "
+              "switching to theme selection for now: ")))))
 
 (defun ef-themes--minus-current (&optional variant)
   "Return list of Ef themes minus the current one.
@@ -536,7 +546,7 @@ Helper function for `ef-themes-preview-colors'."
 ;;;;; all other basic faces
     `(button ((,c :foreground ,link :underline ,border)))
     `(comint-highlight-input ((,c :inherit bold)))
-    `(comint-highlight-prompt ((,c :foreground ,accent-2)))
+    `(comint-highlight-prompt ((,c :inherit minibuffer-prompt)))
     `(edmacro-label ((,c :inherit bold)))
     `(elisp-shorthand-font-lock-face ((,c :inherit italic)))
     `(error ((,c :inherit bold :foreground ,err)))
@@ -551,7 +561,7 @@ Helper function for `ef-themes-preview-colors'."
     `(icon-button ((,c :box ,fg-dim :background ,bg-active :foreground ,fg-intense))) ; same as `custom-button'
     `(link ((,c :foreground ,link :underline ,border)))
     `(link-visited ((,c :foreground ,link-alt :underline ,border)))
-    `(minibuffer-prompt ((,c :foreground ,accent-2)))
+    `(minibuffer-prompt ((,c :foreground ,prompt)))
     `(pgtk-im-0 ((,c :inherit secondary-selection)))
     `(read-multiple-choice-face ((,c :inherit warning :background ,bg-warning)))
     `(rectangle-preview ((,c :inherit secondary-selection)))
@@ -820,6 +830,10 @@ Helper function for `ef-themes-preview-colors'."
     `(diredfl-write-priv ((,c :foreground ,rainbow-2)))
 ;;;; dirvish
     `(dirvish-hl-line ((,c :background ,bg-hl-line)))
+;;;; display-fill-column-indicator-mode
+    ;; NOTE 2022-09-14: We use the bg-alt mapping as the border mapping
+    ;; is for the `vertical-border'.  We want this to be more subtle.
+    `(fill-column-indicator ((,c :height 1 :background ,bg-alt :foreground ,bg-alt)))
 ;;;; doom-modeline
     `(doom-modeline-bar ((,c :background ,bg-accent)))
     `(doom-modeline-bar-inactive ((,c :background ,bg-alt)))
@@ -1233,7 +1247,7 @@ Helper function for `ef-themes-preview-colors'."
     `(mode-line ((,c :inherit ef-themes-ui-variable-pitch :background ,bg-mode-line :foreground ,fg-mode-line)))
     `(mode-line-active ((,c :inherit mode-line)))
     `(mode-line-buffer-id ((,c :inherit bold)))
-    `(mode-line-emphasis ((,c :inherit bold-italic)))
+    `(mode-line-emphasis ((,c :inherit bold :foreground ,modeline-info)))
     `(mode-line-highlight ((,c :inherit highlight)))
     `(mode-line-inactive ((,c :inherit ef-themes-ui-variable-pitch :background ,bg-alt :foreground ,fg-dim)))
 ;;;; mu4e
@@ -1405,7 +1419,6 @@ Helper function for `ef-themes-preview-colors'."
     `(org-modern-date-active ((,c :inherit (ef-themes-fixed-pitch org-modern-label) :background ,bg-alt)))
     `(org-modern-date-inactive ((,c :inherit (ef-themes-fixed-pitch org-modern-label) :background ,bg-dim :foreground ,fg-dim)))
     `(org-modern-done ((,c :inherit org-modern-label :background ,bg-info :foreground ,info)))
-    `(org-modern-label (( )))
     `(org-modern-priority ((,c :inherit (org-modern-label org-priority) :background ,bg-dim)))
     `(org-modern-statistics ((,c :inherit org-modern-label :background ,bg-dim)))
     `(org-modern-tag ((,c :inherit (org-modern-label org-tag) :background ,bg-dim)))
@@ -1465,14 +1478,14 @@ Helper function for `ef-themes-preview-colors'."
     `(rcirc-dim-nick ((,c :inherit shadow)))
     `(rcirc-monospace-text ((,c :inherit fixed-pitch)))
     `(rcirc-my-nick ((,c :inherit bold :foreground ,accent-1)))
-    `(rcirc-nick-in-message ((,c :inherit warning)))
-    `(rcirc-nick-in-message-full-line ((,c :inherit italic)))
+    `(rcirc-nick-in-message ((,c :inherit rcirc-my-nick)))
+    `(rcirc-nick-in-message-full-line ((,c :inherit rcirc-my-nick)))
     `(rcirc-other-nick ((,c :inherit bold :foreground ,accent-0)))
     `(rcirc-prompt ((,c :inherit minibuffer-prompt)))
-    `(rcirc-server ((,c :inherit shadow)))
+    `(rcirc-server ((,c :inherit font-lock-comment-face)))
     `(rcirc-timestamp ((,c :foreground ,date)))
-    `(rcirc-track-keyword ((,c :inherit bold)))
-    `(rcirc-track-nick ((,c :inherit warning)))
+    `(rcirc-track-keyword ((,c :inherit bold :foreground ,modeline-warning)))
+    `(rcirc-track-nick ((,c :inherit rcirc-my-nick)))
     `(rcirc-url ((,c :inherit link)))
 ;;;; recursion-indicator
     `(recursion-indicator-general ((,c :foreground ,modeline-err)))
@@ -1495,6 +1508,12 @@ Helper function for `ef-themes-preview-colors'."
     `(ruler-mode-margins ((,c :inherit ruler-mode-default :foreground ,bg-main)))
     `(ruler-mode-pad ((,c :inherit ruler-mode-default :background ,bg-alt :foreground ,fg-dim)))
     `(ruler-mode-tab-stop ((,c :inherit ruler-mode-default :foreground ,yellow)))
+;;;; selectrum
+    `(selectrum-completion-annotation ((,c :inherit completions-annotations)))
+    `(selectrum-completion-docsig ((,c :inherit completions-annotations)))
+    `(selectrum-current-candidate ((,c :background ,bg-completion)))
+    `(selectrum-group-title ((,c :inherit bold :foreground ,name)))
+    `(selectrum-mouse-highlight ((,c :inherit highlight)))
 ;;;; show-paren-mode
     `(show-paren-match ((,c :background ,bg-paren :foreground ,fg-intense)))
     `(show-paren-match-expression ((,c :background ,bg-alt)))
@@ -1587,6 +1606,8 @@ Helper function for `ef-themes-preview-colors'."
     `(vc-dir-status-warning ((,c :inherit error)))
     `(vc-conflict-state ((,c :inherit error)))
     `(vc-edited-state ((,c :inherit italic)))
+    `(vc-git-log-edit-summary-max-warning ((,c :background ,bg-err :foreground ,err)))
+    `(vc-git-log-edit-summary-target-warning ((,c :background ,bg-warning :foreground ,warning)))
     `(vc-locally-added-state ((,c :inherit italic)))
     `(vc-locked-state ((,c :inherit success)))
     `(vc-missing-state ((,c :inherit error)))

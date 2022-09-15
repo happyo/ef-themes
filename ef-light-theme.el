@@ -1,4 +1,4 @@
-;;; ef-light-theme.el --- Legible light theme -*- lexical-binding:t -*-
+;;; ef-light-theme.el --- Legible light theme with blue, magenta, cyan, purple colors -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2022  Free Software Foundation, Inc.
 
@@ -37,7 +37,7 @@
 (eval-and-compile
   (require 'ef-themes)
 
-  (deftheme ef-light "Legible light theme.")
+  (deftheme ef-light "Legible light theme with blue, magenta, cyan, purple colors.")
 
   (defconst ef-light-palette
     '(;; Basic tones
@@ -150,6 +150,7 @@
       (date cyan-cooler)
       (name magenta-cooler)
       (keybind blue-cooler)
+      (prompt green-cooler)
 
       (builtin magenta)
       (comment yellow-faint)

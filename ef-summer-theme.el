@@ -1,4 +1,4 @@
-;;; ef-summer-theme.el --- Legible light theme -*- lexical-binding:t -*-
+;;; ef-summer-theme.el --- Legible light theme with magenta, purple, gold, cyan colors -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2022  Free Software Foundation, Inc.
 
@@ -37,7 +37,7 @@
 (eval-and-compile
   (require 'ef-themes)
 
-  (deftheme ef-summer "Legible light theme.")
+  (deftheme ef-summer "Legible light theme with magenta, purple, gold, cyan colors.")
 
   (defconst ef-summer-palette
     '(;; Basic tones
@@ -150,6 +150,7 @@
       (date cyan-cooler)
       (name magenta-warmer)
       (keybind red-cooler)
+      (prompt magenta-warmer)
 
       (builtin magenta)
       (comment yellow-faint)

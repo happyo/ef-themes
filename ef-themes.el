@@ -48,28 +48,17 @@
 
 ;;; User options
 
-(defconst ef-themes-collection
-  '(ef-autumn
-    ef-dark
-    ef-day
-    ef-deuteranopia-dark
-    ef-deuteranopia-light
-    ef-duo-dark
-    ef-duo-light
-    ef-light
-    ef-night
-    ef-spring
-    ef-summer
-    ef-winter)
-  "Symbols of all the Ef themes.")
-
 (defconst ef-themes-light-themes
-  '(ef-day ef-deuteranopia-light ef-duo-light ef-light ef-spring ef-summer)
+  '(ef-day ef-deuteranopia-light ef-duo-light ef-light ef-spring ef-summer ef-trio-light)
   "List of symbols with the light Ef themes.")
 
 (defconst ef-themes-dark-themes
-  '(ef-autumn ef-dark ef-deuteranopia-dark ef-duo-dark ef-night ef-winter)
+  '(ef-autumn ef-dark ef-deuteranopia-dark ef-duo-dark ef-night ef-trio-dark ef-winter)
   "List of symbols with the dark Ef themes.")
+
+(defconst ef-themes-collection
+  (append ef-themes-light-themes ef-themes-dark-themes)
+  "Symbols of all the Ef themes.")
 
 (defcustom ef-themes-post-load-hook nil
   "Hook that runs after loading an Ef theme.
@@ -355,7 +344,9 @@ Run `ef-themes-post-load-hook'."
 ;;;###autoload
 (defun ef-themes-select (theme)
   "Load an Ef THEME using minibuffer completion.
-When called from Lisp, THEME is a symbol."
+When called from Lisp, THEME is a symbol.
+
+Run `ef-themes-post-load-hook' after loading the theme."
   (interactive (list (ef-themes--select-prompt)))
   (ef-themes--load-theme theme))
 
@@ -373,7 +364,9 @@ When called from Lisp, THEME is a symbol."
 If `ef-themes-to-toggle' does not specify two Ef themes, inform
 the user about it while prompting with completion for a theme
 among our collection (this is practically the same as the
-`ef-themes-select' command)."
+`ef-themes-select' command).
+
+Run `ef-themes-post-load-hook' after loading the theme."
   (interactive)
   (if-let* ((themes (ef-themes--toggle-theme-p))
             (one (car themes))
@@ -407,7 +400,9 @@ With optional VARIANT as either `light' or `dark', limit the set
 to the relevant themes.
 
 When called interactively, VARIANT is the prefix argument which
-prompts with completion for either `light' or `dark'."
+prompts with completion for either `light' or `dark'.
+
+Run `ef-themes-post-load-hook' after loading the theme."
   (interactive
    (list
     (when current-prefix-arg
@@ -1057,8 +1052,8 @@ Helper function for `ef-themes-preview-colors'."
 ;;;; isearch, occur, and the like
     `(isearch ((,c :background ,bg-yellow :foreground ,fg-intense)))
     `(isearch-fail ((,c :background ,bg-red :foreground ,fg-intense)))
-    `(isearch-group-1 ((,c :background ,bg-magenta :foreground ,fg-intense)))
-    `(isearch-group-2 ((,c :background ,bg-green :foreground ,fg-intense)))
+    `(isearch-group-1 ((,c :background ,bg-green :foreground ,fg-intense)))
+    `(isearch-group-2 ((,c :background ,bg-magenta :foreground ,fg-intense)))
     `(lazy-highlight ((,c :background ,bg-blue :foreground ,fg-intense)))
     `(match ((,c :background ,bg-alt :foreground ,fg-intense)))
     `(query-replace ((,c :background ,bg-red :foreground ,fg-intense)))
@@ -1491,8 +1486,8 @@ Helper function for `ef-themes-preview-colors'."
     `(recursion-indicator-minibuffer ((,c :foreground ,modeline-info)))
 ;;;; regexp-builder (re-builder)
     `(reb-match-0 ((,c :background ,bg-cyan :foreground ,fg-intense)))
-    `(reb-match-1 ((,c :background ,bg-magenta :foreground ,fg-intense)))
-    `(reb-match-2 ((,c :background ,bg-red :foreground ,fg-intense)))
+    `(reb-match-1 ((,c :background ,bg-red :foreground ,fg-intense)))
+    `(reb-match-2 ((,c :background ,bg-magenta :foreground ,fg-intense)))
     `(reb-match-3 ((,c :background ,bg-yellow :foreground ,fg-intense)))
     `(reb-regexp-grouping-backslash ((,c :inherit font-lock-regexp-grouping-backslash)))
     `(reb-regexp-grouping-construct ((,c :inherit font-lock-regexp-grouping-construct)))

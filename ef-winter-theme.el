@@ -124,7 +124,7 @@
       (bg-accent     "#ffb250") (fg-accent     "#000000")
       (bg-completion "#2f2a7a")
       (bg-hover      "#00474f")
-      (bg-hover-alt  "#600f5a")
+      (bg-hover-alt  "#44196f")
       (bg-hl-line    "#003045")
       (bg-region     "#342464")
       (bg-paren      "#2f608e")
@@ -139,6 +139,10 @@
       (modeline-err     "#ff9fbf")
       (modeline-warning "#ddb300")
       (modeline-info    "#40e0af")
+
+      (underline-err     "#ff2f2f")
+      (underline-warning "#e0dc00")
+      (underline-info    "#22ff52")
 
       ;; Mappings
       (err red-warmer)
@@ -179,14 +183,14 @@
       (mail-5 green)
 
       (rainbow-0 magenta)
-      (rainbow-1 green-cooler)
+      (rainbow-1 cyan-cooler)
       (rainbow-2 magenta-cooler)
       (rainbow-3 yellow)
-      (rainbow-4 blue)
-      (rainbow-5 green-warmer)
-      (rainbow-6 red-cooler)
-      (rainbow-7 cyan)
-      (rainbow-8 magenta-warmer))
+      (rainbow-4 blue-warmer)
+      (rainbow-5 magenta-warmer)
+      (rainbow-6 green-cooler)
+      (rainbow-7 yellow-cooler)
+      (rainbow-8 cyan-warmer))
     "The `ef-winter' palette.")
 
   (ef-themes-theme ef-winter ef-winter-palette)

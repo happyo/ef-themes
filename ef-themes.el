@@ -6,7 +6,7 @@
 ;; Maintainer: Ef-Themes Development <~protesilaos/ef-themes@lists.sr.ht>
 ;; URL: https://git.sr.ht/~protesilaos/ef-themes
 ;; Mailing-List: https://lists.sr.ht/~protesilaos/ef-themes
-;; Version: 0.5.0
+;; Version: 0.7.0
 ;; Package-Requires: ((emacs "27.1"))
 ;; Keywords: faces, theme, accessibility
 
@@ -31,6 +31,14 @@
 ;; Emacs whose goal is to provide colorful ("pretty") yet legible
 ;; options for users who want something with a bit more flair than the
 ;; `modus-themes' (also designed by me).
+;;
+;; "Ef" is a Greek word (ευ), commonly used as a prefix to denote
+;; something good, nice, and/or easy.  For example, eftopia (ευτοπία)
+;; is the opposite of dystopia (δυστοπία): a good place as opposed to
+;; a bad place.
+;;
+;; The backronym of the `ef-themes' is: Extremely Fatigued of Themes
+;; Having Exaggerated Markings, Embellishments, and Sparkles.
 
 ;;; Code:
 
@@ -49,11 +57,27 @@
 ;;; User options
 
 (defconst ef-themes-light-themes
-  '(ef-day ef-deuteranopia-light ef-duo-light ef-light ef-spring ef-my ef-summer ef-trio-light)
+  '(ef-day
+    ef-deuteranopia-light
+    ef-duo-light
+    ef-frost
+    ef-light
+    ef-spring
+    ef-summer
+    ef-trio-light
+    ef-tritanopia-light)
   "List of symbols with the light Ef themes.")
 
 (defconst ef-themes-dark-themes
-  '(ef-autumn ef-dark ef-deuteranopia-dark ef-duo-dark ef-night ef-trio-dark ef-winter)
+  '(ef-autumn
+    ef-bio
+    ef-dark
+    ef-deuteranopia-dark
+    ef-duo-dark
+    ef-night
+    ef-trio-dark
+    ef-tritanopia-dark
+    ef-winter)
   "List of symbols with the dark Ef themes.")
 
 (defconst ef-themes-collection
@@ -539,6 +563,7 @@ Helper function for `ef-themes-preview-colors'."
     `(vertical-border ((,c :foreground ,border)))
 ;;;;; all other basic faces
     `(button ((,c :foreground ,link :underline ,border)))
+    `(child-frame-border ((,c :background ,border)))
     `(comint-highlight-input ((,c :inherit bold)))
     `(comint-highlight-prompt ((,c :inherit minibuffer-prompt)))
     `(edmacro-label ((,c :inherit bold)))
@@ -679,6 +704,7 @@ Helper function for `ef-themes-preview-colors'."
     `(change-log-list ((,c :inherit bold)))
     `(change-log-name ((,c :foreground ,name)))
     `(log-edit-header ((,c :inherit bold)))
+    `(log-edit-headers-separator ((,c :height 1 :background ,border :extend t)))
     `(log-edit-summary ((,c :inherit bold :foreground ,accent-0)))
     `(log-edit-unknown-header ((,c :inherit shadow)))
     `(log-view-commit-body (( )))
@@ -692,7 +718,7 @@ Helper function for `ef-themes-preview-colors'."
     `(company-scrollbar-bg ((,c :background ,bg-active)))
     `(company-scrollbar-fg ((,c :background ,fg-main)))
     `(company-template-field ((,c :background ,bg-active :foreground ,fg-intense)))
-    `(company-tooltip ((,c :background ,bg-dim)))
+    `(company-tooltip ((,c :background ,bg-inactive)))
     `(company-tooltip-annotation ((,c :inherit completions-annotations)))
     `(company-tooltip-common ((,c :inherit company-echo-common)))
     `(company-tooltip-deprecated ((,c :inherit company-tooltip :strike-through t)))
@@ -721,6 +747,11 @@ Helper function for `ef-themes-preview-colors'."
     `(consult-key ((,c :inherit ef-themes-key-binding)))
     `(consult-imenu-prefix ((,c :inherit shadow)))
     `(consult-line-number ((,c :inherit shadow)))
+;;;;; corfu
+    `(corfu-current ((,c :background ,bg-completion)))
+    `(corfu-bar ((,c :background ,fg-main)))
+    `(corfu-border ((,c :background ,bg-active)))
+    `(corfu-default ((,c :background ,bg-inactive)))
 ;;;; custom (M-x customize)
     `(custom-button ((,c :box ,fg-dim :background ,bg-active :foreground ,fg-intense)))
     `(custom-button-mouse ((,c :inherit (highlight custom-button))))
@@ -760,6 +791,7 @@ Helper function for `ef-themes-preview-colors'."
 ;;;; diff-mode
     `(diff-added ((,c :background ,bg-added)))
     `(diff-changed ((,c :background ,bg-changed :extend t)))
+    `(diff-changed-unspecified ((,c :inherit diff-changed)))
     `(diff-removed ((,c :background ,bg-removed)))
     `(diff-refine-added ((,c :background ,bg-added-refine :foreground ,fg-intense)))
     `(diff-refine-changed ((,c :background ,bg-changed-refine :foreground ,fg-intense)))
@@ -933,6 +965,13 @@ Helper function for `ef-themes-preview-colors'."
     `(eww-form-submit ((,c :box ,fg-dim :background ,bg-active :foreground ,fg-intense)))
     `(eww-form-text ((,c :inherit widget-field)))
     `(eww-form-textarea ((,c :inherit eww-form-text)))
+;;;; flymake
+    `(flymake-error ((,c :underline (:style wave :color ,underline-err))))
+    `(flymake-note ((,c :underline (:style wave :color ,underline-info))))
+    `(flymake-warning ((,c :underline (:style wave :color ,underline-warning))))
+;;;; flyspell
+    `(flyspell-duplicate ((,c :underline (:style wave :color ,underline-warning))))
+    `(flyspell-incorrect ((,c :underline (:style wave :color ,underline-err))))
 ;;;; font-lock
     `(font-lock-builtin-face ((,c :inherit bold :foreground ,builtin)))
     `(font-lock-comment-delimiter-face ((,c :inherit font-lock-comment-face)))
@@ -1028,13 +1067,52 @@ Helper function for `ef-themes-preview-colors'."
     `(gnus-summary-low-read ((,c :inherit (shadow italic))))
     `(gnus-summary-low-ticked ((,c :inherit italic :foreground ,err)))
     `(gnus-summary-low-undownloaded ((,c :inherit italic :foreground ,warning)))
-    `(gnus-summary-low-unread (( )))
+    `(gnus-summary-low-unread ((,c :inherit italic)))
     `(gnus-summary-normal-ancient (( )))
     `(gnus-summary-normal-read ((,c :inherit shadow)))
     `(gnus-summary-normal-ticked ((,c :foreground ,err)))
     `(gnus-summary-normal-undownloaded ((,c :foreground ,warning)))
     `(gnus-summary-normal-unread (( )))
     `(gnus-summary-selected ((,c :inherit highlight)))
+;;;; hi-lock (M-x highlight-regexp)
+    ;; NOTE 2022-10-16 We hardcode color values.  We have to do this
+    ;; as the themes lack entries in their palette for such an edge
+    ;; case.  Defining those entries is not appropriate.
+    ;;
+    ;; The use of :inverse-video here is to prevert `hl-line-mode' or
+    ;; the active region from overriding those highlights.
+    `(hi-aquamarine ((((class color) (min-colors 88) (background light))
+                      :background "white" :foreground "#227f9f" :inverse-video t)
+                     (((class color) (min-colors 88) (background dark))
+                      :background "black" :foreground "#66cbdc" :inverse-video t)))
+    `(hi-black-b ((,c :inverse-video t)))
+    `(hi-black-hb ((,c :background ,bg-main :foreground ,fg-dim :inverse-video t)))
+    `(hi-blue ((((class color) (min-colors 88) (background light))
+                :background "white" :foreground "#3366dd" :inverse-video t)
+               (((class color) (min-colors 88) (background dark))
+                :background "black" :foreground "#aaccff" :inverse-video t)))
+    `(hi-blue-b ((,c :inherit (bold hi-blue))))
+    `(hi-green ((((class color) (min-colors 88) (background light))
+                 :background "white" :foreground "#008a00" :inverse-video t)
+                (((class color) (min-colors 88) (background dark))
+                 :background "black" :foreground "#66dd66" :inverse-video t)))
+    `(hi-green-b ((,c :inherit (bold hi-green))))
+    `(hi-pink ((((class color) (min-colors 88) (background light))
+                :background "white" :foreground "#bd30aa" :inverse-video t)
+               (((class color) (min-colors 88) (background dark))
+                :background "black" :foreground "#ff88ee" :inverse-video t)))
+    `(hi-red-b ((((class color) (min-colors 88) (background light))
+                 :background "white" :foreground "#dd0000" :inverse-video t)
+                (((class color) (min-colors 88) (background dark))
+                 :background "black" :foreground "#f06666" :inverse-video t)))
+    `(hi-salmon ((((class color) (min-colors 88) (background light))
+                  :background "white" :foreground "#af4f6f" :inverse-video t)
+                 (((class color) (min-colors 88) (background dark))
+                  :background "black" :foreground "#e08a50" :inverse-video t)))
+    `(hi-yellow ((((class color) (min-colors 88) (background light))
+                  :background "white" :foreground "#af6f00" :inverse-video t)
+                 (((class color) (min-colors 88) (background dark))
+                  :background "black" :foreground "#faea00" :inverse-video t)))
 ;;;; image-dired
     `(image-dired-thumb-flagged ((,c :background ,err)))
     `(image-dired-thumb-mark ((,c :background ,info)))
@@ -1078,8 +1156,8 @@ Helper function for `ef-themes-preview-colors'."
     ;; scale when using `text-scale-adjust'.
     `(line-number ((,c :inherit (ef-themes-fixed-pitch shadow default))))
     `(line-number-current-line ((,c :inherit (bold line-number) :foreground ,fg-intense)))
-    `(line-number-major-tick ((,c :inherit line-number :background ,bg-alt :foreground ,info)))
-    `(line-number-minor-tick ((,c :inherit line-number :background ,bg-dim :foreground ,warning)))
+    `(line-number-major-tick ((,c :inherit (bold line-number) :foreground ,rainbow-0)))
+    `(line-number-minor-tick ((,c :inherit (bold line-number))))
 ;;;; magit
     `(magit-bisect-bad ((,c :inherit error)))
     `(magit-bisect-good ((,c :inherit success)))
@@ -1283,6 +1361,26 @@ Helper function for `ef-themes-preview-colors'."
     `(mu4e-url-number-face ((,c :inherit shadow)))
     `(mu4e-view-body-face (( )))
     `(mu4e-warning-face ((,c :inherit warning)))
+;;;; neotree
+    `(neo-banner-face ((,c :foreground ,accent-0)))
+    `(neo-button-face ((,c :inherit button)))
+    `(neo-dir-link-face (( )))
+    `(neo-expand-btn-face (( )))
+    `(neo-file-link-face (( )))
+    `(neo-header-face ((,c :inherit bold)))
+    `(neo-root-dir-face ((,c :inherit bold :foreground ,accent-0)))
+    `(neo-vc-added-face ((,c :inherit success)))
+    `(neo-vc-conflict-face ((,c :inherit error)))
+    `(neo-vc-default-face (( )))
+    `(neo-vc-edited-face ((,c :inherit italic)))
+    `(neo-vc-ignored-face ((,c :inherit shadow)))
+    `(neo-vc-missing-face ((,c :inherit error)))
+    `(neo-vc-needs-merge-face ((,c :inherit italic)))
+    `(neo-vc-needs-update-face ((,c :underline t)))
+    `(neo-vc-removed-face ((,c :strike-through t)))
+    `(neo-vc-unlocked-changes-face ((,c :inherit success)))
+    `(neo-vc-up-to-date-face (( )))
+    `(neo-vc-user-face ((,c :inherit warning)))
 ;;;; notmuch
     `(notmuch-crypto-decryption ((,c :inherit bold)))
     `(notmuch-crypto-part-header ((,c :foreground ,mail-5))) ; like `message-mml'
@@ -1299,8 +1397,8 @@ Helper function for `ef-themes-preview-colors'."
     `(notmuch-search-non-matching-authors ((,c :inherit shadow)))
     `(notmuch-search-subject ((,c :foreground ,fg-main)))
     `(notmuch-search-unread-face ((,c :inherit bold)))
-    `(notmuch-tag-added ((,c :underline ,info)))
-    `(notmuch-tag-deleted ((,c :strike-through ,err)))
+    `(notmuch-tag-added ((,c :underline ,underline-info)))
+    `(notmuch-tag-deleted ((,c :strike-through ,underline-err)))
     `(notmuch-tag-face ((,c :foreground ,accent-0)))
     `(notmuch-tag-flagged ((,c :foreground ,err)))
     `(notmuch-tag-unread ((,c :foreground ,accent-1)))
@@ -1320,10 +1418,10 @@ Helper function for `ef-themes-preview-colors'."
 ;;;; org
     `(org-agenda-calendar-event ((,c :foreground ,fg-alt)))
     `(org-agenda-calendar-sexp ((,c :inherit (italic org-agenda-calendar-event))))
-    `(org-agenda-clocking ((,c :background ,bg-alt :foreground ,red-warmer)))
+    `(org-agenda-clocking ((,c :background ,bg-warning :foreground ,warning)))
     `(org-agenda-column-dateline ((,c :background ,bg-alt)))
     `(org-agenda-current-time ((,c :foreground ,variable)))
-    `(org-agenda-date ((,c :inherit ef-themes-heading-3)))
+    `(org-agenda-date ((,c :inherit ef-themes-heading-1)))
     `(org-agenda-date-today ((,c :inherit org-agenda-date :underline t)))
     `(org-agenda-date-weekend ((,c :inherit org-agenda-date)))
     `(org-agenda-date-weekend-today ((,c :inherit org-agenda-date-today)))
@@ -1336,9 +1434,9 @@ Helper function for `ef-themes-preview-colors'."
     `(org-agenda-filter-tags ((,c :inherit bold :foreground ,modeline-err)))
     `(org-agenda-restriction-lock ((,c :background ,bg-dim :foreground ,fg-dim)))
     `(org-agenda-structure ((,c :inherit ef-themes-heading-0)))
-    `(org-agenda-structure-filter ((,c :inherit (warning org-agenda-structure))))
+    `(org-agenda-structure-filter ((,c :inherit org-agenda-structure :foreground ,rainbow-1)))
     `(org-agenda-structure-secondary ((,c :foreground ,rainbow-1)))
-    `(org-archived ((,c :background ,bg-alt :foreground ,fg-alt)))
+    `(org-archived ((,c :background ,bg-alt :foreground ,fg-main)))
     `(org-block ((,c :inherit ef-themes-fixed-pitch :background ,bg-inactive :extend t)))
     `(org-block-begin-line ((,c :inherit (shadow ef-themes-fixed-pitch) :background ,bg-dim :extend t)))
     `(org-block-end-line ((,c :inherit org-block-begin-line)))
@@ -1589,14 +1687,14 @@ Helper function for `ef-themes-preview-colors'."
     `(transient-unreachable-key ((,c :inherit shadow)))
     `(transient-value ((,c :inherit success :background ,bg-info)))
 ;;;; vc (vc-dir.el, vc-hooks.el)
-    `(vc-dir-directory ((,c :foreground ,accent-0)))
+    `(vc-dir-directory (( )))
     `(vc-dir-file ((,c :foreground ,name)))
-    `(vc-dir-header ((,c :foreground ,accent-1)))
-    `(vc-dir-header-value ((,c :foreground ,accent-2)))
-    `(vc-dir-mark-indicator ((,c :inherit success)))
-    `(vc-dir-status-edited ((,c :inherit warning)))
+    `(vc-dir-header ((,c :inherit bold)))
+    `(vc-dir-header-value ((,c :foreground ,string)))
+    `(vc-dir-mark-indicator ((,c :foreground ,fg-intense)))
+    `(vc-dir-status-edited ((,c :inherit italic)))
     `(vc-dir-status-ignored ((,c :inherit shadow)))
-    `(vc-dir-status-up-to-date (( )))
+    `(vc-dir-status-up-to-date ((,c :foreground ,info)))
     `(vc-dir-status-warning ((,c :inherit error)))
     `(vc-conflict-state ((,c :inherit error)))
     `(vc-edited-state ((,c :inherit italic)))

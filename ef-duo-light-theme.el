@@ -136,13 +136,17 @@
       (bg-warning    "#ffe5ba") ; check with warning
       (bg-info       "#cff5d0") ; check with info
 
-      (border        "#cabfca")
+      (border        "#baafba")
       (cursor        "#1144ff")
       (fg-intense    "#000000")
 
       (modeline-err     "#950000")
       (modeline-warning "#6f008f")
       (modeline-info    "#00409f")
+
+      (underline-err     "#ef0f1f")
+      (underline-warning "#bf5f00")
+      (underline-info    "#02af52")
 
       ;; Mappings
       (err red)
@@ -186,9 +190,9 @@
       (rainbow-1 yellow-warmer)
       (rainbow-2 blue-warmer)
       (rainbow-3 yellow-cooler)
-      (rainbow-4 cyan-cooler)
+      (rainbow-4 magenta-cooler)
       (rainbow-5 green-warmer)
-      (rainbow-6 cyan)
+      (rainbow-6 cyan-warmer)
       (rainbow-7 yellow)
       (rainbow-8 green-cooler))
     "The `ef-duo-light' palette.")

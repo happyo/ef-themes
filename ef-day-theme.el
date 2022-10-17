@@ -124,7 +124,7 @@
       (bg-accent     "#106246") (fg-accent     "#ffffff")
       (bg-completion "#ffd5d3")
       (bg-hover      "#b0e0df")
-      (bg-hover-alt  "#febcaf")
+      (bg-hover-alt  "#febccf")
       (bg-hl-line    "#f9e2b2")
       (bg-region     "#f0d2df")
       (bg-paren      "#8fcfdf")
@@ -139,6 +139,10 @@
       (modeline-err     "#900000")
       (modeline-warning "#66008f")
       (modeline-info    "#1f409f")
+
+      (underline-err     "#ef0f1f")
+      (underline-warning "#bf5f00")
+      (underline-info    "#02af52")
 
       ;; Mappings
       (err red-warmer)

@@ -124,10 +124,10 @@
       (bg-accent     "#0000cc") (fg-accent     "#ffffff")
       (bg-completion "#bfe8ff")
       (bg-hover      "#aaeccf")
-      (bg-hover-alt  "#b4cfff")
+      (bg-hover-alt  "#ccbfff")
       (bg-hl-line    "#e4efd8")
       (bg-region     "#bfefff")
-      (bg-paren      "#efa09f")
+      (bg-paren      "#dfa0f3")
       (bg-err        "#ffd5ea") ; check with err
       (bg-warning    "#ffeabb") ; check with warning
       (bg-info       "#d0efda") ; check with info
@@ -139,6 +139,10 @@
       (modeline-err     "#9f0000")
       (modeline-warning "#5f0070")
       (modeline-info    "#002fa0")
+
+      (underline-err     "#ef0f1f")
+      (underline-warning "#bf5f00")
+      (underline-info    "#02af52")
 
       ;; Mappings
       (err red-warmer)

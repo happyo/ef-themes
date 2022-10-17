@@ -124,7 +124,7 @@
       (bg-accent     "#cc88ff") (fg-accent     "#000000")
       (bg-completion "#2f335a")
       (bg-hover      "#004f3f")
-      (bg-hover-alt  "#551f5a")
+      (bg-hover-alt  "#452f5f")
       (bg-hl-line    "#34223f")
       (bg-region     "#16304f")
       (bg-paren      "#2f605e")
@@ -132,13 +132,17 @@
       (bg-warning    "#332910") ; check with warning
       (bg-info       "#1f2a00") ; check with info
 
-      (border        "#504750")
+      (border        "#605760")
       (cursor        "#ff99ff")
       (fg-intense    "#ffffff")
 
       (modeline-err     "#ff9fcf")
       (modeline-warning "#edbf00")
       (modeline-info    "#5fd0bf")
+
+      (underline-err     "#ff2f2f")
+      (underline-warning "#e0dc00")
+      (underline-info    "#22ff52")
 
       ;; Mappings
       (err red-warmer)
@@ -147,8 +151,8 @@
 
       (link cyan)
       (link-alt magenta)
-      (date cyan-warmer)
-      (name blue-warmer)
+      (date cyan-cooler)
+      (name blue)
       (keybind magenta-warmer)
       (prompt blue-cooler)
 
@@ -171,11 +175,11 @@
       (accent-2 blue-warmer)
       (accent-3 yellow)
 
-      (mail-0 green-cooler)
-      (mail-1 magenta-cooler)
-      (mail-2 magenta)
-      (mail-3 green-warmer)
-      (mail-4 blue-warmer)
+      (mail-0 blue-warmer)
+      (mail-1 magenta-warmer)
+      (mail-2 green-cooler)
+      (mail-3 magenta-cooler)
+      (mail-4 cyan-cooler)
       (mail-5 yellow-cooler)
 
       (rainbow-0 magenta-warmer)

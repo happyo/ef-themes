@@ -49,7 +49,7 @@
       (fg-alt      "#3f7668")
 
       (bg-active   "#d3d0d9")
-      (bg-inactive "#f5f2fa")
+      (bg-inactive "#f3f1fa")
 
       ;; Basic hues for foreground values
       (red             "#c3303a")
@@ -140,6 +140,10 @@
       (modeline-warning "#5f4400")
       (modeline-info    "#1042af")
 
+      (underline-err     "#ef0f1f")
+      (underline-warning "#bf5f00")
+      (underline-info    "#02af52")
+
       ;; Mappings
       (err red-warmer)
       (warning yellow-warmer)
@@ -147,8 +151,8 @@
 
       (link cyan)
       (link-alt magenta)
-      (date cyan-warmer)
-      (name blue-warmer)
+      (date cyan-cooler)
+      (name blue)
       (keybind magenta-warmer)
       (prompt blue-cooler)
 
@@ -171,11 +175,11 @@
       (accent-2 blue-warmer)
       (accent-3 yellow)
 
-      (mail-0 green-cooler)
-      (mail-1 magenta-cooler)
-      (mail-2 magenta)
-      (mail-3 green-warmer)
-      (mail-4 blue-warmer)
+      (mail-0 blue-warmer)
+      (mail-1 magenta-warmer)
+      (mail-2 green-cooler)
+      (mail-3 magenta-cooler)
+      (mail-4 cyan)
       (mail-5 yellow-cooler)
 
       (rainbow-0 magenta-warmer)

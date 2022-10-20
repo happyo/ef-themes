@@ -62,6 +62,7 @@
     ef-duo-light
     ef-frost
     ef-light
+    ef-my
     ef-spring
     ef-summer
     ef-trio-light

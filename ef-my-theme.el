@@ -160,7 +160,7 @@
       (comment yellow-faint)
       (constant red-warmer)
       (fnname green-warmer)
-      (keyword green-cooler)
+      (keyword "#BD41BC")
       (preprocessor magenta-warmer)
       (docstring magenta-faint)
       (string yellow-warmer)

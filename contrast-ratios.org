@@ -47,35 +47,35 @@ C1 and C2 are color values written in hexadecimal RGB."
 :CUSTOM_ID: h:85f29c2d-ae5c-4bb8-94bf-ac43543c8539
 :END:
 
-| Name           |         | #0f0e06 | #1f1b19 | #36322f | #14130a |
+| Name           |         | #0f0e06 | #26211d | #36322f | #15140d |
 |----------------+---------+---------+---------+---------+---------|
-| fg-main        | #cfbcba |   10.64 |    9.40 |    6.99 |   10.25 |
-| fg-dim         | #887c8a |    4.88 |    4.31 |    3.20 |    4.70 |
-| fg-alt         | #70a89f |    7.18 |    6.34 |    4.71 |    6.91 |
-| red            | #ef656a |    6.21 |    5.48 |    4.07 |    5.98 |
-| red-warmer     | #f26f25 |    6.52 |    5.76 |    4.28 |    6.28 |
-| red-cooler     | #f07f7f |    7.41 |    6.55 |    4.86 |    7.14 |
-| red-faint      | #d08f72 |    7.23 |    6.39 |    4.75 |    6.97 |
-| green          | #2fa526 |    6.02 |    5.31 |    3.95 |    5.79 |
-| green-warmer   | #64aa0f |    6.72 |    5.94 |    4.41 |    6.47 |
-| green-cooler   | #00b066 |    6.82 |    6.02 |    4.47 |    6.57 |
-| green-faint    | #5f9f6f |    6.15 |    5.43 |    4.04 |    5.92 |
-| yellow         | #c48702 |    6.28 |    5.54 |    4.12 |    6.04 |
-| yellow-warmer  | #d0730f |    5.66 |    5.00 |    3.71 |    5.45 |
-| yellow-cooler  | #df8f6f |    7.64 |    6.75 |    5.02 |    7.36 |
-| yellow-faint   | #cf9f7f |    8.21 |    7.26 |    5.39 |    7.91 |
-| blue           | #379cf6 |    6.68 |    5.90 |    4.38 |    6.43 |
-| blue-warmer    | #6a88ff |    6.06 |    5.35 |    3.98 |    5.84 |
-| blue-cooler    | #029fff |    6.82 |    6.03 |    4.48 |    6.57 |
-| blue-faint     | #6a84af |    5.10 |    4.50 |    3.34 |    4.91 |
-| magenta        | #d570af |    6.23 |    5.50 |    4.09 |    6.00 |
-| magenta-warmer | #e580ea |    7.93 |    7.00 |    5.20 |    7.64 |
-| magenta-cooler | #af8aff |    7.28 |    6.43 |    4.78 |    7.01 |
-| magenta-faint  | #c590af |    7.35 |    6.49 |    4.83 |    7.08 |
-| cyan           | #4fb0cf |    7.78 |    6.87 |    5.10 |    7.49 |
-| cyan-warmer    | #6fafff |    8.52 |    7.53 |    5.59 |    8.21 |
-| cyan-cooler    | #3dbbb0 |    8.23 |    7.27 |    5.40 |    7.92 |
-| cyan-faint     | #82a0af |    7.00 |    6.18 |    4.59 |    6.74 |
+| fg-main        | #cfbcba |   10.64 |    8.77 |    6.99 |   10.16 |
+| fg-dim         | #887c8a |    4.88 |    4.02 |    3.20 |    4.66 |
+| fg-alt         | #70a89f |    7.18 |    5.91 |    4.71 |    6.85 |
+| red            | #ef656a |    6.21 |    5.11 |    4.07 |    5.92 |
+| red-warmer     | #f26f25 |    6.52 |    5.37 |    4.28 |    6.22 |
+| red-cooler     | #f07f7f |    7.41 |    6.11 |    4.86 |    7.07 |
+| red-faint      | #df7f7f |    6.89 |    5.68 |    4.52 |    6.57 |
+| green          | #2fa526 |    6.02 |    4.96 |    3.95 |    5.74 |
+| green-warmer   | #64aa0f |    6.72 |    5.54 |    4.41 |    6.41 |
+| green-cooler   | #00b066 |    6.82 |    5.62 |    4.47 |    6.51 |
+| green-faint    | #5f9f6f |    6.15 |    5.07 |    4.04 |    5.87 |
+| yellow         | #c48702 |    6.28 |    5.17 |    4.12 |    5.99 |
+| yellow-warmer  | #d0730f |    5.66 |    4.66 |    3.71 |    5.40 |
+| yellow-cooler  | #df8f6f |    7.64 |    6.30 |    5.02 |    7.29 |
+| yellow-faint   | #cf9f7f |    8.21 |    6.77 |    5.39 |    7.84 |
+| blue           | #379cf6 |    6.68 |    5.50 |    4.38 |    6.37 |
+| blue-warmer    | #6a88ff |    6.06 |    4.99 |    3.98 |    5.78 |
+| blue-cooler    | #029fff |    6.82 |    5.62 |    4.48 |    6.51 |
+| blue-faint     | #6a84af |    5.10 |    4.20 |    3.34 |    4.86 |
+| magenta        | #d570af |    6.23 |    5.13 |    4.09 |    5.95 |
+| magenta-warmer | #e580ea |    7.93 |    6.53 |    5.20 |    7.57 |
+| magenta-cooler | #af8aff |    7.28 |    6.00 |    4.78 |    6.95 |
+| magenta-faint  | #c590af |    7.35 |    6.06 |    4.83 |    7.02 |
+| cyan           | #4fb0cf |    7.78 |    6.41 |    5.10 |    7.42 |
+| cyan-warmer    | #6fafff |    8.52 |    7.02 |    5.59 |    8.13 |
+| cyan-cooler    | #3dbbb0 |    8.23 |    6.78 |    5.40 |    7.85 |
+| cyan-faint     | #82a0af |    7.00 |    5.76 |    4.59 |    6.68 |
 #+TBLFM: $3='(Λ $2 @1$3);%.2f :: $4='(Λ $2 @1$4);%.2f :: $5='(Λ $2 @1$5);%.2f :: $6='(Λ $2 @1$6);%.2f
 
 ** Special colours against the modeline
@@ -98,7 +98,7 @@ C1 and C2 are color values written in hexadecimal RGB."
 # bg-main / bg-dim, bg-main / bg-alt
 | #0f0e06 | distance | contrast |
 |---------+----------+----------|
-| #1f1b19 |     2279 |     1.13 |
+| #26211d |     4120 |     1.21 |
 | #36322f |    13351 |     1.52 |
 #+TBLFM: $2='(Δ $1 @1$1) :: $3='(Λ $1 @1$1);%.2f
 
@@ -164,6 +164,136 @@ C1 and C2 are color values written in hexadecimal RGB."
 | #303230 |     9232 |     1.46 |
 #+TBLFM: $2='(Δ $1 @1$1) :: $3='(Λ $1 @1$1);%.2f
 
+* ef-cherie
+:PROPERTIES:
+:CUSTOM_ID: h:4c9fdb25-3dd3-443c-915d-db5cd995c6f7
+:END:
+
+** Base colours
+:PROPERTIES:
+:CUSTOM_ID: h:2a58ddd5-05ff-4aab-b2e4-c5e6b4ad4749
+:END:
+
+| Name           |         | #190a0f | #291f26 | #392a2f | #1e1216 |
+|----------------+---------+---------+---------+---------+---------|
+| fg-main        | #d3cfcf |   12.45 |   10.31 |    8.79 |   11.79 |
+| fg-dim         | #808898 |    5.40 |    4.47 |    3.81 |    5.11 |
+| fg-alt         | #bf9cdf |    8.28 |    6.85 |    5.84 |    7.84 |
+| red            | #ff7359 |    7.19 |    5.95 |    5.08 |    6.81 |
+| red-warmer     | #ff656f |    6.73 |    5.57 |    4.75 |    6.37 |
+| red-cooler     | #ff78aa |    7.80 |    6.46 |    5.51 |    7.39 |
+| red-faint      | #e47f72 |    6.94 |    5.75 |    4.90 |    6.57 |
+| green          | #60b444 |    7.43 |    6.15 |    5.24 |    7.03 |
+| green-warmer   | #80b25f |    7.74 |    6.41 |    5.47 |    7.33 |
+| green-cooler   | #60bf88 |    8.52 |    7.06 |    6.02 |    8.07 |
+| green-faint    | #61a06c |    6.19 |    5.12 |    4.37 |    5.86 |
+| yellow         | #e5b76f |   10.38 |    8.60 |    7.33 |    9.83 |
+| yellow-warmer  | #ea9955 |    8.41 |    6.97 |    5.94 |    7.97 |
+| yellow-cooler  | #f59280 |    8.52 |    7.06 |    6.02 |    8.07 |
+| yellow-faint   | #bf9f8f |    7.85 |    6.50 |    5.54 |    7.43 |
+| blue           | #8fa5f6 |    8.14 |    6.74 |    5.74 |    7.70 |
+| blue-warmer    | #a897ef |    7.64 |    6.32 |    5.39 |    7.23 |
+| blue-cooler    | #7fa5ff |    8.00 |    6.62 |    5.65 |    7.57 |
+| blue-faint     | #7f9ab4 |    6.58 |    5.45 |    4.65 |    6.23 |
+| magenta        | #ef80bf |    7.80 |    6.46 |    5.50 |    7.38 |
+| magenta-warmer | #f470df |    7.54 |    6.24 |    5.32 |    7.14 |
+| magenta-cooler | #df7fff |    7.89 |    6.54 |    5.57 |    7.47 |
+| magenta-faint  | #cc9bcf |    8.39 |    6.95 |    5.92 |    7.94 |
+| cyan           | #8fbaef |    9.56 |    7.92 |    6.75 |    9.05 |
+| cyan-warmer    | #9ac0e4 |   10.11 |    8.37 |    7.14 |    9.57 |
+| cyan-cooler    | #8fcfdf |   11.14 |    9.22 |    7.86 |   10.54 |
+| cyan-faint     | #aac0cf |   10.21 |    8.46 |    7.21 |    9.67 |
+#+TBLFM: $3='(Λ $2 @1$3);%.2f :: $4='(Λ $2 @1$4);%.2f :: $5='(Λ $2 @1$5);%.2f :: $6='(Λ $2 @1$6);%.2f
+
+** Special colours against the modeline
+:PROPERTIES:
+:CUSTOM_ID: h:e7fd919a-baa5-40c4-874d-12f3ed264d13
+:END:
+
+| Name             |         | #771a4f |
+|------------------+---------+---------|
+| modeline-err     | #ff9f1f |    5.00 |
+| modeline-warning | #c0bf30 |    5.25 |
+| modeline-info    | #6fefaf |    7.16 |
+#+TBLFM: $3='(Λ $2 @1$3);%.2f
+
+** Distance and contrast between main backgrounds
+:PROPERTIES:
+:CUSTOM_ID: h:0ba6044d-7ef0-4f99-a61b-908d5ef32e59
+:END:
+
+# bg-main / bg-dim, bg-main / bg-alt
+| #190a0f | distance | contrast |
+|---------+----------+----------|
+| #291f26 |     3857 |     1.21 |
+| #392a2f |     9288 |     1.42 |
+#+TBLFM: $2='(Δ $1 @1$1) :: $3='(Λ $1 @1$1);%.2f
+
+* ef-cyprus
+:PROPERTIES:
+:CUSTOM_ID: h:029a92c2-e4f5-4457-9eec-8a89dea471f4
+:END:
+
+** Base colours
+:PROPERTIES:
+:CUSTOM_ID: h:4330b001-f03b-470c-b255-b948e61cf41f
+:END:
+
+| Name           |         | #fcf7ef | #f0ece0 | #e5e3d8 | #f8f3ea |
+|----------------+---------+---------+---------+---------+---------|
+| fg-main        | #242521 |   14.46 |   13.06 |   11.98 |   13.95 |
+| fg-dim         | #59786f |    4.54 |    4.10 |    3.76 |    4.38 |
+| fg-alt         | #7f475a |    6.67 |    6.02 |    5.53 |    6.44 |
+| red            | #9f0d0f |    7.76 |    7.00 |    6.42 |    7.48 |
+| red-warmer     | #dd0020 |    4.81 |    4.34 |    3.98 |    4.64 |
+| red-cooler     | #ca3400 |    4.92 |    4.44 |    4.08 |    4.75 |
+| red-faint      | #b05350 |    4.69 |    4.23 |    3.88 |    4.52 |
+| green          | #006f00 |    6.01 |    5.43 |    4.98 |    5.80 |
+| green-warmer   | #557400 |    5.07 |    4.58 |    4.20 |    4.89 |
+| green-cooler   | #00824f |    4.57 |    4.13 |    3.79 |    4.41 |
+| green-faint    | #3a6f48 |    5.55 |    5.01 |    4.60 |    5.36 |
+| yellow         | #a7601f |    4.54 |    4.10 |    3.76 |    4.38 |
+| yellow-warmer  | #bf4400 |    4.87 |    4.40 |    4.04 |    4.70 |
+| yellow-cooler  | #a2604f |    4.56 |    4.11 |    3.77 |    4.40 |
+| yellow-faint   | #8f6f4a |    4.34 |    3.92 |    3.59 |    4.18 |
+| blue           | #375cc6 |    5.61 |    5.07 |    4.65 |    5.41 |
+| blue-warmer    | #444fcf |    6.03 |    5.45 |    5.00 |    5.82 |
+| blue-cooler    | #065fbf |    5.80 |    5.23 |    4.80 |    5.59 |
+| blue-faint     | #4a659f |    5.39 |    4.87 |    4.46 |    5.20 |
+| magenta        | #9a456f |    5.70 |    5.15 |    4.72 |    5.50 |
+| magenta-warmer | #bf456a |    4.61 |    4.16 |    3.82 |    4.44 |
+| magenta-cooler | #8448aa |    5.64 |    5.10 |    4.68 |    5.45 |
+| magenta-faint  | #804f60 |    6.14 |    5.55 |    5.09 |    5.93 |
+| cyan           | #1f70af |    4.93 |    4.45 |    4.08 |    4.76 |
+| cyan-warmer    | #3f6faf |    4.80 |    4.33 |    3.97 |    4.63 |
+| cyan-cooler    | #007a9f |    4.60 |    4.15 |    3.81 |    4.43 |
+| cyan-faint     | #4f677f |    5.50 |    4.97 |    4.56 |    5.31 |
+#+TBLFM: $3='(Λ $2 @1$3);%.2f :: $4='(Λ $2 @1$4);%.2f :: $5='(Λ $2 @1$5);%.2f :: $6='(Λ $2 @1$6);%.2f
+
+** Special colours against the modeline
+:PROPERTIES:
+:CUSTOM_ID: h:f623eb77-f128-40bd-b55d-6dacdb1fdda2
+:END:
+
+| Name             |         | #c0df6f |
+|------------------+---------+---------|
+| modeline-err     | #950f0f |    5.96 |
+| modeline-warning | #7f00af |    5.56 |
+| modeline-info    | #0040af |    5.96 |
+#+TBLFM: $3='(Λ $2 @1$3);%.2f
+
+** Distance and contrast between main backgrounds
+:PROPERTIES:
+:CUSTOM_ID: h:aec7096d-454b-4e06-abfd-e9d130c607c7
+:END:
+
+# bg-main / bg-dim, bg-main / bg-alt
+| #fcf7ef | distance | contrast |
+|---------+----------+----------|
+| #f0ece0 |     1379 |     1.11 |
+| #e5e3d8 |     4278 |     1.21 |
+#+TBLFM: $2='(Δ $1 @1$1) :: $3='(Λ $1 @1$1);%.2f
+
 * ef-dark
 :PROPERTIES:
 :CUSTOM_ID: h:c97a3ebc-de07-40bf-af86-1df8be72f214
@@ -174,35 +304,35 @@ C1 and C2 are color values written in hexadecimal RGB."
 :CUSTOM_ID: h:bdc5d5b7-4d1a-4e3d-8333-01a96164f4d8
 :END:
 
-| Name           |         | #000000 | #1a1a1a | #2b2b2b | #0c0c0c |
+| Name           |         | #000000 | #1a1a1a | #2b2b2b | #121212 |
 |----------------+---------+---------+---------+---------+---------|
-| fg-main        | #d0d0d0 |   13.62 |   11.28 |    9.18 |   12.68 |
-| fg-dim         | #807f9f |    5.45 |    4.52 |    3.68 |    5.08 |
-| fg-alt         | #89afef |    9.44 |    7.83 |    6.37 |    8.80 |
-| red            | #ef6560 |    6.70 |    5.55 |    4.52 |    6.24 |
-| red-warmer     | #f47360 |    7.47 |    6.19 |    5.04 |    6.96 |
-| red-cooler     | #ff5a7a |    7.00 |    5.80 |    4.72 |    6.52 |
-| red-faint      | #d56f72 |    6.35 |    5.26 |    4.28 |    5.91 |
-| green          | #0faa26 |    6.80 |    5.63 |    4.58 |    6.33 |
-| green-warmer   | #6aad0f |    7.60 |    6.30 |    5.12 |    7.08 |
-| green-cooler   | #00a692 |    6.87 |    5.69 |    4.63 |    6.40 |
-| green-faint    | #61a06c |    6.75 |    5.60 |    4.55 |    6.29 |
-| yellow         | #c48032 |    6.48 |    5.37 |    4.37 |    6.04 |
-| yellow-warmer  | #d1843f |    7.08 |    5.87 |    4.78 |    6.60 |
-| yellow-cooler  | #df8f5a |    8.21 |    6.81 |    5.54 |    7.65 |
-| yellow-faint   | #cf9f8f |    9.01 |    7.47 |    6.07 |    8.39 |
-| blue           | #3f95f6 |    6.84 |    5.67 |    4.61 |    6.37 |
-| blue-warmer    | #6a9fff |    8.02 |    6.64 |    5.40 |    7.47 |
-| blue-cooler    | #029fff |    7.41 |    6.14 |    4.99 |    6.90 |
-| blue-faint     | #7a94df |    7.13 |    5.91 |    4.81 |    6.64 |
-| magenta        | #d369af |    6.41 |    5.31 |    4.32 |    5.97 |
-| magenta-warmer | #e580ea |    8.61 |    7.13 |    5.80 |    8.02 |
-| magenta-cooler | #af85ff |    7.62 |    6.32 |    5.14 |    7.10 |
-| magenta-faint  | #c57faf |    7.03 |    5.83 |    4.74 |    6.55 |
-| cyan           | #4fbaef |    9.60 |    7.96 |    6.47 |    8.94 |
-| cyan-warmer    | #6fafff |    9.25 |    7.67 |    6.24 |    8.62 |
-| cyan-cooler    | #1dbfcf |    9.41 |    7.80 |    6.34 |    8.76 |
-| cyan-faint     | #8aa0df |    8.17 |    6.77 |    5.51 |    7.61 |
+| fg-main        | #d0d0d0 |   13.62 |   11.28 |    9.18 |   12.15 |
+| fg-dim         | #807f9f |    5.45 |    4.52 |    3.68 |    4.87 |
+| fg-alt         | #89afef |    9.44 |    7.83 |    6.37 |    8.42 |
+| red            | #ef6560 |    6.70 |    5.55 |    4.52 |    5.98 |
+| red-warmer     | #f47360 |    7.47 |    6.19 |    5.04 |    6.66 |
+| red-cooler     | #ff5a7a |    7.00 |    5.80 |    4.72 |    6.24 |
+| red-faint      | #d56f72 |    6.35 |    5.26 |    4.28 |    5.66 |
+| green          | #0faa26 |    6.80 |    5.63 |    4.58 |    6.06 |
+| green-warmer   | #6aad0f |    7.60 |    6.30 |    5.12 |    6.78 |
+| green-cooler   | #00a692 |    6.87 |    5.69 |    4.63 |    6.13 |
+| green-faint    | #61a06c |    6.75 |    5.60 |    4.55 |    6.02 |
+| yellow         | #bf9032 |    7.25 |    6.01 |    4.89 |    6.47 |
+| yellow-warmer  | #d1843f |    7.08 |    5.87 |    4.78 |    6.32 |
+| yellow-cooler  | #df8f5a |    8.21 |    6.81 |    5.54 |    7.33 |
+| yellow-faint   | #cf9f8f |    9.01 |    7.47 |    6.07 |    8.04 |
+| blue           | #3f95f6 |    6.84 |    5.67 |    4.61 |    6.10 |
+| blue-warmer    | #6a9fff |    8.02 |    6.64 |    5.40 |    7.15 |
+| blue-cooler    | #029fff |    7.41 |    6.14 |    4.99 |    6.61 |
+| blue-faint     | #7a94df |    7.13 |    5.91 |    4.81 |    6.36 |
+| magenta        | #d369af |    6.41 |    5.31 |    4.32 |    5.72 |
+| magenta-warmer | #e580ea |    8.61 |    7.13 |    5.80 |    7.68 |
+| magenta-cooler | #af85ff |    7.62 |    6.32 |    5.14 |    6.80 |
+| magenta-faint  | #c58faf |    7.03 |    5.83 |    4.74 |    6.27 |
+| cyan           | #4fbaef |    9.60 |    7.96 |    6.47 |    8.57 |
+| cyan-warmer    | #6fafff |    9.25 |    7.67 |    6.24 |    8.25 |
+| cyan-cooler    | #1dbfcf |    9.41 |    7.80 |    6.34 |    8.39 |
+| cyan-faint     | #8aa0df |    8.17 |    6.77 |    5.51 |    7.29 |
 #+TBLFM: $3='(Λ $2 @1$3);%.2f :: $4='(Λ $2 @1$4);%.2f :: $5='(Λ $2 @1$5);%.2f :: $6='(Λ $2 @1$6);%.2f
 
 ** Special colours against the modeline
@@ -239,35 +369,35 @@ C1 and C2 are color values written in hexadecimal RGB."
 :CUSTOM_ID: h:36958e2f-8e19-47d8-ba3e-16fd7c8df3e4
 :END:
 
-| Name           |         | #fff5ea | #f3ebdc | #e9e0d8 | #f9f1e8 |
+| Name           |         | #fff5ea | #f2e9db | #e9e0d8 | #f7efe6 |
 |----------------+---------+---------+---------+---------+---------|
-| fg-main        | #584141 |    8.68 |    7.89 |    7.17 |    8.35 |
-| fg-dim         | #63728f |    4.50 |    4.09 |    3.72 |    4.33 |
-| fg-alt         | #8f5f4a |    5.00 |    4.54 |    4.13 |    4.81 |
-| red            | #ba2d2f |    5.57 |    5.06 |    4.60 |    5.36 |
-| red-warmer     | #ce3f00 |    4.50 |    4.09 |    3.72 |    4.33 |
-| red-cooler     | #cf2f4f |    4.67 |    4.25 |    3.86 |    4.50 |
-| red-faint      | #b05350 |    4.64 |    4.22 |    3.84 |    4.47 |
-| green          | #007a0a |    5.15 |    4.68 |    4.25 |    4.96 |
-| green-warmer   | #5a7400 |    4.96 |    4.51 |    4.10 |    4.77 |
-| green-cooler   | #0f7f5f |    4.62 |    4.20 |    3.82 |    4.45 |
-| green-faint    | #61756c |    4.57 |    4.15 |    3.78 |    4.40 |
-| yellow         | #a45a22 |    4.80 |    4.36 |    3.97 |    4.62 |
-| yellow-warmer  | #b75515 |    4.51 |    4.10 |    3.73 |    4.34 |
-| yellow-cooler  | #aa4f30 |    5.04 |    4.58 |    4.16 |    4.85 |
-| yellow-faint   | #9a625a |    4.57 |    4.15 |    3.78 |    4.40 |
-| blue           | #375cc6 |    5.56 |    5.05 |    4.59 |    5.35 |
-| blue-warmer    | #5f5fdf |    4.66 |    4.23 |    3.85 |    4.48 |
-| blue-cooler    | #265fbf |    5.62 |    5.11 |    4.64 |    5.41 |
-| blue-faint     | #4a659f |    5.34 |    4.85 |    4.41 |    5.14 |
-| magenta        | #ca3e54 |    4.51 |    4.10 |    3.72 |    4.34 |
-| magenta-warmer | #cb2f80 |    4.58 |    4.16 |    3.79 |    4.41 |
-| magenta-cooler | #8448aa |    5.59 |    5.08 |    4.62 |    5.38 |
-| magenta-faint  | #a04450 |    5.67 |    5.16 |    4.69 |    5.46 |
-| cyan           | #3f60af |    5.57 |    5.06 |    4.60 |    5.36 |
-| cyan-warmer    | #3f6faf |    4.75 |    4.32 |    3.93 |    4.57 |
-| cyan-cooler    | #0f7b8f |    4.59 |    4.17 |    3.79 |    4.42 |
-| cyan-faint     | #4f6f8f |    4.87 |    4.43 |    4.03 |    4.69 |
+| fg-main        | #584141 |    8.68 |    7.77 |    7.17 |    8.21 |
+| fg-dim         | #63728f |    4.50 |    4.03 |    3.72 |    4.26 |
+| fg-alt         | #8f5f4a |    5.00 |    4.47 |    4.13 |    4.72 |
+| red            | #ba2d2f |    5.57 |    4.98 |    4.60 |    5.26 |
+| red-warmer     | #ce3f00 |    4.50 |    4.03 |    3.72 |    4.25 |
+| red-cooler     | #cf2f4f |    4.67 |    4.18 |    3.86 |    4.42 |
+| red-faint      | #b05350 |    4.64 |    4.16 |    3.84 |    4.39 |
+| green          | #007a0a |    5.15 |    4.61 |    4.25 |    4.87 |
+| green-warmer   | #5a7400 |    4.96 |    4.44 |    4.10 |    4.69 |
+| green-cooler   | #0f7f5f |    4.62 |    4.13 |    3.82 |    4.37 |
+| green-faint    | #61756c |    4.57 |    4.09 |    3.78 |    4.32 |
+| yellow         | #a45a22 |    4.80 |    4.29 |    3.97 |    4.54 |
+| yellow-warmer  | #b75515 |    4.51 |    4.04 |    3.73 |    4.27 |
+| yellow-cooler  | #aa4f30 |    5.04 |    4.51 |    4.16 |    4.77 |
+| yellow-faint   | #9a625a |    4.57 |    4.09 |    3.78 |    4.32 |
+| blue           | #375cc6 |    5.56 |    4.97 |    4.59 |    5.26 |
+| blue-warmer    | #5f5fdf |    4.66 |    4.17 |    3.85 |    4.40 |
+| blue-cooler    | #265fbf |    5.62 |    5.03 |    4.64 |    5.31 |
+| blue-faint     | #4a659f |    5.34 |    4.78 |    4.41 |    5.05 |
+| magenta        | #ca3e54 |    4.51 |    4.03 |    3.72 |    4.26 |
+| magenta-warmer | #cb2f80 |    4.58 |    4.10 |    3.79 |    4.33 |
+| magenta-cooler | #8448aa |    5.59 |    5.00 |    4.62 |    5.29 |
+| magenta-faint  | #a04450 |    5.67 |    5.08 |    4.69 |    5.37 |
+| cyan           | #3f60af |    5.57 |    4.98 |    4.60 |    5.26 |
+| cyan-warmer    | #3f6faf |    4.75 |    4.25 |    3.93 |    4.49 |
+| cyan-cooler    | #0f7b8f |    4.59 |    4.11 |    3.79 |    4.34 |
+| cyan-faint     | #4f6f8f |    4.87 |    4.36 |    4.03 |    4.61 |
 #+TBLFM: $3='(Λ $2 @1$3);%.2f :: $4='(Λ $2 @1$4);%.2f :: $5='(Λ $2 @1$5);%.2f :: $6='(Λ $2 @1$6);%.2f
 
 ** Special colours against the modeline
@@ -290,7 +420,7 @@ C1 and C2 are color values written in hexadecimal RGB."
 # bg-main / bg-dim, bg-main / bg-alt
 | #fff5ea | distance | contrast |
 |---------+----------+----------|
-| #f3ebdc |     1234 |     1.10 |
+| #f2e9db |     1546 |     1.12 |
 | #e9e0d8 |     3887 |     1.21 |
 #+TBLFM: $2='(Δ $1 @1$1) :: $3='(Λ $1 @1$1);%.2f
 
@@ -308,35 +438,35 @@ Most of these are not actually used.  The theme only maps the blues and
 yellows.  We just define the entire palette to make it work with the
 overall design of the project.
 
-| Name           |         | #000a1f | #0f1c2d | #19263a | #071225 |
+| Name           |         | #000a1f | #121f34 | #243145 | #0d1429 |
 |----------------+---------+---------+---------+---------+---------|
-| fg-main        | #ddddee |   14.72 |   12.78 |   11.34 |   13.95 |
-| fg-dim         | #7f8797 |    5.47 |    4.75 |    4.21 |    5.18 |
-| fg-alt         | #90afef |    9.00 |    7.81 |    6.93 |    8.52 |
-| red            | #cf8560 |    6.75 |    5.86 |    5.20 |    6.40 |
-| red-warmer     | #e47360 |    6.51 |    5.65 |    5.02 |    6.17 |
-| red-cooler     | #cf7a7a |    6.32 |    5.49 |    4.87 |    5.99 |
-| red-faint      | #b57f82 |    5.95 |    5.16 |    4.58 |    5.63 |
-| green          | #3faa26 |    6.57 |    5.71 |    5.07 |    6.23 |
-| green-warmer   | #7aad0f |    7.35 |    6.38 |    5.66 |    6.96 |
-| green-cooler   | #3fa672 |    6.50 |    5.64 |    5.01 |    6.16 |
-| green-faint    | #61a06c |    6.35 |    5.52 |    4.89 |    6.02 |
-| yellow         | #aa9f32 |    7.26 |    6.30 |    5.59 |    6.87 |
-| yellow-warmer  | #cfaf00 |    9.20 |    7.99 |    7.09 |    8.72 |
-| yellow-cooler  | #bfaf7a |    9.06 |    7.86 |    6.98 |    8.58 |
-| yellow-faint   | #af9a6a |    7.20 |    6.25 |    5.55 |    6.82 |
-| blue           | #3f90f0 |    6.07 |    5.28 |    4.68 |    5.76 |
-| blue-warmer    | #6a9fff |    7.54 |    6.55 |    5.81 |    7.14 |
-| blue-cooler    | #009fff |    6.96 |    6.05 |    5.37 |    6.60 |
-| blue-faint     | #7a94df |    6.71 |    5.82 |    5.17 |    6.35 |
-| magenta        | #b379bf |    6.02 |    5.23 |    4.64 |    5.71 |
-| magenta-warmer | #af80ea |    6.68 |    5.80 |    5.15 |    6.33 |
-| magenta-cooler | #9f95ff |    7.73 |    6.71 |    5.96 |    7.32 |
-| magenta-faint  | #c59fcf |    8.69 |    7.54 |    6.69 |    8.23 |
-| cyan           | #5faaef |    7.98 |    6.93 |    6.15 |    7.56 |
-| cyan-warmer    | #7fafff |    8.91 |    7.74 |    6.87 |    8.45 |
-| cyan-cooler    | #0db0ff |    8.16 |    7.08 |    6.28 |    7.73 |
-| cyan-faint     | #8aa0df |    7.69 |    6.68 |    5.92 |    7.28 |
+| fg-main        | #ddddee |   14.72 |   12.31 |    9.78 |   13.62 |
+| fg-dim         | #7f8797 |    5.47 |    4.57 |    3.63 |    5.06 |
+| fg-alt         | #90afef |    9.00 |    7.52 |    5.98 |    8.32 |
+| red            | #cf8560 |    6.75 |    5.65 |    4.48 |    6.25 |
+| red-warmer     | #e47360 |    6.51 |    5.44 |    4.32 |    6.02 |
+| red-cooler     | #cf7a7a |    6.32 |    5.28 |    4.20 |    5.85 |
+| red-faint      | #b57f82 |    5.95 |    4.97 |    3.95 |    5.50 |
+| green          | #3faa26 |    6.57 |    5.50 |    4.37 |    6.08 |
+| green-warmer   | #7aad0f |    7.35 |    6.14 |    4.88 |    6.80 |
+| green-cooler   | #3fa672 |    6.50 |    5.43 |    4.32 |    6.01 |
+| green-faint    | #61a06c |    6.35 |    5.31 |    4.22 |    5.88 |
+| yellow         | #aa9f32 |    7.26 |    6.07 |    4.82 |    6.71 |
+| yellow-warmer  | #cfaf00 |    9.20 |    7.70 |    6.11 |    8.51 |
+| yellow-cooler  | #bfaf7a |    9.06 |    7.57 |    6.02 |    8.38 |
+| yellow-faint   | #af9a6a |    7.20 |    6.02 |    4.78 |    6.66 |
+| blue           | #3f90f0 |    6.07 |    5.08 |    4.04 |    5.62 |
+| blue-warmer    | #6a9fff |    7.54 |    6.31 |    5.01 |    6.98 |
+| blue-cooler    | #009fff |    6.96 |    5.82 |    4.63 |    6.44 |
+| blue-faint     | #7a94df |    6.71 |    5.61 |    4.45 |    6.20 |
+| magenta        | #b379bf |    6.02 |    5.04 |    4.00 |    5.57 |
+| magenta-warmer | #af80ea |    6.68 |    5.58 |    4.44 |    6.18 |
+| magenta-cooler | #9f95ff |    7.73 |    6.46 |    5.13 |    7.15 |
+| magenta-faint  | #c59fcf |    8.69 |    7.26 |    5.77 |    8.04 |
+| cyan           | #5faaef |    7.98 |    6.67 |    5.30 |    7.38 |
+| cyan-warmer    | #7fafff |    8.91 |    7.46 |    5.92 |    8.25 |
+| cyan-cooler    | #0db0ff |    8.16 |    6.82 |    5.42 |    7.55 |
+| cyan-faint     | #8aa0df |    7.69 |    6.43 |    5.11 |    7.11 |
 #+TBLFM: $3='(Λ $2 @1$3);%.2f :: $4='(Λ $2 @1$4);%.2f :: $5='(Λ $2 @1$5);%.2f :: $6='(Λ $2 @1$6);%.2f
 
 ** Special colours against the modeline
@@ -359,8 +489,8 @@ overall design of the project.
 # bg-main / bg-dim, bg-main / bg-alt
 | #000a1f | distance | contrast |
 |---------+----------+----------|
-| #0f1c2d |     2353 |     1.15 |
-| #19263a |     6619 |     1.30 |
+| #121f34 |     3760 |     1.20 |
+| #243145 |    13099 |     1.51 |
 #+TBLFM: $2='(Δ $1 @1$1) :: $3='(Λ $1 @1$1);%.2f
 
 * ef-deuteranopia-light
@@ -449,35 +579,35 @@ Most of these are not actually used.  The theme primarily maps the
 blue/cyan and yellow hues.  We just define the entire palette to make it
 work with the overall design of the project.
 
-| Name           |         | #070019 | #1c1926 | #262230 | #140e1c |
+| Name           |         | #070019 | #1d1a26 | #2a2739 | #13101f |
 |----------------+---------+---------+---------+---------+---------|
-| fg-main        | #d0d0d0 |   13.31 |   11.19 |   10.06 |   12.27 |
-| fg-dim         | #857f8f |    5.31 |    4.46 |    4.01 |    4.89 |
-| fg-alt         | #89afef |    9.23 |    7.76 |    6.97 |    8.51 |
-| red            | #ef656a |    6.59 |    5.54 |    4.98 |    6.08 |
-| red-warmer     | #f47360 |    7.30 |    6.14 |    5.52 |    6.73 |
-| red-cooler     | #ef798f |    7.63 |    6.41 |    5.76 |    7.03 |
-| red-faint      | #d08f72 |    7.68 |    6.46 |    5.80 |    7.08 |
-| green          | #1fa526 |    6.32 |    5.32 |    4.78 |    5.83 |
-| green-warmer   | #50a22f |    6.40 |    5.38 |    4.84 |    5.90 |
-| green-cooler   | #00b982 |    8.08 |    6.79 |    6.10 |    7.45 |
-| green-faint    | #61a06c |    6.60 |    5.55 |    4.99 |    6.09 |
-| yellow         | #c48702 |    6.66 |    5.60 |    5.03 |    6.14 |
-| yellow-warmer  | #d0730f |    6.00 |    5.05 |    4.54 |    5.54 |
-| yellow-cooler  | #df805f |    7.22 |    6.08 |    5.46 |    6.66 |
-| yellow-faint   | #9f8f6a |    6.46 |    5.44 |    4.88 |    5.96 |
-| blue           | #379cf6 |    7.09 |    5.96 |    5.35 |    6.53 |
-| blue-warmer    | #6f80ff |    6.07 |    5.10 |    4.58 |    5.60 |
-| blue-cooler    | #029fff |    7.24 |    6.09 |    5.47 |    6.68 |
-| blue-faint     | #8a9fdf |    7.92 |    6.66 |    5.99 |    7.31 |
-| magenta        | #d369af |    6.26 |    5.27 |    4.73 |    5.78 |
-| magenta-warmer | #e580ea |    8.41 |    7.08 |    6.36 |    7.76 |
-| magenta-cooler | #af85ff |    7.45 |    6.27 |    5.63 |    6.87 |
-| magenta-faint  | #c57faf |    6.87 |    5.78 |    5.19 |    6.34 |
-| cyan           | #5faaef |    8.29 |    6.97 |    6.27 |    7.65 |
-| cyan-warmer    | #7fafff |    9.26 |    7.79 |    7.00 |    8.54 |
-| cyan-cooler    | #0dafdf |    8.03 |    6.75 |    6.07 |    7.41 |
-| cyan-faint     | #8aa0df |    7.99 |    6.72 |    6.04 |    7.37 |
+| fg-main        | #d0d0d0 |   13.31 |   11.09 |    9.40 |   12.14 |
+| fg-dim         | #857f8f |    5.31 |    4.42 |    3.75 |    4.84 |
+| fg-alt         | #89afef |    9.23 |    7.69 |    6.52 |    8.42 |
+| red            | #ef656a |    6.59 |    5.49 |    4.66 |    6.01 |
+| red-warmer     | #f47360 |    7.30 |    6.08 |    5.16 |    6.66 |
+| red-cooler     | #ef798f |    7.63 |    6.35 |    5.39 |    6.96 |
+| red-faint      | #d08f72 |    7.68 |    6.40 |    5.42 |    7.00 |
+| green          | #1fa526 |    6.32 |    5.27 |    4.47 |    5.77 |
+| green-warmer   | #50a22f |    6.40 |    5.33 |    4.52 |    5.84 |
+| green-cooler   | #00b982 |    8.08 |    6.73 |    5.71 |    7.37 |
+| green-faint    | #61a06c |    6.60 |    5.50 |    4.66 |    6.02 |
+| yellow         | #c48702 |    6.66 |    5.55 |    4.71 |    6.07 |
+| yellow-warmer  | #d0730f |    6.00 |    5.00 |    4.24 |    5.48 |
+| yellow-cooler  | #df805f |    7.22 |    6.02 |    5.10 |    6.59 |
+| yellow-faint   | #9f8f6a |    6.46 |    5.38 |    4.57 |    5.89 |
+| blue           | #379cf6 |    7.09 |    5.90 |    5.01 |    6.46 |
+| blue-warmer    | #6f80ff |    6.07 |    5.06 |    4.29 |    5.53 |
+| blue-cooler    | #029fff |    7.24 |    6.03 |    5.12 |    6.60 |
+| blue-faint     | #8a9fdf |    7.92 |    6.60 |    5.60 |    7.23 |
+| magenta        | #d369af |    6.26 |    5.22 |    4.43 |    5.71 |
+| magenta-warmer | #e580ea |    8.41 |    7.01 |    5.95 |    7.67 |
+| magenta-cooler | #af85ff |    7.45 |    6.21 |    5.26 |    6.80 |
+| magenta-faint  | #c57faf |    6.87 |    5.72 |    4.86 |    6.27 |
+| cyan           | #5faaef |    8.29 |    6.91 |    5.86 |    7.56 |
+| cyan-warmer    | #7fafff |    9.26 |    7.72 |    6.55 |    8.45 |
+| cyan-cooler    | #0dafdf |    8.03 |    6.69 |    5.67 |    7.32 |
+| cyan-faint     | #8aa0df |    7.99 |    6.66 |    5.65 |    7.29 |
 #+TBLFM: $3='(Λ $2 @1$3);%.2f :: $4='(Λ $2 @1$4);%.2f :: $5='(Λ $2 @1$5);%.2f :: $6='(Λ $2 @1$6);%.2f
 
 ** Special colours against the modeline
@@ -500,8 +630,8 @@ work with the overall design of the project.
 # bg-main / bg-dim, bg-main / bg-alt
 | #070019 | distance | contrast |
 |---------+----------+----------|
-| #1c1926 |     3938 |     1.19 |
-| #262230 |     8235 |     1.32 |
+| #1d1a26 |     4234 |     1.20 |
+| #2a2739 |    11716 |     1.42 |
 #+TBLFM: $2='(Δ $1 @1$1) :: $3='(Λ $1 @1$1);%.2f
 
 * ef-duo-light
@@ -660,7 +790,7 @@ work with the overall design of the project.
 | green          | #217a3c |    5.37 |    4.67 |    3.88 |    5.10 |
 | green-warmer   | #4a7d00 |    4.97 |    4.32 |    3.59 |    4.72 |
 | green-cooler   | #008858 |    4.50 |    3.92 |    3.25 |    4.28 |
-| green-faint    | #61756c |    4.92 |    4.28 |    3.55 |    4.67 |
+| green-faint    | #41754c |    5.42 |    4.71 |    3.92 |    5.15 |
 | yellow         | #a45f22 |    4.95 |    4.31 |    3.58 |    4.71 |
 | yellow-warmer  | #b6532f |    4.92 |    4.28 |    3.55 |    4.67 |
 | yellow-cooler  | #b65050 |    4.94 |    4.29 |    3.57 |    4.69 |
@@ -672,7 +802,7 @@ work with the overall design of the project.
 | magenta        | #ba35af |    4.98 |    4.33 |    3.60 |    4.73 |
 | magenta-warmer | #cf25aa |    4.67 |    4.06 |    3.37 |    4.43 |
 | magenta-cooler | #6052cf |    5.82 |    5.07 |    4.21 |    5.53 |
-| magenta-faint  | #bf3580 |    5.20 |    4.52 |    3.76 |    4.94 |
+| magenta-faint  | #af569f |    4.51 |    3.92 |    3.26 |    4.29 |
 | cyan           | #1f6fbf |    5.14 |    4.47 |    3.71 |    4.88 |
 | cyan-warmer    | #3f6faf |    5.12 |    4.45 |    3.70 |    4.86 |
 | cyan-cooler    | #1f77bb |    4.76 |    4.14 |    3.44 |    4.52 |
@@ -713,35 +843,35 @@ work with the overall design of the project.
 :CUSTOM_ID: h:2e0d0312-3984-48d8-9adc-1d132c1ab651
 :END:
 
-| Name           |         | #000e17 | #0f1b29 | #1a2a2f | #0f121f |
+| Name           |         | #000e17 | #242e39 | #242e39 | #11141f |
 |----------------+---------+---------+---------+---------+---------|
-| fg-main        | #afbcbf |   10.02 |    8.91 |    7.60 |    9.56 |
-| fg-dim         | #70819f |    4.96 |    4.41 |    3.76 |    4.73 |
-| fg-alt         | #b0a0a0 |    7.80 |    6.93 |    5.92 |    7.44 |
-| red            | #ef656a |    6.27 |    5.57 |    4.76 |    5.98 |
-| red-warmer     | #f47360 |    6.95 |    6.18 |    5.27 |    6.63 |
-| red-cooler     | #ef798f |    7.26 |    6.45 |    5.51 |    6.92 |
-| red-faint      | #d56f72 |    5.90 |    5.25 |    4.48 |    5.63 |
-| green          | #1fa526 |    6.02 |    5.35 |    4.57 |    5.74 |
-| green-warmer   | #50a22f |    6.09 |    5.42 |    4.63 |    5.81 |
-| green-cooler   | #00b672 |    7.38 |    6.56 |    5.60 |    7.04 |
-| green-faint    | #61a06c |    6.28 |    5.59 |    4.77 |    5.99 |
-| yellow         | #c48502 |    6.23 |    5.54 |    4.73 |    5.95 |
-| yellow-warmer  | #e6832f |    7.12 |    6.33 |    5.40 |    6.79 |
-| yellow-cooler  | #df8f6f |    7.72 |    6.86 |    5.86 |    7.36 |
-| yellow-faint   | #cf9f7f |    8.30 |    7.38 |    6.30 |    7.92 |
-| blue           | #379cf6 |    6.74 |    6.00 |    5.12 |    6.43 |
-| blue-warmer    | #6a88ff |    6.12 |    5.44 |    4.65 |    5.84 |
-| blue-cooler    | #029fff |    6.89 |    6.13 |    5.23 |    6.57 |
-| blue-faint     | #7a94df |    6.63 |    5.90 |    5.03 |    6.33 |
-| magenta        | #d570af |    6.29 |    5.60 |    4.78 |    6.01 |
-| magenta-warmer | #e580ea |    8.01 |    7.12 |    6.08 |    7.64 |
-| magenta-cooler | #af8aff |    7.35 |    6.54 |    5.58 |    7.01 |
-| magenta-faint  | #c59faf |    8.33 |    7.40 |    6.32 |    7.95 |
-| cyan           | #4fb0cf |    7.85 |    6.98 |    5.96 |    7.49 |
-| cyan-warmer    | #6fafff |    8.60 |    7.65 |    6.53 |    8.21 |
-| cyan-cooler    | #3dc0b0 |    8.71 |    7.75 |    6.61 |    8.31 |
-| cyan-faint     | #92b4df |    9.13 |    8.12 |    6.93 |    8.71 |
+| fg-main        | #afbcbf |   10.02 |    7.06 |    7.06 |    9.42 |
+| fg-dim         | #70819f |    4.96 |    3.50 |    3.50 |    4.66 |
+| fg-alt         | #b0a0a0 |    7.80 |    5.50 |    5.50 |    7.33 |
+| red            | #ef656a |    6.27 |    4.42 |    4.42 |    5.89 |
+| red-warmer     | #f47360 |    6.95 |    4.90 |    4.90 |    6.53 |
+| red-cooler     | #ef798f |    7.26 |    5.12 |    5.12 |    6.82 |
+| red-faint      | #d56f72 |    5.90 |    4.16 |    4.16 |    5.55 |
+| green          | #1fa526 |    6.02 |    4.24 |    4.24 |    5.66 |
+| green-warmer   | #50a22f |    6.09 |    4.30 |    4.30 |    5.73 |
+| green-cooler   | #00b672 |    7.38 |    5.20 |    5.20 |    6.94 |
+| green-faint    | #61a06c |    6.28 |    4.43 |    4.43 |    5.90 |
+| yellow         | #c48502 |    6.23 |    4.40 |    4.40 |    5.86 |
+| yellow-warmer  | #e6832f |    7.12 |    5.02 |    5.02 |    6.69 |
+| yellow-cooler  | #df8f6f |    7.72 |    5.44 |    5.44 |    7.25 |
+| yellow-faint   | #cf9f7f |    8.30 |    5.85 |    5.85 |    7.80 |
+| blue           | #379cf6 |    6.74 |    4.75 |    4.75 |    6.34 |
+| blue-warmer    | #6a88ff |    6.12 |    4.31 |    4.31 |    5.75 |
+| blue-cooler    | #029fff |    6.89 |    4.86 |    4.86 |    6.48 |
+| blue-faint     | #7a94df |    6.63 |    4.68 |    4.68 |    6.23 |
+| magenta        | #d570af |    6.29 |    4.44 |    4.44 |    5.92 |
+| magenta-warmer | #e580ea |    8.01 |    5.64 |    5.64 |    7.53 |
+| magenta-cooler | #af8aff |    7.35 |    5.18 |    5.18 |    6.91 |
+| magenta-faint  | #c59faf |    8.33 |    5.87 |    5.87 |    7.83 |
+| cyan           | #4fb0cf |    7.85 |    5.54 |    5.54 |    7.38 |
+| cyan-warmer    | #6fafff |    8.60 |    6.07 |    6.07 |    8.09 |
+| cyan-cooler    | #3dc0b0 |    8.71 |    6.14 |    6.14 |    8.19 |
+| cyan-faint     | #92b4df |    9.13 |    6.44 |    6.44 |    8.58 |
 #+TBLFM: $3='(Λ $2 @1$3);%.2f :: $4='(Λ $2 @1$4);%.2f :: $5='(Λ $2 @1$5);%.2f :: $6='(Λ $2 @1$6);%.2f
 
 ** Special colours against the modeline
@@ -764,8 +894,8 @@ work with the overall design of the project.
 # bg-main / bg-dim, bg-main / bg-alt
 | #000e17 | distance | contrast |
 |---------+----------+----------|
-| #0f1b29 |     2111 |     1.12 |
-| #1a2a2f |     6269 |     1.32 |
+| #1a202b |     3892 |     1.20 |
+| #242e39 |    10245 |     1.42 |
 #+TBLFM: $2='(Δ $1 @1$1) :: $3='(Λ $1 @1$1);%.2f
 
 * ef-spring
@@ -843,35 +973,35 @@ work with the overall design of the project.
 :CUSTOM_ID: h:5f7da43e-0853-4fd5-a3e0-a149fc63a855
 :END:
 
-| Name           |         | #fff2f3 | #f3e7eb | #efd3e4 | #f9eff0 |
+| Name           |         | #fff2f3 | #f2e4ea | #efd3e4 | #f7ebee |
 |----------------+---------+---------+---------+---------+---------|
-| fg-main        | #4f4073 |    8.32 |    7.54 |    6.53 |    8.05 |
-| fg-dim         | #786e74 |    4.50 |    4.07 |    3.53 |    4.35 |
-| fg-alt         | #af4988 |    4.66 |    4.22 |    3.66 |    4.51 |
-| red            | #d3303a |    4.52 |    4.10 |    3.55 |    4.38 |
-| red-warmer     | #e00033 |    4.56 |    4.14 |    3.58 |    4.42 |
-| red-cooler     | #d50f7f |    4.58 |    4.15 |    3.59 |    4.43 |
-| red-faint      | #c24552 |    4.51 |    4.09 |    3.54 |    4.37 |
-| green          | #217a3c |    4.92 |    4.46 |    3.86 |    4.76 |
-| green-warmer   | #4a7d00 |    4.56 |    4.13 |    3.58 |    4.41 |
-| green-cooler   | #007f68 |    4.54 |    4.12 |    3.57 |    4.40 |
-| green-faint    | #61756c |    4.51 |    4.09 |    3.54 |    4.36 |
-| yellow         | #a45f22 |    4.54 |    4.11 |    3.56 |    4.40 |
-| yellow-warmer  | #b6532f |    4.51 |    4.09 |    3.54 |    4.37 |
-| yellow-cooler  | #b65050 |    4.53 |    4.10 |    3.55 |    4.38 |
-| yellow-faint   | #9a5f6a |    4.56 |    4.13 |    3.58 |    4.42 |
-| blue           | #375ce6 |    5.02 |    4.55 |    3.94 |    4.86 |
-| blue-warmer    | #5250ef |    5.13 |    4.65 |    4.03 |    4.97 |
-| blue-cooler    | #065fff |    4.71 |    4.27 |    3.70 |    4.56 |
-| blue-faint     | #6060d0 |    4.72 |    4.27 |    3.70 |    4.57 |
-| magenta        | #ba35af |    4.57 |    4.14 |    3.58 |    4.42 |
-| magenta-warmer | #cb1aaa |    4.51 |    4.09 |    3.54 |    4.37 |
-| magenta-cooler | #8e44f3 |    4.51 |    4.08 |    3.54 |    4.36 |
-| magenta-faint  | #bf3580 |    4.77 |    4.32 |    3.74 |    4.62 |
-| cyan           | #1f6fbf |    4.71 |    4.27 |    3.70 |    4.56 |
-| cyan-warmer    | #3f6faf |    4.69 |    4.25 |    3.68 |    4.54 |
-| cyan-cooler    | #0f7b8f |    4.53 |    4.10 |    3.55 |    4.38 |
-| cyan-faint     | #5f60bf |    4.92 |    4.46 |    3.86 |    4.76 |
+| fg-main        | #4f4073 |    8.32 |    7.37 |    6.53 |    7.81 |
+| fg-dim         | #786e74 |    4.50 |    3.99 |    3.53 |    4.22 |
+| fg-alt         | #af4988 |    4.66 |    4.13 |    3.66 |    4.37 |
+| red            | #d3303a |    4.52 |    4.01 |    3.55 |    4.25 |
+| red-warmer     | #e00033 |    4.56 |    4.05 |    3.58 |    4.29 |
+| red-cooler     | #d50f7f |    4.58 |    4.06 |    3.59 |    4.30 |
+| red-faint      | #c24552 |    4.51 |    4.00 |    3.54 |    4.24 |
+| green          | #217a3c |    4.92 |    4.36 |    3.86 |    4.62 |
+| green-warmer   | #4a7d00 |    4.56 |    4.04 |    3.58 |    4.28 |
+| green-cooler   | #007f68 |    4.54 |    4.03 |    3.57 |    4.27 |
+| green-faint    | #61756c |    4.51 |    4.00 |    3.54 |    4.23 |
+| yellow         | #a45f22 |    4.54 |    4.03 |    3.56 |    4.26 |
+| yellow-warmer  | #b6532f |    4.51 |    4.00 |    3.54 |    4.24 |
+| yellow-cooler  | #b65050 |    4.53 |    4.01 |    3.55 |    4.25 |
+| yellow-faint   | #9a5f6a |    4.56 |    4.04 |    3.58 |    4.28 |
+| blue           | #375ce6 |    5.02 |    4.45 |    3.94 |    4.71 |
+| blue-warmer    | #5250ef |    5.13 |    4.55 |    4.03 |    4.82 |
+| blue-cooler    | #065fff |    4.71 |    4.17 |    3.70 |    4.42 |
+| blue-faint     | #6060d0 |    4.72 |    4.18 |    3.70 |    4.43 |
+| magenta        | #ba35af |    4.57 |    4.05 |    3.58 |    4.29 |
+| magenta-warmer | #cb1aaa |    4.51 |    4.00 |    3.54 |    4.23 |
+| magenta-cooler | #8e44f3 |    4.51 |    3.99 |    3.54 |    4.23 |
+| magenta-faint  | #a45392 |    4.55 |    4.03 |    3.57 |    4.27 |
+| cyan           | #1f6fbf |    4.71 |    4.18 |    3.70 |    4.42 |
+| cyan-warmer    | #3f6faf |    4.69 |    4.16 |    3.68 |    4.40 |
+| cyan-cooler    | #0f7b8f |    4.53 |    4.01 |    3.55 |    4.25 |
+| cyan-faint     | #5f60bf |    4.92 |    4.36 |    3.86 |    4.62 |
 #+TBLFM: $3='(Λ $2 @1$3);%.2f :: $4='(Λ $2 @1$4);%.2f :: $5='(Λ $2 @1$5);%.2f :: $6='(Λ $2 @1$6);%.2f
 
 ** Special colours against the modeline
@@ -894,7 +1024,7 @@ work with the overall design of the project.
 # bg-main / bg-dim, bg-main / bg-alt
 | #fff2f3 | distance | contrast |
 |---------+----------+----------|
-| #f3e7eb |     1050 |     1.10 |
+| #f2e5ea |     1353 |     1.12 |
 | #efd3e4 |     5100 |     1.27 |
 #+TBLFM: $2='(Δ $1 @1$1) :: $3='(Λ $1 @1$1);%.2f
 
@@ -908,35 +1038,35 @@ work with the overall design of the project.
 :CUSTOM_ID: h:db8a51f5-a28f-422c-a046-b44bc0fdfb24
 :END:
 
-| Name           |         | #160f0f | #251a23 | #33252d | #1c1416 |
+| Name           |         | #160f0f | #2a2228 | #362f35 | #1c1719 |
 |----------------+---------+---------+---------+---------+---------|
-| fg-main        | #d8cfd5 |   12.44 |   11.04 |    9.57 |   11.89 |
-| fg-dim         | #908890 |    5.51 |    4.89 |    4.23 |    5.26 |
-| fg-alt         | #afdacf |   12.40 |   11.00 |    9.53 |   11.85 |
-| red            | #f48359 |    7.43 |    6.59 |    5.71 |    7.09 |
-| red-warmer     | #ff7560 |    7.18 |    6.37 |    5.52 |    6.86 |
-| red-cooler     | #ff85aa |    8.28 |    7.35 |    6.37 |    7.91 |
-| red-faint      | #e47f72 |    6.83 |    6.06 |    5.25 |    6.53 |
-| green          | #60b444 |    7.31 |    6.48 |    5.62 |    6.98 |
-| green-warmer   | #a0c27f |    9.48 |    8.41 |    7.29 |    9.06 |
-| green-cooler   | #60bf88 |    8.39 |    7.44 |    6.45 |    8.01 |
-| green-faint    | #61a06c |    6.09 |    5.40 |    4.68 |    5.82 |
-| yellow         | #d4a052 |    8.07 |    7.16 |    6.20 |    7.71 |
-| yellow-warmer  | #ef926f |    8.12 |    7.21 |    6.24 |    7.76 |
-| yellow-cooler  | #ef9680 |    8.42 |    7.47 |    6.47 |    8.05 |
-| yellow-faint   | #c7a07f |    7.90 |    7.01 |    6.07 |    7.55 |
-| blue           | #7fa5f6 |    7.77 |    6.89 |    5.97 |    7.42 |
-| blue-warmer    | #8895ff |    7.02 |    6.23 |    5.40 |    6.71 |
-| blue-cooler    | #72afff |    8.38 |    7.43 |    6.44 |    8.00 |
-| blue-faint     | #7a94df |    6.43 |    5.70 |    4.94 |    6.14 |
-| magenta        | #d37faf |    6.69 |    5.94 |    5.14 |    6.39 |
-| magenta-warmer | #e772df |    7.09 |    6.29 |    5.45 |    6.78 |
-| magenta-cooler | #a698ef |    7.54 |    6.68 |    5.79 |    7.20 |
-| magenta-faint  | #c9addf |    9.49 |    8.42 |    7.29 |    9.07 |
-| cyan           | #8fbaff |    9.59 |    8.50 |    7.37 |    9.16 |
-| cyan-warmer    | #9ac2ff |   10.40 |    9.22 |    7.99 |    9.93 |
-| cyan-cooler    | #8fcfdf |   10.96 |    9.72 |    8.42 |   10.47 |
-| cyan-faint     | #8ac0ef |    9.80 |    8.69 |    7.53 |    9.36 |
+| fg-main        | #d8cfd5 |   12.44 |   10.17 |    8.55 |   11.64 |
+| fg-dim         | #908890 |    5.51 |    4.50 |    3.78 |    5.15 |
+| fg-alt         | #afdacf |   12.40 |   10.13 |    8.52 |   11.60 |
+| red            | #f48359 |    7.43 |    6.07 |    5.10 |    6.95 |
+| red-warmer     | #ff7560 |    7.18 |    5.87 |    4.93 |    6.72 |
+| red-cooler     | #ff85aa |    8.28 |    6.77 |    5.69 |    7.75 |
+| red-faint      | #e07a9a |    6.69 |    5.46 |    4.59 |    6.26 |
+| green          | #60b444 |    7.31 |    5.97 |    5.02 |    6.84 |
+| green-warmer   | #a0c27f |    9.48 |    7.75 |    6.51 |    8.87 |
+| green-cooler   | #60bf88 |    8.39 |    6.85 |    5.76 |    7.85 |
+| green-faint    | #61a06c |    6.09 |    4.97 |    4.18 |    5.69 |
+| yellow         | #d4a052 |    8.07 |    6.59 |    5.54 |    7.55 |
+| yellow-warmer  | #ef926f |    8.12 |    6.64 |    5.58 |    7.60 |
+| yellow-cooler  | #ef9680 |    8.42 |    6.88 |    5.79 |    7.88 |
+| yellow-faint   | #c7a07f |    7.90 |    6.45 |    5.43 |    7.39 |
+| blue           | #7fa5f6 |    7.77 |    6.34 |    5.33 |    7.26 |
+| blue-warmer    | #8895ff |    7.02 |    5.74 |    4.82 |    6.57 |
+| blue-cooler    | #72afff |    8.38 |    6.84 |    5.75 |    7.83 |
+| blue-faint     | #7a94df |    6.43 |    5.25 |    4.41 |    6.01 |
+| magenta        | #d37faf |    6.69 |    5.47 |    4.60 |    6.26 |
+| magenta-warmer | #e772df |    7.09 |    5.80 |    4.87 |    6.64 |
+| magenta-cooler | #a698ef |    7.54 |    6.16 |    5.18 |    7.05 |
+| magenta-faint  | #c9addf |    9.49 |    7.75 |    6.52 |    8.88 |
+| cyan           | #8fbaff |    9.59 |    7.83 |    6.59 |    8.97 |
+| cyan-warmer    | #9ac2ff |   10.40 |    8.49 |    7.14 |    9.73 |
+| cyan-cooler    | #8fcfdf |   10.96 |    8.95 |    7.53 |   10.25 |
+| cyan-faint     | #8ac0ef |    9.80 |    8.00 |    6.73 |    9.16 |
 #+TBLFM: $3='(Λ $2 @1$3);%.2f :: $4='(Λ $2 @1$4);%.2f :: $5='(Λ $2 @1$5);%.2f :: $6='(Λ $2 @1$6);%.2f
 
 ** Special colours against the modeline
@@ -959,8 +1089,8 @@ work with the overall design of the project.
 # bg-main / bg-dim, bg-main / bg-alt
 | #160f0f | distance | contrast |
 |---------+----------+----------|
-| #251a23 |     2130 |     1.13 |
-| #33252d |     6358 |     1.30 |
+| #2a2228 |     4122 |     1.22 |
+| #362f35 |    10494 |     1.46 |
 #+TBLFM: $2='(Δ $1 @1$1) :: $3='(Λ $1 @1$1);%.2f
 
 * ef-trio-light
@@ -973,35 +1103,35 @@ work with the overall design of the project.
 :CUSTOM_ID: h:ea3998f4-10ed-4b6e-bd2e-c342860a7597
 :END:
 
-| Name           |         | #f8f5ff | #f0ecf4 | #e3e0e9 | #f3f1fa |
+| Name           |         | #f8f5ff | #ebe7f1 | #e3e0e9 | #efeef7 |
 |----------------+---------+---------+---------+---------+---------|
-| fg-main        | #4f3363 |    9.82 |    9.07 |    8.11 |    9.45 |
-| fg-dim         | #786e74 |    4.55 |    4.21 |    3.76 |    4.39 |
-| fg-alt         | #3f7668 |    4.87 |    4.50 |    4.02 |    4.69 |
-| red            | #c3303a |    5.12 |    4.73 |    4.23 |    4.93 |
-| red-warmer     | #d03033 |    4.69 |    4.34 |    3.88 |    4.52 |
-| red-cooler     | #c01f5f |    5.41 |    5.00 |    4.47 |    5.21 |
-| red-faint      | #c24552 |    4.57 |    4.22 |    3.77 |    4.40 |
-| green          | #057800 |    5.28 |    4.88 |    4.36 |    5.08 |
-| green-warmer   | #4f7d0f |    4.56 |    4.21 |    3.77 |    4.39 |
-| green-cooler   | #007f6f |    4.57 |    4.22 |    3.78 |    4.40 |
-| green-faint    | #61756c |    4.57 |    4.22 |    3.77 |    4.40 |
-| yellow         | #a45f22 |    4.60 |    4.25 |    3.80 |    4.43 |
-| yellow-warmer  | #b8532f |    4.52 |    4.17 |    3.73 |    4.35 |
-| yellow-cooler  | #b65050 |    4.58 |    4.24 |    3.79 |    4.41 |
-| yellow-faint   | #a05b5f |    4.69 |    4.33 |    3.87 |    4.52 |
-| blue           | #375cd6 |    5.32 |    4.91 |    4.40 |    5.12 |
-| blue-warmer    | #5165e4 |    4.50 |    4.16 |    3.72 |    4.33 |
-| blue-cooler    | #065fbf |    5.74 |    5.30 |    4.74 |    5.53 |
-| blue-faint     | #6060d0 |    4.78 |    4.41 |    3.95 |    4.60 |
-| magenta        | #ad45ba |    4.50 |    4.15 |    3.71 |    4.33 |
-| magenta-warmer | #c035aa |    4.50 |    4.16 |    3.72 |    4.33 |
-| magenta-cooler | #705ae3 |    4.58 |    4.23 |    3.78 |    4.41 |
-| magenta-faint  | #804fb0 |    5.32 |    4.92 |    4.40 |    5.12 |
-| cyan           | #1f6fbf |    4.77 |    4.41 |    3.94 |    4.60 |
-| cyan-warmer    | #3f6faf |    4.75 |    4.39 |    3.92 |    4.57 |
-| cyan-cooler    | #0f7a9d |    4.54 |    4.20 |    3.75 |    4.38 |
-| cyan-faint     | #5f60bf |    4.98 |    4.60 |    4.12 |    4.80 |
+| fg-main        | #4f3363 |    9.82 |    8.68 |    8.11 |    9.19 |
+| fg-dim         | #786e74 |    4.55 |    4.03 |    3.76 |    4.26 |
+| fg-alt         | #3f7668 |    4.87 |    4.31 |    4.02 |    4.56 |
+| red            | #c3303a |    5.12 |    4.53 |    4.23 |    4.80 |
+| red-warmer     | #d03033 |    4.69 |    4.15 |    3.88 |    4.39 |
+| red-cooler     | #c01f5f |    5.41 |    4.78 |    4.47 |    5.06 |
+| red-faint      | #a24568 |    5.43 |    4.80 |    4.49 |    5.09 |
+| green          | #057800 |    5.28 |    4.67 |    4.36 |    4.94 |
+| green-warmer   | #4f7d0f |    4.56 |    4.03 |    3.77 |    4.27 |
+| green-cooler   | #007f6f |    4.57 |    4.04 |    3.78 |    4.28 |
+| green-faint    | #41754c |    5.03 |    4.45 |    4.16 |    4.71 |
+| yellow         | #a45f22 |    4.60 |    4.07 |    3.80 |    4.30 |
+| yellow-warmer  | #b8532f |    4.52 |    3.99 |    3.73 |    4.23 |
+| yellow-cooler  | #b65050 |    4.58 |    4.05 |    3.79 |    4.29 |
+| yellow-faint   | #a05b5f |    4.69 |    4.15 |    3.87 |    4.39 |
+| blue           | #375cd6 |    5.32 |    4.70 |    4.40 |    4.98 |
+| blue-warmer    | #5165e4 |    4.50 |    3.98 |    3.72 |    4.21 |
+| blue-cooler    | #065fbf |    5.74 |    5.07 |    4.74 |    5.37 |
+| blue-faint     | #6060d0 |    4.78 |    4.22 |    3.95 |    4.47 |
+| magenta        | #ad45ba |    4.50 |    3.97 |    3.71 |    4.21 |
+| magenta-warmer | #c035aa |    4.50 |    3.98 |    3.72 |    4.21 |
+| magenta-cooler | #705ae3 |    4.58 |    4.04 |    3.78 |    4.28 |
+| magenta-faint  | #804fb0 |    5.32 |    4.70 |    4.40 |    4.98 |
+| cyan           | #1f6fbf |    4.77 |    4.22 |    3.94 |    4.47 |
+| cyan-warmer    | #3f6faf |    4.75 |    4.20 |    3.92 |    4.45 |
+| cyan-cooler    | #0f7a9d |    4.54 |    4.02 |    3.75 |    4.25 |
+| cyan-faint     | #5f60bf |    4.98 |    4.41 |    4.12 |    4.66 |
 #+TBLFM: $3='(Λ $2 @1$3);%.2f :: $4='(Λ $2 @1$4);%.2f :: $5='(Λ $2 @1$5);%.2f :: $6='(Λ $2 @1$6);%.2f
 
 ** Special colours against the modeline
@@ -1024,7 +1154,7 @@ work with the overall design of the project.
 # bg-main / bg-dim, bg-main / bg-alt
 | #f8f5ff | distance | contrast |
 |---------+----------+----------|
-| #f0ecf4 |      766 |     1.08 |
+| #ece8f1 |     1514 |     1.12 |
 | #e3e0e9 |     4089 |     1.21 |
 #+TBLFM: $2='(Δ $1 @1$1) :: $3='(Λ $1 @1$1);%.2f
 
@@ -1042,35 +1172,35 @@ Most of these are not actually used.  The theme only maps the reds and
 cyans.  We just define the entire palette to make it work with the
 overall design of the project.
 
-| Name           |         | #15050f | #221a20 | #30252a | #1a1315 |
+| Name           |         | #15050f | #282026 | #352f2f | #1a1517 |
 |----------------+---------+---------+---------+---------+---------|
-| fg-main        | #dfd0d5 |   13.32 |   11.42 |    9.92 |   12.30 |
-| fg-dim         | #908890 |    5.76 |    4.94 |    4.29 |    5.32 |
-| fg-alt         | #afdacf |   12.97 |   11.12 |    9.66 |   11.98 |
-| red            | #cf4f5f |    4.66 |    3.99 |    3.47 |    4.30 |
-| red-warmer     | #df4f4f |    5.06 |    4.34 |    3.77 |    4.68 |
-| red-cooler     | #d24f7f |    4.87 |    4.18 |    3.63 |    4.50 |
-| red-faint      | #b07f7f |    5.84 |    5.00 |    4.35 |    5.39 |
-| green          | #2fa526 |    6.16 |    5.28 |    4.59 |    5.69 |
-| green-warmer   | #64aa0f |    6.88 |    5.90 |    5.13 |    6.36 |
-| green-cooler   | #00b066 |    6.98 |    5.99 |    5.20 |    6.45 |
-| green-faint    | #5f9f6f |    6.29 |    5.40 |    4.69 |    5.82 |
-| yellow         | #c48702 |    6.42 |    5.51 |    4.79 |    5.94 |
-| yellow-warmer  | #d0730f |    5.79 |    4.97 |    4.31 |    5.35 |
-| yellow-cooler  | #df8f6f |    7.82 |    6.71 |    5.83 |    7.23 |
-| yellow-faint   | #cf9f7f |    8.41 |    7.21 |    6.26 |    7.77 |
-| blue           | #379cf6 |    6.84 |    5.86 |    5.09 |    6.31 |
-| blue-warmer    | #6a88ff |    6.20 |    5.32 |    4.62 |    5.73 |
-| blue-cooler    | #029fff |    6.98 |    5.99 |    5.20 |    6.45 |
-| blue-faint     | #6a84af |    5.22 |    4.47 |    3.89 |    4.82 |
-| magenta        | #b2608f |    4.68 |    4.01 |    3.49 |    4.32 |
-| magenta-warmer | #c560aa |    5.31 |    4.55 |    3.95 |    4.90 |
-| magenta-cooler | #a6699f |    4.85 |    4.16 |    3.61 |    4.48 |
-| magenta-faint  | #c590af |    7.53 |    6.45 |    5.61 |    6.95 |
-| cyan           | #3fafcf |    7.77 |    6.67 |    5.79 |    7.18 |
-| cyan-warmer    | #3f9aaf |    6.08 |    5.22 |    4.53 |    5.62 |
-| cyan-cooler    | #4fafaf |    7.62 |    6.54 |    5.68 |    7.04 |
-| cyan-faint     | #82a0af |    7.16 |    6.14 |    5.34 |    6.62 |
+| fg-main        | #dfd0d5 |   13.32 |   10.66 |    8.83 |   12.14 |
+| fg-dim         | #908890 |    5.76 |    4.61 |    3.82 |    5.25 |
+| fg-alt         | #afdacf |   12.97 |   10.38 |    8.60 |   11.82 |
+| red            | #cf4f5f |    4.66 |    3.73 |    3.09 |    4.24 |
+| red-warmer     | #df4f4f |    5.06 |    4.05 |    3.36 |    4.61 |
+| red-cooler     | #d24f7f |    4.87 |    3.90 |    3.23 |    4.44 |
+| red-faint      | #b07f7f |    5.84 |    4.67 |    3.87 |    5.32 |
+| green          | #2fa526 |    6.16 |    4.93 |    4.08 |    5.61 |
+| green-warmer   | #64aa0f |    6.88 |    5.51 |    4.56 |    6.27 |
+| green-cooler   | #00b066 |    6.98 |    5.59 |    4.63 |    6.36 |
+| green-faint    | #5f9f6f |    6.29 |    5.04 |    4.17 |    5.74 |
+| yellow         | #c48702 |    6.42 |    5.14 |    4.26 |    5.86 |
+| yellow-warmer  | #d0730f |    5.79 |    4.64 |    3.84 |    5.28 |
+| yellow-cooler  | #df8f6f |    7.82 |    6.26 |    5.19 |    7.13 |
+| yellow-faint   | #cf9f7f |    8.41 |    6.73 |    5.58 |    7.67 |
+| blue           | #379cf6 |    6.84 |    5.47 |    4.53 |    6.23 |
+| blue-warmer    | #6a88ff |    6.20 |    4.97 |    4.11 |    5.65 |
+| blue-cooler    | #029fff |    6.98 |    5.59 |    4.63 |    6.36 |
+| blue-faint     | #6a84af |    5.22 |    4.18 |    3.46 |    4.75 |
+| magenta        | #b2608f |    4.68 |    3.75 |    3.10 |    4.27 |
+| magenta-warmer | #c560aa |    5.31 |    4.25 |    3.52 |    4.84 |
+| magenta-cooler | #a6699f |    4.85 |    3.88 |    3.22 |    4.42 |
+| magenta-faint  | #c590af |    7.53 |    6.03 |    4.99 |    6.86 |
+| cyan           | #3fafcf |    7.77 |    6.22 |    5.16 |    7.09 |
+| cyan-warmer    | #3f9aaf |    6.08 |    4.87 |    4.04 |    5.55 |
+| cyan-cooler    | #4fafaf |    7.62 |    6.10 |    5.06 |    6.95 |
+| cyan-faint     | #82a0af |    7.16 |    5.73 |    4.75 |    6.53 |
 #+TBLFM: $3='(Λ $2 @1$3);%.2f :: $4='(Λ $2 @1$4);%.2f :: $5='(Λ $2 @1$5);%.2f :: $6='(Λ $2 @1$6);%.2f
 
 ** Special colours against the modeline
@@ -1093,8 +1223,8 @@ overall design of the project.
 # bg-main / bg-dim, bg-main / bg-alt
 | #15050f | distance | contrast |
 |---------+----------+----------|
-| #221a20 |     2979 |     1.17 |
-| #30252a |     7801 |     1.34 |
+| #282026 |     5245 |     1.25 |
+| #352f2f |    12271 |     1.51 |
 #+TBLFM: $2='(Δ $1 @1$1) :: $3='(Λ $1 @1$1);%.2f
 
 * ef-tritanopia-light
@@ -1176,35 +1306,35 @@ overall design of the project.
 :CUSTOM_ID: h:76e0b621-7872-4597-8bdc-6c007e43aff5
 :END:
 
-| Name           |         | #0f0b15 | #161926 | #202234 | #14121a |
+| Name           |         | #0f0b15 | #1d202f | #2a2f42 | #19181f |
 |----------------+---------+---------+---------+---------+---------|
-| fg-main        | #b8c6d5 |   11.19 |   10.05 |    9.01 |   10.68 |
-| fg-dim         | #807c9f |    4.91 |    4.41 |    3.96 |    4.69 |
-| fg-alt         | #bf8f8f |    6.99 |    6.28 |    5.63 |    6.67 |
-| red            | #f47359 |    6.90 |    6.20 |    5.56 |    6.58 |
-| red-warmer     | #ef6560 |    6.21 |    5.58 |    5.00 |    5.92 |
-| red-cooler     | #ff6a7a |    7.04 |    6.32 |    5.67 |    6.71 |
-| red-faint      | #d56f72 |    5.88 |    5.28 |    4.74 |    5.61 |
-| green          | #29a444 |    6.01 |    5.40 |    4.84 |    5.74 |
-| green-warmer   | #6aad0f |    7.04 |    6.32 |    5.67 |    6.72 |
-| green-cooler   | #00a392 |    6.17 |    5.54 |    4.97 |    5.88 |
-| green-faint    | #61a06c |    6.26 |    5.62 |    5.04 |    5.97 |
-| yellow         | #c48052 |    6.08 |    5.46 |    4.89 |    5.80 |
-| yellow-warmer  | #d1803f |    6.37 |    5.72 |    5.13 |    6.07 |
-| yellow-cooler  | #df8a88 |    7.53 |    6.77 |    6.07 |    7.19 |
-| yellow-faint   | #c0a38a |    8.20 |    7.37 |    6.60 |    7.82 |
-| blue           | #3f95f6 |    6.34 |    5.70 |    5.11 |    6.05 |
-| blue-warmer    | #6a9fff |    7.43 |    6.67 |    5.98 |    7.09 |
-| blue-cooler    | #029fff |    6.86 |    6.17 |    5.53 |    6.55 |
-| blue-faint     | #7a94df |    6.61 |    5.94 |    5.32 |    6.30 |
-| magenta        | #d369af |    5.94 |    5.34 |    4.78 |    5.67 |
-| magenta-warmer | #e580e0 |    7.87 |    7.07 |    6.34 |    7.51 |
-| magenta-cooler | #af85ea |    6.83 |    6.13 |    5.50 |    6.51 |
-| magenta-faint  | #c57faf |    6.51 |    5.85 |    5.25 |    6.21 |
-| cyan           | #4fbaef |    8.90 |    7.99 |    7.17 |    8.49 |
-| cyan-warmer    | #6fafdf |    8.22 |    7.39 |    6.62 |    7.84 |
-| cyan-cooler    | #35afbf |    7.45 |    6.69 |    6.00 |    7.10 |
-| cyan-faint     | #8aa0df |    7.58 |    6.81 |    6.10 |    7.23 |
+| fg-main        | #b8c6d5 |   11.19 |    9.29 |    7.63 |   10.13 |
+| fg-dim         | #807c9f |    4.91 |    4.08 |    3.35 |    4.45 |
+| fg-alt         | #bf8f8f |    6.99 |    5.80 |    4.76 |    6.33 |
+| red            | #f47359 |    6.90 |    5.73 |    4.70 |    6.25 |
+| red-warmer     | #ef6560 |    6.21 |    5.15 |    4.23 |    5.62 |
+| red-cooler     | #ff6a7a |    7.04 |    5.84 |    4.80 |    6.37 |
+| red-faint      | #d56f72 |    5.88 |    4.88 |    4.01 |    5.32 |
+| green          | #29a444 |    6.01 |    4.99 |    4.10 |    5.44 |
+| green-warmer   | #6aad0f |    7.04 |    5.84 |    4.80 |    6.37 |
+| green-cooler   | #00a392 |    6.17 |    5.12 |    4.20 |    5.58 |
+| green-faint    | #61a06c |    6.26 |    5.20 |    4.26 |    5.67 |
+| yellow         | #b58a52 |    6.23 |    5.17 |    4.24 |    5.64 |
+| yellow-warmer  | #d1803f |    6.37 |    5.29 |    4.34 |    5.76 |
+| yellow-cooler  | #df8a88 |    7.53 |    6.25 |    5.13 |    6.82 |
+| yellow-faint   | #c0a38a |    8.20 |    6.81 |    5.59 |    7.42 |
+| blue           | #3f95f6 |    6.34 |    5.26 |    4.32 |    5.74 |
+| blue-warmer    | #6a9fff |    7.43 |    6.17 |    5.06 |    6.73 |
+| blue-cooler    | #029fff |    6.86 |    5.70 |    4.68 |    6.21 |
+| blue-faint     | #7a94df |    6.61 |    5.48 |    4.50 |    5.98 |
+| magenta        | #d369af |    5.94 |    4.93 |    4.05 |    5.38 |
+| magenta-warmer | #e580e0 |    7.87 |    6.54 |    5.36 |    7.13 |
+| magenta-cooler | #af85ea |    6.83 |    5.67 |    4.65 |    6.18 |
+| magenta-faint  | #c57faf |    6.51 |    5.41 |    4.44 |    5.90 |
+| cyan           | #4fbaef |    8.90 |    7.39 |    6.06 |    8.06 |
+| cyan-warmer    | #6fafdf |    8.22 |    6.83 |    5.60 |    7.45 |
+| cyan-cooler    | #35afbf |    7.45 |    6.18 |    5.07 |    6.74 |
+| cyan-faint     | #8aa0df |    7.58 |    6.29 |    5.16 |    6.86 |
 #+TBLFM: $3='(Λ $2 @1$3);%.2f :: $4='(Λ $2 @1$4);%.2f :: $5='(Λ $2 @1$5);%.2f :: $6='(Λ $2 @1$6);%.2f
 
 ** Special colours against the modeline
@@ -1227,6 +1357,6 @@ overall design of the project.
 # bg-main / bg-dim, bg-main / bg-alt
 | #0f0b15 | distance | contrast |
 |---------+----------+----------|
-| #161926 |     1745 |     1.11 |
-| #202234 |     5558 |     1.24 |
+| #1d202f |     4175 |     1.20 |
+| #2a2f42 |    12670 |     1.47 |
 #+TBLFM: $2='(Δ $1 @1$1) :: $3='(Λ $1 @1$1);%.2f

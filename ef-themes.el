@@ -6,7 +6,7 @@
 ;; Maintainer: Ef-Themes Development <~protesilaos/ef-themes@lists.sr.ht>
 ;; URL: https://git.sr.ht/~protesilaos/ef-themes
 ;; Mailing-List: https://lists.sr.ht/~protesilaos/ef-themes
-;; Version: 0.7.0
+;; Version: 0.10.0
 ;; Package-Requires: ((emacs "27.1"))
 ;; Keywords: faces, theme, accessibility
 
@@ -57,7 +57,8 @@
 ;;; User options
 
 (defconst ef-themes-light-themes
-  '(ef-day
+  '(ef-cyprus
+    ef-day
     ef-deuteranopia-light
     ef-duo-light
     ef-frost
@@ -72,6 +73,7 @@
 (defconst ef-themes-dark-themes
   '(ef-autumn
     ef-bio
+    ef-cherie
     ef-dark
     ef-deuteranopia-dark
     ef-duo-dark
@@ -140,24 +142,29 @@ themes that form part of this collection."
 This is a helper variable intended for internal use.")
 
 (defcustom ef-themes-headings nil
-  "Heading styles with optional list of values for levels 0-8.
+  "Heading styles with optional list of values per heading level.
 
-This is an alist that accepts a (key . list-of-values)
-combination.  The key is either a number, representing the
+This is an alist that accepts a (KEY . LIST-OF-VALUES)
+combination.  The KEY is either a number, representing the
 heading's level (0-8) or t, which pertains to the fallback style.
+The named keys `agenda-date' and `agenda-structure' apply to the
+Org agenda.
 
-Level 0 is a special heading: it is used for what counts as a
-document title or equivalent, such as the #+title construct we
-find in Org files.  Levels 1-8 are regular headings.
+Level 0 is used for what counts as a document title or
+equivalent, such as the #+title construct we find in Org files.
+Levels 1-8 are regular headings.
 
-The list of values covers symbols that refer to properties, as
-described below.  Here is a complete sample, followed by a
-presentation of all available properties:
+The LIST-OF-VALUES covers symbols that refer to properties, as
+described below.  Here is a complete sample with various
+stylistic combinations, followed by a presentation of all
+available properties:
 
     (setq ef-themes-headings
           (quote ((1 . (light variable-pitch 1.5))
                   (2 . (regular 1.3))
                   (3 . (1.1))
+                  (agenda-date . (1.3))
+                  (agenda-structure . (variable-pitch light 1.8))
                   (t . (variable-pitch)))))
 
 By default (a nil value for this variable), all headings have a
@@ -216,11 +223,11 @@ will retain the original aesthetic for that level.  For example:
                   (2 . (1.3))
                   (t . t)))) ; default style for all other levels"
   :group 'ef-themes
-  :package-version '(ef-themes . "0.3.0")
+  :package-version '(ef-themes . "0.10.0")
   :type `(alist
           :options ,(mapcar (lambda (el)
                               (list el ef-themes--headings-choice))
-                            '(0 1 2 3 4 5 6 7 8 t))
+                            '(0 1 2 3 4 5 6 7 8 t agenda-date agenda-structure))
           :key-type symbol
           :value-type ,ef-themes--headings-choice)
   :link '(info-link "(ef-themes) Option for headings"))
@@ -255,7 +262,58 @@ ELPA (by Protesilaos))."
   :type 'boolean
   :link '(info-link "(ef-themes) UI typeface"))
 
+(defcustom ef-themes-region nil
+  "Control the appearance of the `region' face.
+
+The value is a list of symbols.
+
+If nil or an empty list (the default), use a subtle background
+for the region and preserve the color of selected text.
+
+The `no-extend' symbol limits the highlighted area to the end of
+the line, so that it does not reach the edge of the window.
+
+The `neutral' symbol makes the highlighted area's background
+gray (or more gray, depending on the theme).
+
+The `intense' symbol amplifies the intensity of the highlighted
+area's background color.  It also overrides any text color to
+keep it legible.
+
+Combinations of those symbols are expressed in any order.
+
+In user configuration files the form may look like this:
+
+    (setq ef-themes-region \\='(intense no-extend))
+
+Other examples:
+
+    (setq ef-themes-region \\='(intense))
+    (setq ef-themes-region \\='(intense no-extend neutral))"
+  :group 'ef-themes
+  :package-version '(ef-themes . "0.10.0")
+  :type '(set :tag "Properties" :greedy t
+              (const :tag "Do not extend to the edge of the window" no-extend)
+              (const :tag "More neutral/gray background" neutral)
+              (const :tag "More intense background (also override text color)" accented))
+  :link '(info-link "(ef-themes) Style of region highlight"))
+
 ;;; Helpers for user options
+
+(defun ef-themes--warn (option)
+  "Warn that OPTION has changed."
+  (prog1 nil
+    (display-warning
+     'ef-themes
+     (format "`%s' has changed; please read the updated documentation" option)
+     :warning)))
+
+(defun ef-themes--list-or-warn (option)
+  "Return list or nil value of OPTION, else `ef-themes--warn'."
+  (let* ((value (symbol-value option)))
+    (if (or (null value) (listp value))
+        value
+      (ef-themes--warn option))))
 
 (defun ef-themes--fixed-pitch ()
   "Conditional application of `fixed-pitch' inheritance."
@@ -296,18 +354,43 @@ sequence given SEQ-PRED, using SEQ-DEFAULT as a fallback."
          (style-listp (listp style))
          (properties style)
          (var (when (memq 'variable-pitch properties) 'variable-pitch))
-         (varbold (if var
-                      (append (list 'bold) (list var))
-                    'bold))
          (weight (when style-listp (ef-themes--weight style))))
     (list :inherit
           (cond
            (weight var)
-           (varbold))
+           (var (append (list 'bold) (list var)))
+           ('bold))
           :height
           (ef-themes--alist-or-seq properties 'height #'floatp 'unspecified)
           :weight
           (or weight 'unspecified))))
+
+(defun ef-themes--region (bg bgneutral bgintense bgintenseneutral fgintense)
+  "Apply `ef-themes-region' styles.
+
+BG is the default background.  BGNEUTRAL is its gray counterpart.
+BGINTENSE is an amplified variant of BG, while BGINTENSENEUTRAL
+is a more intense neutral background.  FGINTENSE is the
+foreground that is used with any of the intense backgrounds."
+  (let ((properties (ef-themes--list-or-warn 'ef-themes-region)))
+    (list
+     :background
+     (cond
+      ((and (memq 'intense properties) (memq 'neutral properties))
+       bgintenseneutral)
+      ((memq 'intense properties)
+       bgintense)
+      ((memq 'neutral properties)
+       bgneutral)
+      (bg))
+     :foreground
+     (if (memq 'intense properties)
+         fgintense
+       'unspecified)
+     :extend
+     (if (memq 'no-extend properties)
+         nil
+       t))))
 
 ;;; Commands and their helper functions
 
@@ -348,16 +431,42 @@ sequence given SEQ-PRED, using SEQ-DEFAULT as a fallback."
       (symbol-value palette)
     (user-error "No enabled Ef theme could be found")))
 
-(defvar ef-themes--select-theme-history nil)
-
-(defun ef-themes--select-prompt (&optional prompt)
-  "Minibuffer prompt for `ef-themes-select'.
-With optional PROMPT string, use it.  Else use a generic prompt."
+(defun ef-themes--choose-subset ()
+  "Use `read-multiple-choice' to return `dark' or `light' variant."
   (intern
-   (completing-read (or prompt "Select Ef Theme: ")
-                    (ef-themes--list-known-themes)
-                    nil t nil
-                    'ef-themes--select-theme-history)))
+   (cadr
+    (read-multiple-choice
+     "Variant"
+     '((?d "dark" "Load a random dark theme")
+       (?l "light" "Load a random light theme"))
+     "Limit to the dark or light subset of the Ef themes collection."))))
+
+(defvar ef-themes--select-theme-history nil
+  "Minibuffer history of `ef-themes--select-prompt'.")
+
+(defun ef-themes--select-prompt (&optional prompt variant)
+  "Minibuffer prompt for `ef-themes-select'.
+With optional PROMPT string, use it.  Else use a generic prompt.
+
+With optional VARIANT, prompt for a subset of themes divided into
+light and dark variants.  Then limit the completion candidates
+accordingly."
+  (let* ((subset (when variant (ef-themes--choose-subset)))
+         (themes (pcase subset
+                   ('dark ef-themes-dark-themes)
+                   ('light ef-themes-light-themes)
+                   ;; NOTE 2022-11-02: This condition made sense when
+                   ;; the code now in `ef-themes--choose-subset' used
+                   ;; `completing-read'.  With `read-multiple-choice'
+                   ;; we never meet this condition, as far as I can
+                   ;; tell.  But it does no harm to keep it here.
+                   (_ (ef-themes--list-known-themes)))))
+    (intern
+     (completing-read
+      (or prompt "Select Ef Theme: ")
+      themes
+      nil t nil
+      'ef-themes--select-theme-history))))
 
 (defun ef-themes--load-theme (theme)
   "Load THEME while disabling other Ef themes.
@@ -367,18 +476,24 @@ Run `ef-themes-post-load-hook'."
   (run-hooks 'ef-themes-post-load-hook))
 
 ;;;###autoload
-(defun ef-themes-select (theme)
+(defun ef-themes-select (theme &optional _variant)
   "Load an Ef THEME using minibuffer completion.
-When called from Lisp, THEME is a symbol.
 
-Run `ef-themes-post-load-hook' after loading the theme."
-  (interactive (list (ef-themes--select-prompt)))
+With optional VARIANT as a prefix argument, prompt to limit the
+set of themes to either dark or light variants.
+
+Run `ef-themes-post-load-hook' after loading the theme.
+
+When called from Lisp, THEME is the symbol of a theme.  VARIANT
+is ignored in this scenario."
+  (interactive (list (ef-themes--select-prompt nil current-prefix-arg)))
   (ef-themes--load-theme theme))
 
 (defun ef-themes--toggle-theme-p ()
   "Return non-nil if `ef-themes-to-toggle' are valid."
   (mapc (lambda (theme)
-          (if (memq theme ef-themes-collection)
+          (if (or (memq theme ef-themes-collection)
+                  (memq theme (ef-themes--list-known-themes)))
               theme
             (user-error "`%s' is not part of `ef-themes-collection'" theme)))
         ef-themes-to-toggle))
@@ -421,27 +536,21 @@ respectively.  Else check against the return value of
 ;;;###autoload
 (defun ef-themes-load-random (&optional variant)
   "Load an Ef theme at random, excluding the current one.
-With optional VARIANT as either `light' or `dark', limit the set
-to the relevant themes.
 
-When called interactively, VARIANT is the prefix argument which
-prompts with completion for either `light' or `dark'.
+With optional VARIANT as a prefix argument, prompt to limit the
+set of themes to either dark or light variants.
 
-Run `ef-themes-post-load-hook' after loading the theme."
-  (interactive
-   (list
-    (when current-prefix-arg
-      (intern (cadr (read-multiple-choice
-                     "Variant"
-                     '((?d "dark" "Load a random dark theme")
-                       (?l "light" "Load a random light theme"))
-                     "Limit the variation themes to select."))))))
+Run `ef-themes-post-load-hook' after loading the theme.
+
+When called from Lisp, VARIANT is either the `dark' or `light'
+symbol."
+  (interactive (list (when current-prefix-arg (ef-themes--choose-subset))))
   (let* ((themes (ef-themes--minus-current variant))
          (n (random (length themes)))
-         (pick (nth n themes)))
-    (if (null pick)
-        (ef-themes--load-theme (car themes))
-      (ef-themes--load-theme pick))))
+         (pick (nth n themes))
+         (loaded (if (null pick) (car themes) pick)))
+    (ef-themes--load-theme loaded)
+    (message "Loaded `%s'" loaded)))
 
 (defun ef-themes--preview-colors-render (buffer theme &rest _)
   "Render colors in BUFFER from THEME.
@@ -538,6 +647,22 @@ Helper function for `ef-themes-preview-colors'."
   :package-version '(ef-themes . "0.4.0")
   :group 'ef-themes-faces)
 
+;; This produces `ef-themes-mark-delete' and the like.
+(dolist (scope '(delete select other))
+  (custom-declare-face
+   (intern (format "ef-themes-mark-%s" scope))
+   nil (format "Face for %s marks (e.g. `dired', `trashed')." scope)
+   :package-version '(ef-themes . "0.9.0")
+   :group 'ef-themes-faces))
+
+;; This produces `ef-themes-underline-error' and the like
+(dolist (scope '(info error warning))
+  (custom-declare-face
+   (intern (format "ef-themes-underline-%s" scope))
+   nil (format "Face for %s underline (e.g. `flymake', `flyspell')." scope)
+   :package-version '(ef-themes . "0.9.0")
+   :group 'ef-themes-faces))
+
 (defconst ef-themes-faces
   '(
 ;;;; internal faces
@@ -553,6 +678,12 @@ Helper function for `ef-themes-preview-colors'."
     `(ef-themes-heading-8 ((,c ,@(ef-themes--heading 8) :foreground ,rainbow-8)))
     `(ef-themes-key-binding ((,c :inherit (bold ef-themes-fixed-pitch) :foreground ,keybind)))
     `(ef-themes-ui-variable-pitch ((,c ,@(ef-themes--variable-pitch-ui))))
+    `(ef-themes-mark-delete ((,c :inherit error :background ,bg-err)))
+    `(ef-themes-mark-select ((,c :inherit success :background ,bg-info)))
+    `(ef-themes-mark-other ((,c :inherit warning :background ,bg-warning)))
+    `(ef-themes-underline-error ((,c :underline (:style wave :color ,underline-err))))
+    `(ef-themes-underline-info ((,c :underline (:style wave :color ,underline-info))))
+    `(ef-themes-underline-warning ((,c :underline (:style wave :color ,underline-warning))))
 ;;;; all basic faces
 ;;;;; absolute essentials
     `(bold ((,c :weight bold)))
@@ -560,14 +691,14 @@ Helper function for `ef-themes-preview-colors'."
     `(cursor ((,c :background ,cursor)))
     `(default ((,c :background ,bg-main :foreground ,fg-main)))
     `(italic ((,c :slant italic)))
-    `(region ((,c :background ,bg-region)))
+    `(region ((,c ,@(ef-themes--region bg-region bg-alt bg-region-intense bg-active fg-intense))))
     `(vertical-border ((,c :foreground ,border)))
 ;;;;; all other basic faces
     `(button ((,c :foreground ,link :underline ,border)))
     `(child-frame-border ((,c :background ,border)))
     `(comint-highlight-input ((,c :inherit bold)))
     `(comint-highlight-prompt ((,c :inherit minibuffer-prompt)))
-    `(edmacro-label ((,c :inherit bold)))
+    `(edmacro-label ((,c :inherit bold :foreground ,accent-0)))
     `(elisp-shorthand-font-lock-face ((,c :inherit italic)))
     `(error ((,c :inherit bold :foreground ,err)))
     `(escape-glyph ((,c :foreground ,warning)))
@@ -575,13 +706,14 @@ Helper function for `ef-themes-preview-colors'."
     `(header-line ((,c :inherit ef-themes-ui-variable-pitch :background ,bg-dim)))
     `(header-line-highlight ((,c :inherit highlight)))
     `(help-argument-name ((,c :foreground ,accent-0)))
-    `(help-key-binding ((,c :inherit bold :foreground ,keybind)))
+    `(help-key-binding ((,c :inherit (bold ef-themes-fixed-pitch) :foreground ,keybind)))
     `(highlight ((,c :background ,bg-hover :foreground ,fg-intense)))
     `(hl-line ((,c :background ,bg-hl-line)))
     `(icon-button ((,c :box ,fg-dim :background ,bg-active :foreground ,fg-intense))) ; same as `custom-button'
     `(link ((,c :foreground ,link :underline ,border)))
     `(link-visited ((,c :foreground ,link-alt :underline ,border)))
     `(minibuffer-prompt ((,c :foreground ,prompt)))
+    `(mm-command-output ((,c :foreground ,mail-5))) ; like message-mml
     `(pgtk-im-0 ((,c :inherit secondary-selection)))
     `(read-multiple-choice-face ((,c :inherit warning :background ,bg-warning)))
     `(rectangle-preview ((,c :inherit secondary-selection)))
@@ -671,13 +803,15 @@ Helper function for `ef-themes-preview-colors'."
     `(TeX-error-description-help ((,c :inherit success)))
     `(TeX-error-description-tex-said ((,c :inherit success)))
     `(TeX-error-description-warning ((,c :inherit warning)))
+;;;; auto-dim-other-buffers
+    `(auto-dim-other-buffers-face ((,c :background ,bg-inactive)))
 ;;;; bongo
     `(bongo-album-title (( )))
     `(bongo-artist ((,c :foreground ,rainbow-0)))
     `(bongo-currently-playing-track ((,c :inherit bold)))
     `(bongo-elapsed-track-part ((,c :background ,bg-alt :underline t)))
     `(bongo-filled-seek-bar ((,c :background ,bg-hover)))
-    `(bongo-marked-track ((,c :inherit success :background ,bg-info)))
+    `(bongo-marked-track ((,c :inherit ef-themes-mark-other)))
     `(bongo-marked-track-line ((,c :background ,bg-dim)))
     `(bongo-played-track ((,c :inherit shadow :strike-through t)))
     `(bongo-track-length ((,c :inherit shadow)))
@@ -689,14 +823,26 @@ Helper function for `ef-themes-preview-colors'."
 ;;;; calendar and diary
     `(calendar-month-header ((,c :inherit bold)))
     `(calendar-today ((,c :inherit bold :underline t)))
-    `(calendar-weekday-header ((,c :foreground ,fg-alt)))
-    `(calendar-weekend-header ((,c :inherit calendar-weekday-header)))
+    `(calendar-weekday-header ((,c :foreground ,date)))
+    `(calendar-weekend-header ((,c :foreground ,err)))
     `(diary ((,c :background ,bg-dim :foreground ,accent-0)))
     `(diary-anniversary ((,c :foreground ,accent-1)))
     `(diary-time ((,c :foreground ,date)))
     `(holiday ((,c :background ,bg-dim :foreground ,accent-2)))
+;;;; cider
+    `(cider-deprecated-face ((,c :background ,bg-warning :foreground ,warning)))
+    `(cider-enlightened-face ((,c :box ,warning)))
+    `(cider-enlightened-local-face ((,c :inherit warning)))
+    `(cider-error-highlight-face ((,c :inherit ef-themes-underline-error)))
+    `(cider-fringe-good-face ((,c :inherit ef-themes-mark-select)))
+    `(cider-instrumented-face ((,c :box ,err)))
+    `(cider-reader-conditional-face ((,c :inherit font-lock-type-face)))
+    `(cider-repl-prompt-face ((,c :inherit minibuffer-prompt)))
+    `(cider-repl-stderr-face ((,c :foreground ,err)))
+    `(cider-repl-stdout-face ((,c :foreground ,info)))
+    `(cider-warning-highlight-face ((,c :inherit ef-themes-underline-warning)))
 ;;;; change-log and log-view (`vc-print-log' and `vc-print-root-log')
-    `(change-log-acknowledgment ((,c :inherit shadow)))
+    `(change-log-acknowledgment ((,c :foreground ,identifier)))
     `(change-log-conditionals ((,c :inherit error)))
     `(change-log-date ((,c :foreground ,date)))
     `(change-log-email ((,c :foreground ,fg-alt)))
@@ -710,7 +856,9 @@ Helper function for `ef-themes-preview-colors'."
     `(log-edit-unknown-header ((,c :inherit shadow)))
     `(log-view-commit-body (( )))
     `(log-view-file ((,c :inherit bold)))
-    `(log-view-message ((,c :inherit shadow)))
+    `(log-view-message ((,c :foreground ,identifier)))
+;;;; clojure-mode
+    `(clojure-keyword-face ((,c :inherit font-lock-builtin-face)))
 ;;;; company-mode
     `(company-echo-common ((,c :inherit bold :foreground ,accent-0)))
     `(company-preview ((,c :background ,bg-dim :foreground ,fg-dim)))
@@ -748,7 +896,8 @@ Helper function for `ef-themes-preview-colors'."
     `(consult-key ((,c :inherit ef-themes-key-binding)))
     `(consult-imenu-prefix ((,c :inherit shadow)))
     `(consult-line-number ((,c :inherit shadow)))
-;;;;; corfu
+    `(consult-separator ((,c :foreground ,border)))
+;;;; corfu
     `(corfu-current ((,c :background ,bg-completion)))
     `(corfu-bar ((,c :background ,fg-main)))
     `(corfu-border ((,c :background ,bg-active)))
@@ -782,11 +931,6 @@ Helper function for `ef-themes-preview-colors'."
 ;;;; diff-hl
     `(diff-hl-change ((,c :background ,bg-changed-refine)))
     `(diff-hl-delete ((,c :background ,bg-removed-refine)))
-    `(diff-hl-dired-change ((,c :inherit diff-hl-change)))
-    `(diff-hl-dired-delete ((,c :inherit diff-hl-delete)))
-    `(diff-hl-dired-ignored ((,c :inherit dired-ignored)))
-    `(diff-hl-dired-insert ((,c :inherit diff-hl-insert)))
-    `(diff-hl-dired-unknown ((,c :inherit dired-ignored)))
     `(diff-hl-insert ((,c :background ,bg-added-refine)))
     `(diff-hl-reverted-hunk-highlight ((,c :background ,fg-main :foreground ,bg-main)))
 ;;;; diff-mode
@@ -811,11 +955,11 @@ Helper function for `ef-themes-preview-colors'."
 ;;;; dired
     `(dired-broken-symlink ((,c :inherit (error link))))
     `(dired-directory ((,c :foreground ,accent-0)))
-    `(dired-flagged ((,c :inherit error :background ,bg-err)))
+    `(dired-flagged ((,c :inherit ef-themes-mark-delete)))
     `(dired-header ((,c :inherit bold)))
     `(dired-ignored ((,c :inherit shadow)))
     `(dired-mark ((,c :foreground ,fg-intense)))
-    `(dired-marked ((,c :inherit success :background ,bg-info)))
+    `(dired-marked ((,c :inherit ef-themes-mark-select)))
     `(dired-symlink ((,c :inherit link)))
     `(dired-warning ((,c :inherit warning)))
 ;;;; dired-subtree
@@ -913,6 +1057,8 @@ Helper function for `ef-themes-preview-colors'."
     `(ediff-odd-diff-Ancestor ((,c :inherit ediff-even-diff-Ancestor)))
     `(ediff-odd-diff-B ((,c :inherit ediff-even-diff-B)))
     `(ediff-odd-diff-C ((,c :inherit ediff-even-diff-C)))
+;;;; eglot
+    `(eglot-mode-line ((,c :inherit bold :foreground ,modeline-info)))
 ;;;; eldoc
     ;; NOTE: see https://github.com/purcell/package-lint/issues/187
     (list 'eldoc-highlight-function-argument `((,c :inherit warning :background ,bg-warning)))
@@ -933,8 +1079,9 @@ Helper function for `ef-themes-preview-colors'."
 ;;;; embark
     `(embark-keybinding ((,c :inherit ef-themes-key-binding)))
     `(embark-keybinding-repeat ((,c :inherit bold)))
-    `(embark-collect-marked ((,c :inherit success :background ,bg-info)))
+    `(embark-collect-marked ((,c :inherit ef-themes-mark-select)))
     `(embark-collect-group-title ((,c :inherit bold :foreground ,name)))
+    `(embark-collect-zebra-highlight ((,c :background ,bg-alt)))
 ;;;; epa
     `(epa-field-body (( )))
     `(epa-field-name ((,c :inherit bold :foreground ,fg-dim)))
@@ -953,7 +1100,7 @@ Helper function for `ef-themes-preview-colors'."
     `(eshell-ls-missing ((,c :inherit error)))
     `(eshell-ls-product ((,c :inherit shadow)))
     `(eshell-ls-readonly ((,c :foreground ,warning)))
-    `(eshell-ls-special ((,c :foreground ,magenta)))
+    `(eshell-ls-special ((,c :foreground ,accent-3)))
     `(eshell-ls-symlink ((,c :inherit link)))
     `(eshell-ls-unreadable ((,c :inherit shadow)))
     `(eshell-prompt ((,c :inherit minibuffer-prompt)))
@@ -966,13 +1113,20 @@ Helper function for `ef-themes-preview-colors'."
     `(eww-form-submit ((,c :box ,fg-dim :background ,bg-active :foreground ,fg-intense)))
     `(eww-form-text ((,c :inherit widget-field)))
     `(eww-form-textarea ((,c :inherit eww-form-text)))
+;;;; flycheck
+    `(flycheck-error ((,c :inherit ef-themes-underline-error)))
+    `(flycheck-fringe-error ((,c :inherit ef-themes-mark-delete)))
+    `(flycheck-fringe-info ((,c :inherit ef-themes-mark-select)))
+    `(flycheck-fringe-warning ((,c :inherit ef-themes-mark-other)))
+    `(flycheck-info ((,c :inherit ef-themes-underline-info)))
+    `(flycheck-warning ((,c :inherit ef-themes-underline-warning)))
 ;;;; flymake
-    `(flymake-error ((,c :underline (:style wave :color ,underline-err))))
-    `(flymake-note ((,c :underline (:style wave :color ,underline-info))))
-    `(flymake-warning ((,c :underline (:style wave :color ,underline-warning))))
+    `(flymake-error ((,c :inherit ef-themes-underline-error)))
+    `(flymake-note ((,c :inherit ef-themes-underline-info)))
+    `(flymake-warning ((,c :inherit ef-themes-underline-warning)))
 ;;;; flyspell
-    `(flyspell-duplicate ((,c :underline (:style wave :color ,underline-warning))))
-    `(flyspell-incorrect ((,c :underline (:style wave :color ,underline-err))))
+    `(flyspell-duplicate ((,c :inherit ef-themes-underline-warning)))
+    `(flyspell-incorrect ((,c :inherit ef-themes-underline-error)))
 ;;;; font-lock
     `(font-lock-builtin-face ((,c :inherit bold :foreground ,builtin)))
     `(font-lock-comment-delimiter-face ((,c :inherit font-lock-comment-face)))
@@ -992,6 +1146,7 @@ Helper function for `ef-themes-preview-colors'."
 ;;;; git-commit
     `(git-commit-comment-action ((,c :inherit font-lock-comment-face)))
     `(git-commit-comment-branch-local ((,c :inherit font-lock-comment-face :foreground ,accent-0)))
+    `(git-commit-comment-branch-remote ((,c :inherit font-lock-comment-face :foreground ,accent-1)))
     `(git-commit-comment-heading ((,c :inherit (bold font-lock-comment-face))))
     `(git-commit-comment-file ((,c :inherit font-lock-comment-face :foreground ,name)))
     `(git-commit-keyword ((,c :foreground ,keyword)))
@@ -999,10 +1154,10 @@ Helper function for `ef-themes-preview-colors'."
     `(git-commit-overlong-summary ((,c :background ,bg-warning :foreground ,warning)))
     `(git-commit-summary ((,c :inherit bold :foreground ,accent-0)))
 ;;;; git-rebase
-    `(git-rebase-comment-hash ((,c :inherit font-lock-comment-face :foreground ,constant)))
+    `(git-rebase-comment-hash ((,c :inherit (bold font-lock-comment-face) :foreground ,identifier)))
     `(git-rebase-comment-heading  ((,c :inherit (bold font-lock-comment-face))))
     `(git-rebase-description ((,c :foreground ,fg-main)))
-    `(git-rebase-hash ((,c :foreground ,constant)))
+    `(git-rebase-hash ((,c :foreground ,identifier)))
 ;;;; gnus
     `(gnus-button ((,c :inherit button)))
     `(gnus-cite-1 ((,c :inherit message-cited-text-1)))
@@ -1114,8 +1269,12 @@ Helper function for `ef-themes-preview-colors'."
                   :background "white" :foreground "#af6f00" :inverse-video t)
                  (((class color) (min-colors 88) (background dark))
                   :background "black" :foreground "#faea00" :inverse-video t)))
+;;;; ibuffer
+    `(ibuffer-locked-buffer ((,c :foreground ,warning)))
 ;;;; image-dired
     `(image-dired-thumb-flagged ((,c :background ,err)))
+    `(image-dired-thumb-header-file-name ((,c :inherit bold)))
+    `(image-dired-thumb-header-file-size ((,c :foreground ,info)))
     `(image-dired-thumb-mark ((,c :background ,info)))
 ;;;; info
     `(Info-quoted ((,c :inherit ef-themes-fixed-pitch :foreground ,accent-0))) ; the capitalization is canonical
@@ -1134,7 +1293,7 @@ Helper function for `ef-themes-preview-colors'."
     `(isearch-group-1 ((,c :background ,bg-green :foreground ,fg-intense)))
     `(isearch-group-2 ((,c :background ,bg-magenta :foreground ,fg-intense)))
     `(lazy-highlight ((,c :background ,bg-blue :foreground ,fg-intense)))
-    `(match ((,c :background ,bg-alt :foreground ,fg-intense)))
+    `(match ((,c :background ,bg-warning)))
     `(query-replace ((,c :background ,bg-red :foreground ,fg-intense)))
 ;;;; keycast
     `(keycast-command ((,c :inherit bold)))
@@ -1165,11 +1324,10 @@ Helper function for `ef-themes-preview-colors'."
     `(magit-bisect-skip ((,c :inherit warning)))
     `(magit-blame-date (( )))
     `(magit-blame-dimmed ((,c :inherit shadow)))
-    `(magit-blame-hash ((,c :inherit shadow)))
-    `(magit-blame-heading ((,c :background ,bg-dim :extend t)))
+    `(magit-blame-hash (( )))
     `(magit-blame-highlight ((,c :background ,bg-active :foreground ,fg-intense)))
     `(magit-blame-name (( )))
-    `(magit-blame-summary (( )))
+    `(magit-blame-summary ((  )))
     `(magit-branch-local ((,c :foreground ,accent-0)))
     `(magit-branch-remote ((,c :foreground ,accent-1)))
     `(magit-branch-upstream ((,c :inherit italic)))
@@ -1185,7 +1343,7 @@ Helper function for `ef-themes-preview-colors'."
     `(magit-diff-file-heading ((,c :inherit bold :foreground ,accent-0)))
     `(magit-diff-file-heading-highlight ((,c :inherit magit-diff-file-heading :background ,bg-alt)))
     `(magit-diff-file-heading-selection ((,c :inherit bold :background ,bg-hover-alt :foreground ,fg-intense)))
-    `(magit-diff-hunk-heading ((,c :inherit bold :background ,bg-dim)))
+    `(magit-diff-hunk-heading ((,c :inherit bold :background ,bg-alt)))
     `(magit-diff-hunk-heading-highlight ((,c :inherit bold :background ,bg-active :foreground ,fg-intense)))
     `(magit-diff-hunk-heading-selection ((,c :inherit bold :background ,bg-hover-alt :foreground ,fg-intense)))
     `(magit-diff-hunk-region ((,c :inherit bold)))
@@ -1197,7 +1355,7 @@ Helper function for `ef-themes-preview-colors'."
     `(magit-diffstat-removed ((,c :inherit error)))
     `(magit-dimmed ((,c :inherit shadow)))
     `(magit-filename ((,c :foreground ,name)))
-    `(magit-hash ((,c :inherit shadow)))
+    `(magit-hash ((,c :foreground ,identifier)))
     `(magit-head ((,c :inherit magit-branch-local)))
     `(magit-header-line ((,c :inherit bold)))
     `(magit-header-line-key ((,c :inherit ef-themes-key-binding)))
@@ -1411,6 +1569,8 @@ Helper function for `ef-themes-preview-colors'."
     `(notmuch-tree-no-match-date-face ((,c :inherit shadow)))
     `(notmuch-wash-cited-text ((,c :inherit message-cited-text-1)))
     `(notmuch-wash-toggle-button ((,c :background ,bg-dim :foreground ,fg-alt)))
+;;;; olivetti
+    `(olivetti-fringe (( )))
 ;;;; orderless
     `(orderless-match-face-0 ((,c :inherit bold :foreground ,accent-0)))
     `(orderless-match-face-1 ((,c :inherit bold :foreground ,accent-1)))
@@ -1421,11 +1581,11 @@ Helper function for `ef-themes-preview-colors'."
     `(org-agenda-calendar-sexp ((,c :inherit (italic org-agenda-calendar-event))))
     `(org-agenda-clocking ((,c :background ,bg-warning :foreground ,warning)))
     `(org-agenda-column-dateline ((,c :background ,bg-alt)))
-    `(org-agenda-current-time ((,c :foreground ,variable)))
-    `(org-agenda-date ((,c :inherit ef-themes-heading-1)))
+    `(org-agenda-current-time ((,c :foreground ,fg-main)))
+    `(org-agenda-date ((,c ,@(ef-themes--heading 'agenda-date) :foreground ,date)))
     `(org-agenda-date-today ((,c :inherit org-agenda-date :underline t)))
-    `(org-agenda-date-weekend ((,c :inherit org-agenda-date)))
-    `(org-agenda-date-weekend-today ((,c :inherit org-agenda-date-today)))
+    `(org-agenda-date-weekend ((,c :inherit org-agenda-date :foreground ,err)))
+    `(org-agenda-date-weekend-today ((,c :inherit org-agenda-date-today :foreground ,err)))
     `(org-agenda-diary ((,c :inherit org-agenda-calendar-sexp)))
     `(org-agenda-dimmed-todo-face ((,c :inherit shadow)))
     `(org-agenda-done ((,c :inherit success)))
@@ -1434,9 +1594,9 @@ Helper function for `ef-themes-preview-colors'."
     `(org-agenda-filter-regexp ((,c :inherit bold :foreground ,modeline-err)))
     `(org-agenda-filter-tags ((,c :inherit bold :foreground ,modeline-err)))
     `(org-agenda-restriction-lock ((,c :background ,bg-dim :foreground ,fg-dim)))
-    `(org-agenda-structure ((,c :inherit ef-themes-heading-0)))
-    `(org-agenda-structure-filter ((,c :inherit org-agenda-structure :foreground ,rainbow-1)))
-    `(org-agenda-structure-secondary ((,c :foreground ,rainbow-1)))
+    `(org-agenda-structure ((,c ,@(ef-themes--heading 'agenda-structure) :foreground ,fg-alt)))
+    `(org-agenda-structure-filter ((,c :inherit org-agenda-structure :foreground ,warning)))
+    `(org-agenda-structure-secondary ((,c :inherit font-lock-doc-face)))
     `(org-archived ((,c :background ,bg-alt :foreground ,fg-main)))
     `(org-block ((,c :inherit ef-themes-fixed-pitch :background ,bg-inactive :extend t)))
     `(org-block-begin-line ((,c :inherit (shadow ef-themes-fixed-pitch) :background ,bg-dim :extend t)))
@@ -1444,7 +1604,7 @@ Helper function for `ef-themes-preview-colors'."
     `(org-checkbox ((,c :foreground ,warning)))
     `(org-checkbox-statistics-done ((,c :inherit org-done)))
     `(org-checkbox-statistics-todo ((,c :inherit org-todo)))
-    `(org-clock-overlay ((,c :background ,bg-alt :foreground ,red-cooler)))
+    `(org-clock-overlay ((,c :background ,bg-hover-alt)))
     `(org-code ((,c :inherit ef-themes-fixed-pitch :foreground ,accent-1)))
     `(org-column ((,c :inherit default :background ,bg-alt)))
     `(org-column-title ((,c :inherit (bold default) :underline t :background ,bg-alt)))
@@ -1543,6 +1703,15 @@ Helper function for `ef-themes-preview-colors'."
     `(package-status-installed ((,c :foreground ,fg-alt)))
     `(package-status-new ((,c :inherit success)))
     `(package-status-unsigned ((,c :inherit error)))
+;;;; perspective
+    `(persp-selected-face ((,c :inherit mode-line-emphasis)))
+;;;; powerline
+    `(powerline-active0 ((,c :background ,fg-dim :foreground ,bg-main)))
+    `(powerline-active1 ((,c :inherit mode-line-active)))
+    `(powerline-active2 ((,c :inherit mode-line-inactive)))
+    `(powerline-inactive0 ((,c :background ,bg-active :foreground ,fg-dim)))
+    `(powerline-inactive1 ((,c :background ,bg-main :foreground ,fg-dim)))
+    `(powerline-inactive2 ((,c :inherit mode-line-inactive)))
 ;;;; pulsar
     `(pulsar-blue ((,c :background ,bg-blue-subtle)))
     `(pulsar-cyan ((,c :background ,bg-cyan-subtle)))
@@ -1601,12 +1770,6 @@ Helper function for `ef-themes-preview-colors'."
     `(ruler-mode-margins ((,c :inherit ruler-mode-default :foreground ,bg-main)))
     `(ruler-mode-pad ((,c :inherit ruler-mode-default :background ,bg-alt :foreground ,fg-dim)))
     `(ruler-mode-tab-stop ((,c :inherit ruler-mode-default :foreground ,yellow)))
-;;;; selectrum
-    `(selectrum-completion-annotation ((,c :inherit completions-annotations)))
-    `(selectrum-completion-docsig ((,c :inherit completions-annotations)))
-    `(selectrum-current-candidate ((,c :background ,bg-completion)))
-    `(selectrum-group-title ((,c :inherit bold :foreground ,name)))
-    `(selectrum-mouse-highlight ((,c :inherit highlight)))
 ;;;; show-paren-mode
     `(show-paren-match ((,c :background ,bg-paren :foreground ,fg-intense)))
     `(show-paren-match-expression ((,c :background ,bg-alt)))
@@ -1687,6 +1850,30 @@ Helper function for `ef-themes-preview-colors'."
     `(transient-unreachable ((,c :inherit shadow)))
     `(transient-unreachable-key ((,c :inherit shadow)))
     `(transient-value ((,c :inherit success :background ,bg-info)))
+;;;; trashed
+    `(trashed-restored ((,c :inherit ef-themes-mark-other)))
+;;;; tree-sitter
+    `(tree-sitter-hl-face:attribute ((,c :inherit font-lock-variable-name-face)))
+    `(tree-sitter-hl-face:constant.builtin ((,c :inherit tree-sitter-hl-face:constant)))
+    `(tree-sitter-hl-face:escape ((,c :inherit font-lock-regexp-grouping-backslash)))
+    `(tree-sitter-hl-face:function ((,c :inherit font-lock-function-name-face)))
+    `(tree-sitter-hl-face:function.call ((,c :inherit tree-sitter-hl-face:function)))
+    `(tree-sitter-hl-face:label (( )))
+    `(tree-sitter-hl-face:method.call (( )))
+    `(tree-sitter-hl-face:operator ((,c :inherit bold)))
+    `(tree-sitter-hl-face:property (( )))
+    `(tree-sitter-hl-face:property.definition ((,c :inherit font-lock-variable-name-face)))
+    `(tree-sitter-hl-face:punctuation (( )))
+    `(tree-sitter-hl-face:punctuation.bracket (( )))
+    `(tree-sitter-hl-face:punctuation.delimiter (( )))
+    `(tree-sitter-hl-face:punctuation.special ((,c :inherit font-lock-regexp-grouping-construct)))
+    `(tree-sitter-hl-face:string.special ((,c :inherit tree-sitter-hl-face:string)))
+    `(tree-sitter-hl-face:tag ((,c :inherit font-lock-function-name-face)))
+    `(tree-sitter-hl-face:type.argument (( )))
+;;;; tty-menu
+    `(tty-menu-disabled-face ((,c :background ,bg-alt :foreground ,fg-dim)))
+    `(tty-menu-enabled-face ((,c :background ,bg-alt :foreground ,fg-intense)))
+    `(tty-menu-selected-face ((,c :inherit highlight)))
 ;;;; vc (vc-dir.el, vc-hooks.el)
     `(vc-dir-directory (( )))
     `(vc-dir-file ((,c :foreground ,name)))
@@ -1738,6 +1925,10 @@ Helper function for `ef-themes-preview-colors'."
     `(widget-field ((,c :background ,bg-alt :foreground ,fg-main :extend nil)))
     `(widget-inactive ((,c :inherit shadow :background ,bg-dim)))
     `(widget-single-line-field ((,c :inherit widget-field)))
+;;;; writegood-mode
+    `(writegood-duplicates-face ((,c :inherit ef-themes-underline-error)))
+    `(writegood-passive-voice-face ((,c :inherit ef-themes-underline-info)))
+    `(writegood-weasels-face ((,c :inherit ef-themes-underline-warning)))
 ;;;; woman
     `(woman-addition ((,c :foreground ,accent-2)))
     `(woman-bold ((,c :inherit bold :foreground ,accent-0)))
@@ -1750,10 +1941,21 @@ Helper function for `ef-themes-preview-colors'."
 ;;;; chart
     `(chart-face-color-list
       '( ,red-graph-0-bg ,green-graph-0-bg ,yellow-graph-0-bg ,blue-graph-0-bg ,magenta-graph-0-bg ,cyan-graph-0-bg
-         ,red-graph-1-bg ,green-graph-1-bg ,yellow-graph-1-bg ,blue-graph-1-bg ,magenta-graph-1-bg ,cyan-graph-1-bg)))
+         ,red-graph-1-bg ,green-graph-1-bg ,yellow-graph-1-bg ,blue-graph-1-bg ,magenta-graph-1-bg ,cyan-graph-1-bg))
+;;;; flymake fringe indicators
+    `(flymake-error-bitmap '(flymake-double-exclamation-mark ef-themes-mark-delete))
+    `(flymake-warning-bitmap '(exclamation-mark ef-themes-mark-other))
+    `(flymake-note-bitmap '(exclamation-mark ef-themes-mark-select))
+;;;; ibuffer
+    `(ibuffer-deletion-face 'ef-themes-mark-delete)
+    `(ibuffer-filter-group-name-face 'bold)
+    `(ibuffer-marked-face 'ef-themes-mark-select)
+    `(ibuffer-title-face 'default))
   "Custom variables for `ef-themes-theme'.")
 
 ;;; Theme macros
+
+;;;; Instantiate an Ef theme
 
 ;;;###autoload
 (defmacro ef-themes-theme (name palette)
@@ -1777,7 +1979,7 @@ Those are stored in `ef-themes-faces' and
        (custom-theme-set-faces ',name ,@ef-themes-faces)
        (custom-theme-set-variables ',name ,@ef-themes-custom-variables))))
 
-;;; Use theme colors
+;;;; Use theme colors
 
 (defmacro ef-themes-with-colors (&rest body)
   "Evaluate BODY with colors from current palette bound."
@@ -1800,6 +2002,8 @@ Those are stored in `ef-themes-faces' and
                       colors))
        (ignore c ,@colors)            ; Silence unused variable warnings
        ,@body)))
+
+;;;; Add themes from package to path
 
 ;;;###autoload
 (when load-file-name

@@ -37,19 +37,20 @@
 (eval-and-compile
   (require 'ef-themes)
 
-  (deftheme ef-day "Legible light theme with warm, varied colors (yellow, red, green, purple).")
+  (deftheme ef-day
+    "Legible light theme with warm, varied colors (yellow, red, green, purple).")
 
   (defconst ef-day-palette
     '(;; Basic tones
       (bg-main     "#fff5ea")
       (fg-main     "#584141")
-      (bg-dim      "#f3ebdc")
+      (bg-dim      "#f2e9db")
       (fg-dim      "#63728f")
       (bg-alt      "#e9e0d8")
       (fg-alt      "#8f5f4a")
 
-      (bg-active   "#d9d0c8")
-      (bg-inactive "#f9f1e8")
+      (bg-active   "#c9c0b8")
+      (bg-inactive "#f7efe6")
 
       ;; Basic hues for foreground values
       (red             "#ba2d2f")
@@ -128,11 +129,11 @@
       (bg-hl-line    "#f9e2b2")
       (bg-region     "#f0d2df")
       (bg-paren      "#8fcfdf")
-      (bg-err        "#ffddee") ; check with err
+      (bg-err        "#ffdde5") ; check with err
       (bg-warning    "#ffe0aa") ; check with warning
       (bg-info       "#ddf5cc") ; check with info
 
-      (border        "#cdc2bb")
+      (border        "#c8bdb6")
       (cursor        "#cf1f00")
       (fg-intense    "#000000")
 
@@ -144,9 +145,12 @@
       (underline-warning "#bf5f00")
       (underline-info    "#02af52")
 
+      ;; Conditional hues
+      (bg-region-intense "#dfc39a")
+
       ;; Mappings
       (err red-warmer)
-      (warning yellow-warmer)
+      (warning yellow)
       (info green)
 
       (link cyan-warmer)
@@ -154,6 +158,7 @@
       (date cyan-cooler)
       (name yellow)
       (keybind red-warmer)
+      (identifier magenta-faint)
       (prompt yellow)
 
       (builtin red-cooler)
@@ -178,7 +183,7 @@
       (mail-0 red)
       (mail-1 green)
       (mail-2 yellow)
-      (mail-3 green-cooler)
+      (mail-3 cyan)
       (mail-4 yellow-cooler)
       (mail-5 blue)
 
@@ -196,5 +201,8 @@
   (ef-themes-theme ef-day ef-day-palette)
 
   (provide-theme 'ef-day))
+
+;;;###theme-autoload
+(put 'ef-day 'theme-properties '(:background-mode light :kind color-scheme :family ef))
 
 ;;; ef-day-theme.el ends here

@@ -1,6 +1,6 @@
 ;;; ef-cherie-theme.el --- Legible dark theme with warm colors (mostly pink, magenta, gold) -*- lexical-binding:t -*-
 
-;; Copyright (C) 2022  Free Software Foundation, Inc.
+;; Copyright (C) 2022-2023  Free Software Foundation, Inc.
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; Maintainer: Ef-Themes Development <~protesilaos/ef-themes@lists.sr.ht>
@@ -97,14 +97,17 @@
       (bg-added          "#00351f")
       (bg-added-faint    "#002410")
       (bg-added-refine   "#034d2f")
+      (fg-added          "#a0e0a0")
 
       (bg-changed        "#363300")
       (bg-changed-faint  "#2a1f00")
       (bg-changed-refine "#4a4a00")
+      (fg-changed        "#efef80")
 
       (bg-removed        "#510c28")
       (bg-removed-faint  "#340a14")
       (bg-removed-refine "#701a35")
+      (fg-removed        "#ffbfbf")
 
       ;; Graphs
       (red-graph-0-bg     "#b52c2c")
@@ -156,6 +159,7 @@
       (link magenta-cooler)
       (link-alt yellow)
       (date magenta)
+      (weekend red) ; for M-x calendar and Org agenda
       (name yellow-cooler)
       (keybind yellow-warmer)
       (identifier magenta-faint)
@@ -196,9 +200,24 @@
       (rainbow-6 red-cooler)
       (rainbow-7 cyan-warmer)
       (rainbow-8 magenta-cooler))
-    "The `ef-cherie' palette.")
+    "The `ef-cherie' palette.
+Color values have the form (COLOR-NAME HEX-VALUE) with the former
+as a symbol and the latter as a string.
 
-  (ef-themes-theme ef-cherie ef-cherie-palette)
+Semantic color mappings have the form (MAPPING-NAME COLOR-NAME)
+with both as symbols.  The latter is a color that already exists
+in the palette and is associated with a HEX-VALUE.")
+
+  (defvar ef-cherie-palette-overrides nil
+    "Overrides for `ef-cherie-palette'.
+
+Mirror the elements of the aforementioned palette, overriding
+their value.
+
+For overrides that are shared across all of the Ef themes,
+refer to `ef-themes-common-palette-overrides'.")
+
+  (ef-themes-theme ef-cherie ef-cherie-palette ef-cherie-palette-overrides)
 
   (provide-theme 'ef-cherie))
 

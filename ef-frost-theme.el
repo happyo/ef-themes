@@ -1,6 +1,6 @@
 ;;; ef-frost-theme.el --- Legible light theme with blue, cyan, teal, purple colors -*- lexical-binding:t -*-
 
-;; Copyright (C) 2022  Free Software Foundation, Inc.
+;; Copyright (C) 2022-2023  Free Software Foundation, Inc.
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; Maintainer: Ef-Themes Development <~protesilaos/ef-themes@lists.sr.ht>
@@ -97,14 +97,17 @@
       (bg-added          "#c9ffea")
       (bg-added-faint    "#d7fff5")
       (bg-added-refine   "#b3efdf")
+      (fg-added          "#004840")
 
       (bg-changed        "#ffdfb9")
       (bg-changed-faint  "#ffefcb")
       (bg-changed-refine "#ffcfa0")
+      (fg-changed        "#553d00")
 
       (bg-removed        "#ffd6e0")
       (bg-removed-faint  "#ffe9e6")
       (bg-removed-refine "#f5bfc8")
+      (fg-removed        "#8f1313")
 
       ;; Graphs
       (red-graph-0-bg     "#ef7969")
@@ -156,6 +159,7 @@
       (link cyan)
       (link-alt magenta)
       (date cyan-cooler)
+      (weekend red-faint) ; for M-x calendar and Org agenda
       (name cyan-warmer)
       (keybind blue-cooler)
       (identifier magenta-faint)
@@ -196,9 +200,24 @@
       (rainbow-6 green-warmer)
       (rainbow-7 magenta)
       (rainbow-8 cyan-warmer))
-    "The `ef-frost' palette.")
+    "The `ef-frost' palette.
+Color values have the form (COLOR-NAME HEX-VALUE) with the former
+as a symbol and the latter as a string.
 
-  (ef-themes-theme ef-frost ef-frost-palette)
+Semantic color mappings have the form (MAPPING-NAME COLOR-NAME)
+with both as symbols.  The latter is a color that already exists
+in the palette and is associated with a HEX-VALUE.")
+
+  (defvar ef-frost-palette-overrides nil
+    "Overrides for `ef-frost-palette'.
+
+Mirror the elements of the aforementioned palette, overriding
+their value.
+
+For overrides that are shared across all of the Ef themes,
+refer to `ef-themes-common-palette-overrides'.")
+
+  (ef-themes-theme ef-frost ef-frost-palette ef-frost-palette-overrides)
 
   (provide-theme 'ef-frost))
 

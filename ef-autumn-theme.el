@@ -1,6 +1,6 @@
 ;;; ef-autumn-theme.el --- Legible dark theme with warm, varied colors (red, yellow, green, teal) -*- lexical-binding:t -*-
 
-;; Copyright (C) 2022  Free Software Foundation, Inc.
+;; Copyright (C) 2022-2023  Free Software Foundation, Inc.
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; Maintainer: Ef-Themes Development <~protesilaos/ef-themes@lists.sr.ht>
@@ -97,14 +97,17 @@
       (bg-added          "#17360f")
       (bg-added-faint    "#0a2900")
       (bg-added-refine   "#204810")
+      (fg-added          "#a0e0a0")
 
       (bg-changed        "#363300")
       (bg-changed-faint  "#2a1f00")
       (bg-changed-refine "#4a4a00")
+      (fg-changed        "#efef80")
 
       (bg-removed        "#4b120a")
       (bg-removed-faint  "#3a0a00")
       (bg-removed-refine "#6f1a16")
+      (fg-removed        "#ffbfbf")
 
       ;; Graphs
       (red-graph-0-bg     "#b52c2c")
@@ -156,6 +159,7 @@
       (link yellow)
       (link-alt cyan-cooler)
       (date yellow-cooler)
+      (weekend red) ; for M-x calendar and Org agenda
       (name green-warmer)
       (keybind red-warmer)
       (identifier magenta-faint)
@@ -196,9 +200,24 @@
       (rainbow-6 red-cooler)
       (rainbow-7 green)
       (rainbow-8 yellow))
-    "The `ef-autumn' palette.")
+    "The `ef-autumn' palette.
+Color values have the form (COLOR-NAME HEX-VALUE) with the former
+as a symbol and the latter as a string.
 
-  (ef-themes-theme ef-autumn ef-autumn-palette)
+Semantic color mappings have the form (MAPPING-NAME COLOR-NAME)
+with both as symbols.  The latter is a color that already exists
+in the palette and is associated with a HEX-VALUE.")
+
+  (defvar ef-autumn-palette-overrides nil
+    "Overrides for `ef-autumn-palette'.
+
+Mirror the elements of the aforementioned palette, overriding
+their value.
+
+For overrides that are shared across all of the Ef themes,
+refer to `ef-themes-common-palette-overrides'.")
+
+  (ef-themes-theme ef-autumn ef-autumn-palette ef-autumn-palette-overrides)
 
   (provide-theme 'ef-autumn))
 

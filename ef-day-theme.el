@@ -1,6 +1,6 @@
 ;;; ef-day-theme.el --- Legible light theme with warm, varied colors (yellow, red, green, purple) -*- lexical-binding:t -*-
 
-;; Copyright (C) 2022  Free Software Foundation, Inc.
+;; Copyright (C) 2022-2023  Free Software Foundation, Inc.
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; Maintainer: Ef-Themes Development <~protesilaos/ef-themes@lists.sr.ht>
@@ -97,14 +97,17 @@
       (bg-added          "#ccefcf")
       (bg-added-faint    "#e0f3e0")
       (bg-added-refine   "#bae0c0")
+      (fg-added          "#005000")
 
       (bg-changed        "#ffe5b9")
       (bg-changed-faint  "#ffefc5")
       (bg-changed-refine "#ffd09f")
+      (fg-changed        "#553d00")
 
       (bg-removed        "#ffd4d8")
       (bg-removed-faint  "#ffe3e3")
       (bg-removed-refine "#ffc0ca")
+      (fg-removed        "#8f1313")
 
       ;; Graphs
       (red-graph-0-bg     "#ef7969")
@@ -156,6 +159,7 @@
       (link cyan-warmer)
       (link-alt green-warmer)
       (date cyan-cooler)
+      (weekend red) ; for M-x calendar and Org agenda
       (name yellow)
       (keybind red-warmer)
       (identifier magenta-faint)
@@ -196,9 +200,24 @@
       (rainbow-6 magenta-cooler)
       (rainbow-7 red-cooler)
       (rainbow-8 green-cooler))
-    "The `ef-day' palette.")
+    "The `ef-day' palette.
+Color values have the form (COLOR-NAME HEX-VALUE) with the former
+as a symbol and the latter as a string.
 
-  (ef-themes-theme ef-day ef-day-palette)
+Semantic color mappings have the form (MAPPING-NAME COLOR-NAME)
+with both as symbols.  The latter is a color that already exists
+in the palette and is associated with a HEX-VALUE.")
+
+  (defvar ef-day-palette-overrides nil
+    "Overrides for `ef-day-palette'.
+
+Mirror the elements of the aforementioned palette, overriding
+their value.
+
+For overrides that are shared across all of the Ef themes,
+refer to `ef-themes-common-palette-overrides'.")
+
+  (ef-themes-theme ef-day ef-day-palette ef-day-palette-overrides)
 
   (provide-theme 'ef-day))
 

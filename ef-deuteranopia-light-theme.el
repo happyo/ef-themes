@@ -1,6 +1,6 @@
 ;;; ef-deuteranopia-light-theme.el --- Legible light theme, optimized for red-green color deficiency -*- lexical-binding:t -*-
 
-;; Copyright (C) 2022  Free Software Foundation, Inc.
+;; Copyright (C) 2022-2023  Free Software Foundation, Inc.
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; Maintainer: Ef-Themes Development <~protesilaos/ef-themes@lists.sr.ht>
@@ -100,14 +100,17 @@
       (bg-added          "#dbdbff")
       (bg-added-faint    "#e4e4ff")
       (bg-added-refine   "#c0c0ef")
+      (fg-added          "#333399")
 
       (bg-changed        "#eecfdf")
       (bg-changed-faint  "#f0dde5")
       (bg-changed-refine "#e0b0d0")
+      (fg-changed        "#6f1343")
 
       (bg-removed        "#fff0af")
       (bg-removed-faint  "#efefcb")
       (bg-removed-refine "#f0da88")
+      (fg-removed        "#553d00")
 
       ;; Graphs
       (red-graph-0-bg     "#b0b029")
@@ -159,6 +162,7 @@
       (link blue)
       (link-alt yellow-cooler)
       (date yellow-cooler)
+      (weekend blue-faint) ; for M-x calendar and Org agenda
       (name blue-warmer)
       (keybind yellow-warmer)
       (identifier cyan-faint)
@@ -199,9 +203,24 @@
       (rainbow-6 blue-faint)
       (rainbow-7 yellow-faint)
       (rainbow-8 cyan))
-    "The `ef-deuteranopia-light' palette.")
+    "The `ef-deuteranopia-light' palette.
+Color values have the form (COLOR-NAME HEX-VALUE) with the former
+as a symbol and the latter as a string.
 
-  (ef-themes-theme ef-deuteranopia-light ef-deuteranopia-light-palette)
+Semantic color mappings have the form (MAPPING-NAME COLOR-NAME)
+with both as symbols.  The latter is a color that already exists
+in the palette and is associated with a HEX-VALUE.")
+
+  (defvar ef-deuteranopia-light-palette-overrides nil
+    "Overrides for `ef-deuteranopia-light-palette'.
+
+Mirror the elements of the aforementioned palette, overriding
+their value.
+
+For overrides that are shared across all of the Ef themes,
+refer to `ef-themes-common-palette-overrides'.")
+
+  (ef-themes-theme ef-deuteranopia-light ef-deuteranopia-light-palette ef-deuteranopia-light-palette-overrides)
 
   (provide-theme 'ef-deuteranopia-light))
 

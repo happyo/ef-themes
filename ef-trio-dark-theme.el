@@ -1,6 +1,6 @@
 ;;; ef-trio-dark-theme.el --- Legible dark theme with magenta, blue, teal colors -*- lexical-binding:t -*-
 
-;; Copyright (C) 2022  Free Software Foundation, Inc.
+;; Copyright (C) 2022-2023  Free Software Foundation, Inc.
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; Maintainer: Ef-Themes Development <~protesilaos/ef-themes@lists.sr.ht>
@@ -97,14 +97,17 @@
       (bg-added          "#00371f")
       (bg-added-faint    "#002918")
       (bg-added-refine   "#004c2f")
+      (fg-added          "#a0e0a0")
 
       (bg-changed        "#363300")
       (bg-changed-faint  "#2a1f00")
       (bg-changed-refine "#4a4a00")
+      (fg-changed        "#efef80")
 
       (bg-removed        "#450f1f")
       (bg-removed-faint  "#2f060f")
       (bg-removed-refine "#641426")
+      (fg-removed        "#ffbfbf")
 
       ;; Graphs
       (red-graph-0-bg     "#b52c2c")
@@ -156,6 +159,7 @@
       (link cyan)
       (link-alt magenta)
       (date cyan-cooler)
+      (weekend red-faint) ; for M-x calendar and Org agenda
       (name blue)
       (keybind magenta-warmer)
       (identifier red-faint)
@@ -196,9 +200,24 @@
       (rainbow-6 magenta-cooler)
       (rainbow-7 cyan-warmer)
       (rainbow-8 yellow-cooler))
-    "The `ef-trio-dark' palette.")
+    "The `ef-trio-dark' palette.
+Color values have the form (COLOR-NAME HEX-VALUE) with the former
+as a symbol and the latter as a string.
 
-  (ef-themes-theme ef-trio-dark ef-trio-dark-palette)
+Semantic color mappings have the form (MAPPING-NAME COLOR-NAME)
+with both as symbols.  The latter is a color that already exists
+in the palette and is associated with a HEX-VALUE.")
+
+  (defvar ef-trio-dark-palette-overrides nil
+    "Overrides for `ef-trio-dark-palette'.
+
+Mirror the elements of the aforementioned palette, overriding
+their value.
+
+For overrides that are shared across all of the Ef themes,
+refer to `ef-themes-common-palette-overrides'.")
+
+  (ef-themes-theme ef-trio-dark ef-trio-dark-palette ef-trio-dark-palette-overrides)
 
   (provide-theme 'ef-trio-dark))
 

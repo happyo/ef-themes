@@ -1,6 +1,6 @@
 ;;; ef-bio-theme.el --- Legible dark theme with green, teal, blue, purple colors -*- lexical-binding:t -*-
 
-;; Copyright (C) 2022  Free Software Foundation, Inc.
+;; Copyright (C) 2022-2023  Free Software Foundation, Inc.
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; Maintainer: Ef-Themes Development <~protesilaos/ef-themes@lists.sr.ht>
@@ -97,14 +97,17 @@
       (bg-added          "#003b1f")
       (bg-added-faint    "#002a10")
       (bg-added-refine   "#03512f")
+      (fg-added          "#a0e0a0")
 
       (bg-changed        "#363300")
       (bg-changed-faint  "#2a1f00")
       (bg-changed-refine "#4a4a00")
+      (fg-changed        "#efef80")
 
       (bg-removed        "#4e1119")
       (bg-removed-faint  "#380a0f")
       (bg-removed-refine "#751a1f")
+      (fg-removed        "#ffbfbf")
 
       ;; Graphs
       (red-graph-0-bg     "#b52c2c")
@@ -156,6 +159,7 @@
       (link green-cooler)
       (link-alt cyan-cooler)
       (date cyan-cooler)
+      (weekend magenta) ; for M-x calendar and Org agenda
       (name green)
       (keybind green)
       (identifier magenta-faint)
@@ -196,9 +200,24 @@
       (rainbow-6 blue)
       (rainbow-7 cyan)
       (rainbow-8 magenta))
-    "The `ef-bio' palette.")
+    "The `ef-bio' palette.
+Color values have the form (COLOR-NAME HEX-VALUE) with the former
+as a symbol and the latter as a string.
 
-  (ef-themes-theme ef-bio ef-bio-palette)
+Semantic color mappings have the form (MAPPING-NAME COLOR-NAME)
+with both as symbols.  The latter is a color that already exists
+in the palette and is associated with a HEX-VALUE.")
+
+  (defvar ef-bio-palette-overrides nil
+    "Overrides for `ef-bio-palette'.
+
+Mirror the elements of the aforementioned palette, overriding
+their value.
+
+For overrides that are shared across all of the Ef themes,
+refer to `ef-themes-common-palette-overrides'.")
+
+  (ef-themes-theme ef-bio ef-bio-palette ef-bio-palette-overrides)
 
   (provide-theme 'ef-bio))
 

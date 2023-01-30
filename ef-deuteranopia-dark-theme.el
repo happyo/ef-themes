@@ -1,6 +1,6 @@
 ;;; ef-deuteranopia-dark-theme.el --- Legible dark theme, optimized for red-green color deficiency -*- lexical-binding:t -*-
 
-;; Copyright (C) 2022  Free Software Foundation, Inc.
+;; Copyright (C) 2022-2023  Free Software Foundation, Inc.
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; Maintainer: Ef-Themes Development <~protesilaos/ef-themes@lists.sr.ht>
@@ -100,14 +100,17 @@
       (bg-added          "#00234f")
       (bg-added-faint    "#00143f")
       (bg-added-refine   "#03395f")
+      (fg-added          "#c4d5ff")
 
       (bg-changed        "#2f123f")
       (bg-changed-faint  "#1f022f")
       (bg-changed-refine "#3f224f")
+      (fg-changed        "#e3cfff")
 
       (bg-removed        "#323200")
       (bg-removed-faint  "#281a00")
       (bg-removed-refine "#484800")
+      (fg-removed        "#d4d48f")
 
       ;; Graphs
       (red-graph-0-bg     "#705c3c")
@@ -159,6 +162,7 @@
       (link blue)
       (link-alt yellow-cooler)
       (date yellow-cooler)
+      (weekend blue-faint) ; for M-x calendar and Org agenda
       (name blue-warmer)
       (keybind yellow-warmer)
       (identifier cyan-faint)
@@ -199,9 +203,24 @@
       (rainbow-6 yellow-faint)
       (rainbow-7 blue-faint)
       (rainbow-8 magenta-faint))
-    "The `ef-deuteranopia-dark' palette.")
+    "The `ef-deuteranopia-dark' palette.
+Color values have the form (COLOR-NAME HEX-VALUE) with the former
+as a symbol and the latter as a string.
 
-  (ef-themes-theme ef-deuteranopia-dark ef-deuteranopia-dark-palette)
+Semantic color mappings have the form (MAPPING-NAME COLOR-NAME)
+with both as symbols.  The latter is a color that already exists
+in the palette and is associated with a HEX-VALUE.")
+
+  (defvar ef-deuteranopia-dark-palette-overrides nil
+    "Overrides for `ef-deuteranopia-dark-palette'.
+
+Mirror the elements of the aforementioned palette, overriding
+their value.
+
+For overrides that are shared across all of the Ef themes,
+refer to `ef-themes-common-palette-overrides'.")
+
+  (ef-themes-theme ef-deuteranopia-dark ef-deuteranopia-dark-palette ef-deuteranopia-dark-palette-overrides)
 
   (provide-theme 'ef-deuteranopia-dark))
 

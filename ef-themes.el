@@ -1,6 +1,6 @@
 ;;; ef-themes.el --- Colorful and legible themes -*- lexical-binding:t -*-
 
-;; Copyright (C) 2022  Free Software Foundation, Inc.
+;; Copyright (C) 2022-2023  Free Software Foundation, Inc.
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; Maintainer: Ef-Themes Development <~protesilaos/ef-themes@lists.sr.ht>
@@ -94,6 +94,26 @@ This is used by the commands `ef-themes-select' and
   :type 'hook
   :package-version '(ef-themes . "0.2.0")
   :group 'ef-themes)
+
+(defcustom ef-themes-disable-other-themes t
+  "Disable all other themes when loading a Ef theme.
+
+When the value is non-nil, the commands `ef-themes-toggle' and
+`ef-themes-select' will disable all other themes while loading
+the specified Ef theme.  This is done to ensure that Emacs does
+not blend two or more themes: such blends lead to awkward results
+that undermine the work of the designer.
+
+When the value is nil, the aforementioned commands will only
+disable other themes within the Ef collection.
+
+This option is provided because Emacs themes are not necessarily
+limited to colors/faces: they can consist of an arbitrary set of
+customizations.  Users who use such customization bundles must
+set this variable to a nil value."
+  :group 'ef-themes
+  :package-version '(ef-themes . "0.11.0")
+  :type 'boolean)
 
 (defcustom ef-themes-to-toggle nil
   "Specify two `ef-themes' for `ef-themes-toggle' command.
@@ -298,6 +318,18 @@ Other examples:
               (const :tag "More intense background (also override text color)" accented))
   :link '(info-link "(ef-themes) Style of region highlight"))
 
+;; TODO 2022-12-30: Make the palette overrides a `defcustom'
+(defvar ef-themes-common-palette-overrides nil
+  "Set palette overrides for all the Ef themes.
+
+Mirror the elements of a theme's palette, overriding their value.
+The palette variables are named THEME-NAME-palette, while
+individual theme overrides are THEME-NAME-palette-overrides.  The
+THEME-NAME is one of the symbols in `ef-themes-collection'.
+
+Individual theme overrides take precedence over these common
+overrides.")
+
 ;;; Helpers for user options
 
 (defun ef-themes--warn (option)
@@ -325,10 +357,6 @@ Other examples:
   (when ef-themes-variable-pitch-ui
     (list :inherit 'variable-pitch)))
 
-(defun ef-themes--key-cdr (key alist)
-  "Get cdr of KEY in ALIST."
-  (cdr (assoc key alist)))
-
 (defun ef-themes--alist-or-seq (properties alist-key seq-pred seq-default)
   "Return value from alist or sequence.
 Check PROPERTIES for an alist value that corresponds to
@@ -349,8 +377,8 @@ sequence given SEQ-PRED, using SEQ-DEFAULT as a fallback."
 
 (defun ef-themes--heading (level)
   "Conditional styles for `ef-themes-headings' per LEVEL heading."
-  (let* ((key (ef-themes--key-cdr level ef-themes-headings))
-         (style (or key (ef-themes--key-cdr t ef-themes-headings)))
+  (let* ((key (alist-get level ef-themes-headings))
+         (style (or key (alist-get t ef-themes-headings)))
          (style-listp (listp style))
          (properties style)
          (var (when (memq 'variable-pitch properties) 'variable-pitch))
@@ -420,15 +448,34 @@ foreground that is used with any of the intense backgrounds."
   "Return first enabled Ef theme."
   (car (ef-themes--list-enabled-themes)))
 
-(defun ef-themes--palette (theme)
-  "Return THEME palette as a symbol."
-  (when theme
-    (intern (format "%s-palette" theme))))
+(defun ef-themes--palette-symbol (theme &optional overrides)
+  "Return THEME palette as a symbol.
+With optional OVERRIDES, return THEME palette overrides as a
+symbol."
+  (when-let ((suffix (cond
+                      ((and theme overrides)
+                       "palette-overrides")
+                      (theme
+                       "palette"))))
+    (intern (format "%s-%s" theme suffix))))
 
-(defun ef-themes--current-theme-palette ()
-  "Return palette of active Ef theme, else produce `user-error'."
-  (if-let* ((palette (ef-themes--palette (ef-themes--current-theme))))
-      (symbol-value palette)
+(defun ef-themes--palette-value (theme &optional overrides)
+  "Return palette value of THEME with optional OVERRIDES."
+  (let ((base-value (symbol-value (ef-themes--palette-symbol theme))))
+    (if overrides
+        (append (symbol-value (ef-themes--palette-symbol theme :overrides))
+                ef-themes-common-palette-overrides
+                base-value)
+      base-value)))
+
+(defun ef-themes--current-theme-palette (&optional overrides)
+  "Return palette value of active Ef theme, else produce `user-error'.
+With optional OVERRIDES return palette value plus whatever
+overrides."
+  (if-let ((theme (ef-themes--current-theme)))
+      (if overrides
+          (ef-themes--palette-value theme :overrides)
+        (ef-themes--palette-value theme))
     (user-error "No enabled Ef theme could be found")))
 
 (defun ef-themes--choose-subset ()
@@ -468,10 +515,21 @@ accordingly."
       nil t nil
       'ef-themes--select-theme-history))))
 
+(defun ef-themes--disable-themes ()
+  "Disable themes per `ef-themes-disable-other-themes'."
+  (mapc #'disable-theme
+        (if ef-themes-disable-other-themes
+            custom-enabled-themes
+          (ef-themes--list-known-themes))))
+
 (defun ef-themes--load-theme (theme)
   "Load THEME while disabling other Ef themes.
-Run `ef-themes-post-load-hook'."
-  (mapc #'disable-theme (ef-themes--list-known-themes))
+Which themes are disabled is determined by the user option
+`ef-themes-disable-other-themes'.
+
+Run the `ef-themes-post-load-hook' as the final step after
+loading the THEME."
+  (ef-themes--disable-themes)
   (load-theme theme :no-confirm)
   (run-hooks 'ef-themes-post-load-hook))
 
@@ -557,7 +615,7 @@ symbol."
 Routine for `ef-themes-preview-colors'."
   (let ((palette (seq-remove (lambda (cell)
                                (symbolp (cadr cell)))
-                             (symbol-value (ef-themes--palette theme))))
+                             (ef-themes--palette-value theme :overrides)))
         (current-buffer buffer)
         (current-theme theme))
     (with-help-window buffer
@@ -824,7 +882,7 @@ Helper function for `ef-themes-preview-colors'."
     `(calendar-month-header ((,c :inherit bold)))
     `(calendar-today ((,c :inherit bold :underline t)))
     `(calendar-weekday-header ((,c :foreground ,date)))
-    `(calendar-weekend-header ((,c :foreground ,err)))
+    `(calendar-weekend-header ((,c :foreground ,weekend)))
     `(diary ((,c :background ,bg-dim :foreground ,accent-0)))
     `(diary-anniversary ((,c :foreground ,accent-1)))
     `(diary-time ((,c :foreground ,date)))
@@ -1334,23 +1392,23 @@ Helper function for `ef-themes-preview-colors'."
     `(magit-branch-warning ((,c :inherit warning)))
     `(magit-cherry-equivalent ((,c :foreground ,magenta)))
     `(magit-cherry-unmatched ((,c :foreground ,cyan)))
-    `(magit-diff-added ((,c :background ,bg-added-faint)))
-    `(magit-diff-added-highlight ((,c :background ,bg-added)))
-    `(magit-diff-base ((,c :background ,bg-changed-faint)))
-    `(magit-diff-base-highlight ((,c :background ,bg-changed)))
+    `(magit-diff-added ((,c :background ,bg-added-faint :foreground ,fg-added)))
+    `(magit-diff-added-highlight ((,c :background ,bg-added :foreground ,fg-added)))
+    `(magit-diff-base ((,c :background ,bg-changed-faint :foreground ,fg-changed)))
+    `(magit-diff-base-highlight ((,c :background ,bg-changed :foreground ,fg-changed)))
     `(magit-diff-context ((,c :inherit shadow)))
     `(magit-diff-context-highlight ((,c :background ,bg-dim)))
     `(magit-diff-file-heading ((,c :inherit bold :foreground ,accent-0)))
     `(magit-diff-file-heading-highlight ((,c :inherit magit-diff-file-heading :background ,bg-alt)))
     `(magit-diff-file-heading-selection ((,c :inherit bold :background ,bg-hover-alt :foreground ,fg-intense)))
-    `(magit-diff-hunk-heading ((,c :inherit bold :background ,bg-alt)))
+    `(magit-diff-hunk-heading ((,c :background ,bg-alt)))
     `(magit-diff-hunk-heading-highlight ((,c :inherit bold :background ,bg-active :foreground ,fg-intense)))
     `(magit-diff-hunk-heading-selection ((,c :inherit bold :background ,bg-hover-alt :foreground ,fg-intense)))
     `(magit-diff-hunk-region ((,c :inherit bold)))
     `(magit-diff-lines-boundary ((,c :background ,fg-intense)))
     `(magit-diff-lines-heading ((,c :background ,fg-alt :foreground ,bg-alt)))
-    `(magit-diff-removed ((,c :background ,bg-removed-faint)))
-    `(magit-diff-removed-highlight ((,c :background ,bg-removed)))
+    `(magit-diff-removed ((,c :background ,bg-removed-faint :foreground ,fg-removed)))
+    `(magit-diff-removed-highlight ((,c :background ,bg-removed :foreground ,fg-removed)))
     `(magit-diffstat-added ((,c :inherit success)))
     `(magit-diffstat-removed ((,c :inherit error)))
     `(magit-dimmed ((,c :inherit shadow)))
@@ -1548,7 +1606,7 @@ Helper function for `ef-themes-preview-colors'."
     `(notmuch-crypto-signature-good-key ((,c :inherit success)))
     `(notmuch-crypto-signature-unknown ((,c :inherit warning)))
     `(notmuch-jump-key ((,c :inherit ef-themes-key-binding)))
-    `(notmuch-message-summary-face ((,c :inherit bold :background ,bg-dim)))
+    `(notmuch-message-summary-face ((,c :inherit bold :background ,bg-alt)))
     `(notmuch-search-count ((,c :foreground ,fg-dim)))
     `(notmuch-search-date ((,c :foreground ,date)))
     `(notmuch-search-flagged-face ((,c :foreground ,err)))
@@ -1584,11 +1642,11 @@ Helper function for `ef-themes-preview-colors'."
     `(org-agenda-current-time ((,c :foreground ,fg-main)))
     `(org-agenda-date ((,c ,@(ef-themes--heading 'agenda-date) :foreground ,date)))
     `(org-agenda-date-today ((,c :inherit org-agenda-date :underline t)))
-    `(org-agenda-date-weekend ((,c :inherit org-agenda-date :foreground ,err)))
-    `(org-agenda-date-weekend-today ((,c :inherit org-agenda-date-today :foreground ,err)))
+    `(org-agenda-date-weekend ((,c :inherit org-agenda-date :foreground ,weekend)))
+    `(org-agenda-date-weekend-today ((,c :inherit org-agenda-date-today :foreground ,weekend)))
     `(org-agenda-diary ((,c :inherit org-agenda-calendar-sexp)))
     `(org-agenda-dimmed-todo-face ((,c :inherit shadow)))
-    `(org-agenda-done ((,c :inherit success)))
+    `(org-agenda-done ((,c :inherit org-done)))
     `(org-agenda-filter-category ((,c :inherit bold :foreground ,modeline-err)))
     `(org-agenda-filter-effort ((,c :inherit bold :foreground ,modeline-err)))
     `(org-agenda-filter-regexp ((,c :inherit bold :foreground ,modeline-err)))
@@ -1698,6 +1756,7 @@ Helper function for `ef-themes-preview-colors'."
     `(package-status-built-in ((,c :foreground ,builtin)))
     `(package-status-dependency ((,c :foreground ,warning)))
     `(package-status-disabled ((,c :inherit error :strike-through t)))
+    `(package-status-from-source ((,c :foreground ,type)))
     `(package-status-held ((,c :foreground ,warning)))
     `(package-status-incompat ((,c :inherit warning)))
     `(package-status-installed ((,c :foreground ,fg-alt)))
@@ -1955,26 +2014,47 @@ Helper function for `ef-themes-preview-colors'."
 
 ;;; Theme macros
 
+(defun ef-themes--retrieve-palette-value (color palette)
+  "Return COLOR from PALETTE.
+Use recursion until COLOR is retrieved as a string.  Refrain from
+doing so if the value of COLOR is not a key in the PALETTE.
+
+Return `unspecified' if the value of COLOR cannot be determined.
+This symbol is accepted by faces and is thus harmless.
+
+This function is used in the macros `ef-themes-theme',
+`ef-themes-with-colors'."
+  (let ((value (car (alist-get color palette))))
+    (cond
+     ((or (stringp value)
+          (eq value 'unspecified))
+      value)
+     ((and (symbolp value)
+           (memq value (mapcar #'car palette)))
+      (ef-themes--retrieve-palette-value value palette))
+     (t
+      'unspecified))))
+
 ;;;; Instantiate an Ef theme
 
 ;;;###autoload
-(defmacro ef-themes-theme (name palette)
+(defmacro ef-themes-theme (name palette &optional overrides)
   "Bind NAME's color PALETTE around face specs and variables.
 Face specifications are passed to `custom-theme-set-faces'.
 While variables are handled by `custom-theme-set-variables'.
 Those are stored in `ef-themes-faces' and
-`ef-themes-custom-variables' respectively."
+`ef-themes-custom-variables' respectively.
+
+Optional OVERRIDES are appended to PALETTE, overriding
+corresponding entries."
   (declare (indent 0))
   (let ((sym (gensym))
         (colors (mapcar #'car (symbol-value palette))))
     `(let* ((c '((class color) (min-colors 256)))
-            (,sym ,palette)
+            (,sym (append ,overrides ef-themes-common-palette-overrides ,palette))
             ,@(mapcar (lambda (color)
                         (list color
-                              `(let* ((value (car (alist-get ',color ,sym))))
-                                 (if (stringp value)
-                                     value
-                                   (car (alist-get value ,sym))))))
+                              `(ef-themes--retrieve-palette-value ',color ,sym)))
                       colors))
        (custom-theme-set-faces ',name ,@ef-themes-faces)
        (custom-theme-set-variables ',name ,@ef-themes-custom-variables))))
@@ -1992,13 +2072,10 @@ Those are stored in `ef-themes-faces' and
          ;; inside a function.
          (colors (mapcar #'car (ef-themes--current-theme-palette))))
     `(let* ((c '((class color) (min-colors 256)))
-            (,sym (ef-themes--current-theme-palette))
+            (,sym (ef-themes--current-theme-palette :overrides))
             ,@(mapcar (lambda (color)
                         (list color
-                              `(let* ((value (car (alist-get ',color ,sym))))
-                                 (if (stringp value)
-                                     value
-                                   (car (alist-get value ,sym))))))
+                              `(ef-themes--retrieve-palette-value ',color ,sym)))
                       colors))
        (ignore c ,@colors)            ; Silence unused variable warnings
        ,@body)))

@@ -1,6 +1,6 @@
 ;;; ef-trio-light-theme.el --- Legible light theme with magenta, blue, and teal colors -*- lexical-binding:t -*-
 
-;; Copyright (C) 2022  Free Software Foundation, Inc.
+;; Copyright (C) 2022-2023  Free Software Foundation, Inc.
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; Maintainer: Ef-Themes Development <~protesilaos/ef-themes@lists.sr.ht>
@@ -97,14 +97,17 @@
       (bg-added          "#caf4da")
       (bg-added-faint    "#dff6ea")
       (bg-added-refine   "#bae9cf")
+      (fg-added          "#005000")
 
       (bg-changed        "#ffdfb9")
       (bg-changed-faint  "#ffefcb")
       (bg-changed-refine "#ffcfa0")
+      (fg-changed        "#553d00")
 
       (bg-removed        "#ffcee0")
       (bg-removed-faint  "#ffdfe6")
       (bg-removed-refine "#f5b6c8")
+      (fg-removed        "#8f1313")
 
       ;; Graphs
       (red-graph-0-bg     "#ef7969")
@@ -156,6 +159,7 @@
       (link cyan)
       (link-alt magenta)
       (date cyan-cooler)
+      (weekend red-faint) ; for M-x calendar and Org agenda
       (name blue)
       (keybind magenta-warmer)
       (identifier red-faint)
@@ -196,9 +200,24 @@
       (rainbow-6 magenta-cooler)
       (rainbow-7 cyan-warmer)
       (rainbow-8 yellow-cooler))
-    "The `ef-trio-light' palette.")
+    "The `ef-trio-light' palette.
+Color values have the form (COLOR-NAME HEX-VALUE) with the former
+as a symbol and the latter as a string.
 
-  (ef-themes-theme ef-trio-light ef-trio-light-palette)
+Semantic color mappings have the form (MAPPING-NAME COLOR-NAME)
+with both as symbols.  The latter is a color that already exists
+in the palette and is associated with a HEX-VALUE.")
+
+  (defvar ef-trio-light-palette-overrides nil
+    "Overrides for `ef-trio-light-palette'.
+
+Mirror the elements of the aforementioned palette, overriding
+their value.
+
+For overrides that are shared across all of the Ef themes,
+refer to `ef-themes-common-palette-overrides'.")
+
+  (ef-themes-theme ef-trio-light ef-trio-light-palette ef-trio-light-palette-overrides)
 
   (provide-theme 'ef-trio-light))
 

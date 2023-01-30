@@ -53,7 +53,7 @@ the GNU ELPA machinery automatically generates an Info manual out of it.
 :CUSTOM_ID: h:1d213fed-b9a9-401c-9b5d-c7df602c2f63
 :END:
 
-Copyright (C) 2022  Free Software Foundation, Inc.
+Copyright (C) 2022-2023  Free Software Foundation, Inc.
 
 #+begin_quote
 Permission is granted to copy, distribute and/or modify this document
@@ -206,6 +206,31 @@ overall character of each theme ([[#h:a6dd030c-6b6c-4992-83e8-3438b4607b51][Prin
 
 All customizations need to be evaluated before loading a theme.  Any
 change thus requires a theme re-load ([[#h:a6dd030c-6b6c-4992-83e8-3438b4607b51][Loading a theme]]).
+
+** Disable other themes
+:PROPERTIES:
+:CUSTOM_ID: h:b22371a2-9428-4f83-a3ca-884be559cf1d
+:END:
+
+[ Part of {{{development-version}}}. ]
+
+#+vindex: ef-themes-disable-other-themes
+The user option ~ef-themes-disable-other-themes~ controls which themes
+to disable when loading an Ef theme.
+
+When the value is non-nil, the commands ~ef-themes-toggle~ and
+~ef-themes-select~ will disable all other themes while loading the
+specified Ef theme.  This is done to ensure that Emacs does not blend
+two or more themes: such blends lead to awkward results that undermine
+the work of the designer.
+
+When the value is nil, the aforementioned commands will only disable
+other themes within the Ef collection.
+
+This option is provided because Emacs themes are not necessarily
+limited to colors/faces: they can consist of an arbitrary set of
+customizations.  Users who use such customization bundles must set
+this variable to a nil value.
 
 ** Toggle between two Ef themes
 :PROPERTIES:
@@ -417,6 +442,81 @@ Other examples:
 (setq ef-themes-region '(intense no-extend neutral))
 #+end_src
 
+** Palette overrides
+:PROPERTIES:
+:CUSTOM_ID: h:4b923795-4b23-4345-81e5-d1c108a84b6a
+:END:
+#+cindex: Override color values and semantic color mappings
+
+[ Part of {{{development-version}}}.  For a video demo of the same
+idea that I implemented in the ~modus-themes~, check:
+https://protesilaos.com/codelog/2022-12-17-modus-themes-v4-demo/. ]
+
+Each theme defines its own color palette as well as semantic color
+mappings.  The former is the set of color values such as what shade of
+blue to use.  The latter refers to associations between a color value
+and a syntactic construct, such as a =variable= for variables in
+programming modes or =heading-1= for level 1 headings in Org and
+others.
+
+The definition is stored in the variable =ef-NAME-palette=, where
+=NAME= is the specifier of the theme, such as ~summer~ for the
+~ef-summer~ theme.  Overrides for those associations are specified in
+the variable =ef-NAME-palette-overrides=.
+
+#+vindex: ef-themes-common-palette-overrides
+The variable ~ef-themes-common-palette-overrides~ is available for
+shared values.  It is advised to only use this for mappings that do
+not specify a color value directly.  This way, the text remains
+legible by getting the theme-specific color value it needs.
+
+All associations take the form of =(KEY VALUE)= pairs.  For example,
+the ~ef-summer-palette~ contains =(blue-warmer "#5250ef")=.  Semantic
+color mappings are the same, though the =VALUE= is one of the named
+colors of the theme.  For instance, ~ef-summer-palette~ maps the
+aforementioned =blue-warmer= to =variable= thus =(variable blue-warmer)=.
+
+The easiest way to learn about a theme's definition is to use the
+command ~describe-variable~ (bound to =C-h v= by default) and then
+search for the =ef-NAME-palette=.  The resulting Help buffer will look
+like this:
+
+#+begin_example
+ef-summer-palette is a variable defined in ‘ef-summer-theme.el’.
+
+Its value is shown below.
+
+The ‘ef-summer’ palette.
+
+  This variable may be risky if used as a file-local variable.
+
+Value:
+((bg-main "#fff2f3")
+ (fg-main "#4f4073")
+
+[... Shortened for the purposes of this manual.]
+#+end_example
+
+The user can study this information to identify the overrides they
+wish to make.  Then they can specify them and re-load the theme for
+changes to take effect.  Sample of how to override a color value and a
+semantic mapping:
+
+#+begin_src emacs-lisp
+(setq ef-summer-palette-overrides
+      '((blue-warmer "#5230ff") ; original value is #5250ef
+        (variable cyan))) ; original value is blue-warmer
+#+end_src
+
+The overrides can contain as many associations as the user needs.
+
+Changes to color values are reflected in the preview of the theme's
+palette ([[#h:8dd67bf5-879e-46e5-b277-5bac141f53d1][Preview theme colors]]).  They are shown at the top of the
+buffer.  In the above example, the first instance of =blue-warmer= is
+the override and the second is the original one.
+
+Contact me if you need further help with this.
+
 * Loading a theme
 :PROPERTIES:
 :CUSTOM_ID: h:75d74aea-d17f-497f-a3b8-f0bf4c372de0
@@ -424,8 +524,9 @@ Other examples:
 
 Emacs can load and maintain enabled multiple themes at once.  This
 typically leads to awkward styling and weird combinations.  The theme
-looks broken and the designer's intent is misunderstood.  Before loading
-one of the =ef-themes=, the user is encouraged to disable all others:
+looks broken and the designer's intent is misunderstood.  Before
+loading one of the ~ef-themes~, the user is encouraged to disable all
+others ([[#h:b22371a2-9428-4f83-a3ca-884be559cf1d][Disable other themes]]):
 
 #+begin_src emacs-lisp
 (mapc #'disable-theme custom-enabled-themes)
@@ -549,6 +650,9 @@ which reflects the given choice, like =ef-summer-preview-colors= for the
 #+findex: ef-themes-preview-colors-current
 The command ~ef-themes-preview-colors-current~ skips the minibuffer
 selection process and just produces a preview for the current Ef theme.
+
+Overrides to color values are reflected in the buffers produced by the
+aforementioned commands ([[#h:4b923795-4b23-4345-81e5-d1c108a84b6a][Palette overrides]]).
 
 * Use colors from the active Ef theme
 :PROPERTIES:
@@ -1093,6 +1197,7 @@ themes already cover:
 
 - apropos
 - dim-autoload
+- forge
 - hl-todo
 - icomplete
 - ido

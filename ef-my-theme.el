@@ -96,14 +96,17 @@
       (bg-added          "#dfffe0")
       (bg-added-faint    "#e0ffea")
       (bg-added-refine   "#c3efd3")
+      (fg-added          "#005000")
 
       (bg-changed        "#ffe0b9")
       (bg-changed-faint  "#ffefcb")
       (bg-changed-refine "#ffcf9f")
+      (fg-changed        "#553d00")
 
       (bg-removed        "#ffe4dd")
       (bg-removed-faint  "#ffefea")
       (bg-removed-refine "#ffcdc0")
+      (fg-removed        "#8f1313")
 
       ;; Graphs
       (red-graph-0-bg     "#ef7969")
@@ -144,6 +147,9 @@
       (underline-warning "#bf5f00")
       (underline-info    "#02af52")
 
+      ;; Conditional hues
+      (bg-region-intense "#cfb5f0")
+
       ;; Mappings
       (err red-warmer)
       (warning yellow-warmer)
@@ -152,8 +158,10 @@
       (link cyan-cooler)
       (link-alt yellow-cooler)
       (date cyan)
+      (weekend red-faint) ; for M-x calendar and Org agenda
       (name green-cooler)
       (keybind magenta-warmer)
+      (identifier magenta-faint)
       (prompt green)
 
       (builtin green)
@@ -193,8 +201,20 @@
       (rainbow-8 yellow-cooler))
     "The `ef-my' palette.")
 
-  (ef-themes-theme ef-my ef-my-palette)
+   (defvar ef-my-palette-overrides nil
+    "Overrides for `ef-spring-palette'.
+
+Mirror the elements of the aforementioned palette, overriding
+their value.
+
+For overrides that are shared across all of the Ef themes,
+refer to `ef-themes-common-palette-overrides'.")
+
+  (ef-themes-theme ef-my ef-my-palette ef-my-palette-overrides)
 
   (provide-theme 'ef-my))
+
+;;;###theme-autoload
+(put 'ef-spring 'theme-properties '(:background-mode light :kind color-scheme :family ef))
 
 ;;; ef-my-theme.el ends here

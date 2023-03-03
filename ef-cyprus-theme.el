@@ -124,17 +124,18 @@
       (cyan-graph-1-bg    "#afefff")
 
       ;; Special hues
-      (bg-mode-line  "#c0df6f") (fg-mode-line  "#142010")
-      (bg-accent     "#802000") (fg-accent     "#ffffff")
-      (bg-completion "#e6e4bf")
-      (bg-hover      "#efc26f")
-      (bg-hover-alt  "#afc0f0")
-      (bg-hl-line    "#f0e0d4")
-      (bg-region     "#e0e7e5")
-      (bg-paren      "#9fcfdf")
-      (bg-err        "#ffd4bf") ; check with err
-      (bg-warning    "#f0e8ba") ; check with warning
-      (bg-info       "#d0efbf") ; check with info
+      (bg-mode-line       "#c0df6f")
+      (fg-mode-line       "#142010")
+      (bg-accent          "#802000")
+      (bg-completion      "#e6e4bf")
+      (bg-hover           "#efc26f")
+      (bg-hover-secondary "#afc0f0")
+      (bg-hl-line         "#f0e0d4")
+      (bg-region          "#e0e7e5")
+      (bg-paren           "#9fcfdf")
+      (bg-err             "#ffd4bf") ; check with err
+      (bg-warning         "#f0e8ba") ; check with warning
+      (bg-info            "#d0efbf") ; check with info
 
       (border        "#c4c0b6")
       (cursor        "#007f00")
@@ -158,8 +159,6 @@
 
       (link yellow)
       (link-alt cyan)
-      (date yellow-cooler)
-      (weekend red) ; for M-x calendar and Org agenda
       (name green-warmer)
       (keybind red)
       (identifier green-faint)
@@ -178,6 +177,29 @@
 
       (rx-escape magenta-cooler) ; compare with `string'
       (rx-construct cyan-cooler)
+
+;;;; Date mappings
+
+      (date-common yellow-cooler)
+      (date-deadline red-cooler)
+      (date-event fg-alt)
+      (date-holiday cyan-cooler)
+      (date-now fg-main)
+      (date-scheduled yellow)
+      (date-weekday cyan)
+      (date-weekend red-faint)
+
+;;;; Prose mappings
+
+      (prose-code red-cooler)
+      (prose-done green)
+      (prose-macro cyan-cooler)
+      (prose-metadata fg-dim)
+      (prose-metadata-value fg-alt)
+      (prose-table fg-alt)
+      (prose-tag yellow-faint)
+      (prose-todo red-warmer)
+      (prose-verbatim green)
 
       (accent-0 green)
       (accent-1 red-cooler)

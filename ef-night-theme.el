@@ -124,17 +124,18 @@
       (cyan-graph-1-bg    "#00808f")
 
       ;; Special hues
-      (bg-mode-line  "#003a7f") (fg-mode-line  "#ceeeff")
-      (bg-accent     "#ff9270") (fg-accent     "#000000")
-      (bg-completion "#00314f")
-      (bg-hover      "#6f345a")
-      (bg-hover-alt  "#493737")
-      (bg-hl-line    "#002255")
-      (bg-region     "#222f40")
-      (bg-paren      "#664950")
-      (bg-err        "#331419") ; check with err
-      (bg-warning    "#332613") ; check with warning
-      (bg-info       "#002e1f") ; check with info
+      (bg-mode-line       "#003a7f")
+      (fg-mode-line       "#ceeeff")
+      (bg-accent          "#ff9270")
+      (bg-completion      "#00314f")
+      (bg-hover           "#6f345a")
+      (bg-hover-secondary "#493737")
+      (bg-hl-line         "#002255")
+      (bg-region          "#222f40")
+      (bg-paren           "#664950")
+      (bg-err             "#331419") ; check with err
+      (bg-warning         "#332613") ; check with warning
+      (bg-info            "#002e1f") ; check with info
 
       (border        "#3a4a66")
       (cursor        "#00ccff")
@@ -158,8 +159,6 @@
 
       (link cyan-warmer)
       (link-alt magenta)
-      (date cyan)
-      (weekend red-faint) ; for M-x calendar and Org agenda
       (name blue-warmer)
       (keybind green-cooler)
       (identifier magenta-faint)
@@ -178,6 +177,29 @@
 
       (rx-escape green) ; compare with `string'
       (rx-construct magenta-warmer)
+
+;;;; Date mappings
+
+      (date-common cyan)
+      (date-deadline red)
+      (date-event fg-alt)
+      (date-holiday cyan-cooler)
+      (date-now fg-main)
+      (date-scheduled yellow)
+      (date-weekday cyan)
+      (date-weekend red-faint)
+
+;;;; Prose mappings
+
+      (prose-code magenta-warmer)
+      (prose-done green-cooler)
+      (prose-macro cyan-cooler)
+      (prose-metadata fg-dim)
+      (prose-metadata-value fg-alt)
+      (prose-table fg-alt)
+      (prose-tag fg-alt)
+      (prose-todo red)
+      (prose-verbatim blue-cooler)
 
       (accent-0 blue-cooler)
       (accent-1 magenta-warmer)

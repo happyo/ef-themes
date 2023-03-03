@@ -124,17 +124,18 @@
       (cyan-graph-1-bg    "#00808f")
 
       ;; Special hues
-      (bg-mode-line  "#5f1f5f") (fg-mode-line  "#dedeff")
-      (bg-accent     "#ffb250") (fg-accent     "#000000")
-      (bg-completion "#2f2a7a")
-      (bg-hover      "#00474f")
-      (bg-hover-alt  "#44196f")
-      (bg-hl-line    "#003045")
-      (bg-region     "#342464")
-      (bg-paren      "#2f608e")
-      (bg-err        "#330d06") ; check with err
-      (bg-warning    "#332610") ; check with warning
-      (bg-info       "#0f2e10") ; check with info
+      (bg-mode-line       "#5f1f5f")
+      (fg-mode-line       "#dedeff")
+      (bg-accent          "#ffb250")
+      (bg-completion      "#2f2a7a")
+      (bg-hover           "#00474f")
+      (bg-hover-secondary "#44196f")
+      (bg-hl-line         "#003045")
+      (bg-region          "#342464")
+      (bg-paren           "#2f608e")
+      (bg-err             "#330d06") ; check with err
+      (bg-warning         "#332610") ; check with warning
+      (bg-info            "#0f2e10") ; check with info
 
       (border        "#4a4955")
       (cursor        "#ff6ff0")
@@ -158,8 +159,6 @@
 
       (link magenta)
       (link-alt cyan-warmer)
-      (date cyan-cooler)
-      (weekend red-faint) ; for M-x calendar and Org agenda
       (name magenta)
       (keybind cyan-cooler)
       (identifier magenta-faint)
@@ -178,6 +177,29 @@
 
       (rx-escape green) ; compare with `string'
       (rx-construct blue)
+
+;;;; Date mappings
+
+      (date-common cyan-cooler)
+      (date-deadline red-warmer)
+      (date-event fg-alt)
+      (date-holiday green-cooler)
+      (date-now fg-main)
+      (date-scheduled yellow)
+      (date-weekday cyan)
+      (date-weekend red-faint)
+
+;;;; Prose mappings
+
+      (prose-code yellow)
+      (prose-done green)
+      (prose-macro green-cooler)
+      (prose-metadata fg-dim)
+      (prose-metadata-value fg-alt)
+      (prose-table fg-alt)
+      (prose-tag cyan-faint)
+      (prose-todo red-warmer)
+      (prose-verbatim magenta-cooler)
 
       (accent-0 magenta-cooler)
       (accent-1 yellow)

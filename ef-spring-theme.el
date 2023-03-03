@@ -124,17 +124,18 @@
       (cyan-graph-1-bg    "#afefff")
 
       ;; Special hues
-      (bg-mode-line  "#90e8b0") (fg-mode-line  "#243228")
-      (bg-accent     "#880044") (fg-accent     "#ffffff")
-      (bg-completion "#ccedff")
-      (bg-hover      "#ffc09f")
-      (bg-hover-alt  "#f0bfff")
-      (bg-hl-line    "#f9e0e5")
-      (bg-region     "#d0e6ff")
-      (bg-paren      "#7fddd0")
-      (bg-err        "#ffe8e0") ; check with err
-      (bg-warning    "#ffecba") ; check with warning
-      (bg-info       "#ccf5dd") ; check with info
+      (bg-mode-line       "#90e8b0")
+      (fg-mode-line       "#243228")
+      (bg-accent          "#880044")
+      (bg-completion      "#ccedff")
+      (bg-hover           "#ffc09f")
+      (bg-hover-secondary "#f0bfff")
+      (bg-hl-line         "#f9e0e5")
+      (bg-region          "#d0e6ff")
+      (bg-paren           "#7fddd0")
+      (bg-err             "#ffe8e0") ; check with err
+      (bg-warning         "#ffecba") ; check with warning
+      (bg-info            "#ccf5dd") ; check with info
 
       (border        "#b4c4c0")
       (cursor        "#bf005f")
@@ -158,8 +159,6 @@
 
       (link cyan-cooler)
       (link-alt yellow-cooler)
-      (date cyan)
-      (weekend red-faint) ; for M-x calendar and Org agenda
       (name green-cooler)
       (keybind magenta-warmer)
       (identifier magenta-faint)
@@ -178,6 +177,29 @@
 
       (rx-escape cyan) ; compare with `string'
       (rx-construct magenta-warmer)
+
+;;;; Date mappings
+
+      (date-common cyan)
+      (date-deadline red-warmer)
+      (date-event fg-alt)
+      (date-holiday blue)
+      (date-now fg-main)
+      (date-scheduled yellow)
+      (date-weekday cyan)
+      (date-weekend red-faint)
+
+;;;; Prose mappings
+
+      (prose-code red-cooler)
+      (prose-done green)
+      (prose-macro blue)
+      (prose-metadata fg-dim)
+      (prose-metadata-value fg-alt)
+      (prose-table fg-alt)
+      (prose-tag magenta-faint)
+      (prose-todo red-warmer)
+      (prose-verbatim green)
 
       (accent-0 green)
       (accent-1 red-cooler)

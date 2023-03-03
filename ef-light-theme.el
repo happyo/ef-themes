@@ -124,17 +124,18 @@
       (cyan-graph-1-bg    "#afefff")
 
       ;; Special hues
-      (bg-mode-line  "#b7c7ff") (fg-mode-line  "#151515")
-      (bg-accent     "#0000cc") (fg-accent     "#ffffff")
-      (bg-completion "#bfe8ff")
-      (bg-hover      "#aaeccf")
-      (bg-hover-alt  "#ccbfff")
-      (bg-hl-line    "#e4efd8")
-      (bg-region     "#bfefff")
-      (bg-paren      "#dfa0f3")
-      (bg-err        "#ffd5ea") ; check with err
-      (bg-warning    "#ffeabb") ; check with warning
-      (bg-info       "#d0efda") ; check with info
+      (bg-mode-line       "#b7c7ff")
+      (fg-mode-line       "#151515")
+      (bg-accent          "#0000cc")
+      (bg-completion      "#bfe8ff")
+      (bg-hover           "#aaeccf")
+      (bg-hover-secondary "#ccbfff")
+      (bg-hl-line         "#e4efd8")
+      (bg-region          "#bfefff")
+      (bg-paren           "#dfa0f3")
+      (bg-err             "#ffd5ea") ; check with err
+      (bg-warning         "#ffeabb") ; check with warning
+      (bg-info            "#d0efda") ; check with info
 
       (border        "#bfc4da")
       (cursor        "#0033cc")
@@ -158,8 +159,6 @@
 
       (link blue)
       (link-alt magenta)
-      (date cyan-cooler)
-      (weekend red-faint) ; for M-x calendar and Org agenda
       (name magenta-cooler)
       (keybind blue-cooler)
       (identifier magenta-faint)
@@ -178,6 +177,29 @@
 
       (rx-escape green-cooler) ; compare with `string'
       (rx-construct magenta)
+
+;;;; Date mappings
+
+      (date-common cyan-cooler)
+      (date-deadline red)
+      (date-event fg-alt)
+      (date-holiday green-cooler)
+      (date-now fg-main)
+      (date-scheduled yellow)
+      (date-weekday cyan)
+      (date-weekend red-faint)
+
+;;;; Prose mappings
+
+      (prose-code magenta-warmer)
+      (prose-done green)
+      (prose-macro green-cooler)
+      (prose-metadata fg-dim)
+      (prose-metadata-value fg-alt)
+      (prose-table fg-alt)
+      (prose-tag green-faint)
+      (prose-todo red-warmer)
+      (prose-verbatim blue-warmer)
 
       (accent-0 blue-warmer)
       (accent-1 magenta-warmer)

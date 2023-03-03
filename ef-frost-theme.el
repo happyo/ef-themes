@@ -124,17 +124,18 @@
       (cyan-graph-1-bg    "#afefff")
 
       ;; Special hues
-      (bg-mode-line  "#9ad0ff") (fg-mode-line  "#051524")
-      (bg-accent     "#0000d0") (fg-accent     "#ffffff")
-      (bg-completion "#cceff5")
-      (bg-hover      "#cab5ff")
-      (bg-hover-alt  "#aae0bf")
-      (bg-hl-line    "#dff6e4")
-      (bg-region     "#d4eaf3")
-      (bg-paren      "#cab0ef")
-      (bg-err        "#ffdfda") ; check with err
-      (bg-warning    "#ffe9bf") ; check with warning
-      (bg-info       "#ccefcf") ; check with info
+      (bg-mode-line       "#9ad0ff")
+      (fg-mode-line       "#051524")
+      (bg-accent          "#0000d0")
+      (bg-completion      "#cceff5")
+      (bg-hover           "#eab5ff")
+      (bg-hover-secondary "#aae0bf")
+      (bg-hl-line         "#dff6e4")
+      (bg-region          "#d4eaf3")
+      (bg-paren           "#cab0ef")
+      (bg-err             "#ffdfda") ; check with err
+      (bg-warning         "#ffe9bf") ; check with warning
+      (bg-info            "#ccefcf") ; check with info
 
       (border        "#b0b7c0")
       (cursor        "#0055bb")
@@ -158,8 +159,6 @@
 
       (link cyan)
       (link-alt magenta)
-      (date cyan-cooler)
-      (weekend red-faint) ; for M-x calendar and Org agenda
       (name cyan-warmer)
       (keybind blue-cooler)
       (identifier magenta-faint)
@@ -178,6 +177,29 @@
 
       (rx-escape yellow-cooler) ; compare with `string'
       (rx-construct red-cooler)
+
+;;;; Date mappings
+
+      (date-common cyan-cooler)
+      (date-deadline red)
+      (date-event fg-alt)
+      (date-holiday magenta-warmer)
+      (date-now fg-main)
+      (date-scheduled yellow-cooler)
+      (date-weekday cyan)
+      (date-weekend red-faint)
+
+;;;; Prose mappings
+
+      (prose-code green-cooler)
+      (prose-done green)
+      (prose-macro magenta-warmer)
+      (prose-metadata fg-dim)
+      (prose-metadata-value fg-alt)
+      (prose-table fg-alt)
+      (prose-tag yellow-faint)
+      (prose-todo red)
+      (prose-verbatim blue-warmer)
 
       (accent-0 blue-warmer)
       (accent-1 green-cooler)

@@ -124,17 +124,18 @@
       (cyan-graph-1-bg    "#00808f")
 
       ;; Special hues
-      (bg-mode-line  "#771a4f") (fg-mode-line  "#ffcfdf")
-      (bg-accent     "#cca8ff") (fg-accent     "#000000")
-      (bg-completion "#4a1937")
-      (bg-hover      "#303f6f")
-      (bg-hover-alt  "#66364f")
-      (bg-hl-line    "#401f33")
-      (bg-region     "#232f3f")
-      (bg-paren      "#3f5f75")
-      (bg-err        "#3c0f12") ; check with err
-      (bg-warning    "#352905") ; check with warning
-      (bg-info       "#1a2e00") ; check with info
+      (bg-mode-line       "#771a4f")
+      (fg-mode-line       "#ffcfdf")
+      (bg-accent          "#cca8ff")
+      (bg-completion      "#4a1937")
+      (bg-hover           "#303f6f")
+      (bg-hover-secondary "#66364f")
+      (bg-hl-line         "#401f33")
+      (bg-region          "#232f3f")
+      (bg-paren           "#3f5f75")
+      (bg-err             "#3c0f12") ; check with err
+      (bg-warning         "#352905") ; check with warning
+      (bg-info            "#1a2e00") ; check with info
 
       (border        "#695960")
       (cursor        "#ff5aaf")
@@ -158,8 +159,6 @@
 
       (link magenta-cooler)
       (link-alt yellow)
-      (date magenta)
-      (weekend red) ; for M-x calendar and Org agenda
       (name yellow-cooler)
       (keybind yellow-warmer)
       (identifier magenta-faint)
@@ -178,6 +177,29 @@
 
       (rx-escape cyan-warmer) ; compare with `string'
       (rx-construct red)
+
+;;;; Date mappings
+
+      (date-common magenta)
+      (date-deadline red-warmer)
+      (date-event fg-alt)
+      (date-holiday blue-warmer)
+      (date-now fg-main)
+      (date-scheduled yellow-warmer)
+      (date-weekday cyan)
+      (date-weekend red-faint)
+
+;;;; Prose mappings
+
+      (prose-code yellow)
+      (prose-done green)
+      (prose-macro blue-warmer)
+      (prose-metadata fg-dim)
+      (prose-metadata-value fg-alt)
+      (prose-table fg-alt)
+      (prose-tag yellow-faint)
+      (prose-todo red-warmer)
+      (prose-verbatim magenta-warmer)
 
       (accent-0 magenta-warmer)
       (accent-1 yellow)

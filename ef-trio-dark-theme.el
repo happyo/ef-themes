@@ -124,17 +124,18 @@
       (cyan-graph-1-bg    "#00808f")
 
       ;; Special hues
-      (bg-mode-line  "#6a294f") (fg-mode-line  "#ffdfdf")
-      (bg-accent     "#cc88ff") (fg-accent     "#000000")
-      (bg-completion "#2f335a")
-      (bg-hover      "#004f3f")
-      (bg-hover-alt  "#452f5f")
-      (bg-hl-line    "#34223f")
-      (bg-region     "#16304f")
-      (bg-paren      "#2f605e")
-      (bg-err        "#3a0f06") ; check with err
-      (bg-warning    "#332910") ; check with warning
-      (bg-info       "#1f2c00") ; check with info
+      (bg-mode-line       "#6a294f")
+      (fg-mode-line       "#ffdfdf")
+      (bg-accent          "#cc88ff")
+      (bg-completion      "#2f335a")
+      (bg-hover           "#004f3f")
+      (bg-hover-secondary "#452f5f")
+      (bg-hl-line         "#34223f")
+      (bg-region          "#16304f")
+      (bg-paren           "#2f605e")
+      (bg-err             "#3a0f06") ; check with err
+      (bg-warning         "#332910") ; check with warning
+      (bg-info            "#1f2c00") ; check with info
 
       (border        "#605760")
       (cursor        "#ff99ff")
@@ -158,8 +159,6 @@
 
       (link cyan)
       (link-alt magenta)
-      (date cyan-cooler)
-      (weekend red-faint) ; for M-x calendar and Org agenda
       (name blue)
       (keybind magenta-warmer)
       (identifier red-faint)
@@ -178,6 +177,29 @@
 
       (rx-escape blue-warmer) ; compare with `string'
       (rx-construct red)
+
+;;;; Date mappings
+
+      (date-common cyan-cooler)
+      (date-deadline red-warmer)
+      (date-event fg-alt)
+      (date-holiday blue-warmer)
+      (date-now fg-main)
+      (date-scheduled yellow)
+      (date-weekday cyan)
+      (date-weekend red-faint)
+
+;;;; Prose mappings
+
+      (prose-code green-cooler)
+      (prose-done green)
+      (prose-macro blue-warmer)
+      (prose-metadata fg-dim)
+      (prose-metadata-value fg-alt)
+      (prose-table fg-alt)
+      (prose-tag magenta-faint)
+      (prose-todo red-warmer)
+      (prose-verbatim magenta-warmer)
 
       (accent-0 magenta-warmer)
       (accent-1 green-cooler)

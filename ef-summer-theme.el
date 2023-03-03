@@ -124,17 +124,18 @@
       (cyan-graph-1-bg    "#afefff")
 
       ;; Special hues
-      (bg-mode-line  "#ffa4dc") (fg-mode-line  "#341f58")
-      (bg-accent     "#004f6f") (fg-accent     "#ffffff")
-      (bg-completion "#f4cfff")
-      (bg-hover      "#b4cfff")
-      (bg-hover-alt  "#aaeccf")
-      (bg-hl-line    "#ffd6e5")
-      (bg-region     "#eecfff")
-      (bg-paren      "#9fc0ef")
-      (bg-err        "#ffd0e6") ; check with err
-      (bg-warning    "#ffe5ba") ; check with warning
-      (bg-info       "#bbefda") ; check with info
+      (bg-mode-line       "#ffa4dc")
+      (fg-mode-line       "#341f58")
+      (bg-accent          "#004f6f")
+      (bg-completion      "#f4cfff")
+      (bg-hover           "#b4cfff")
+      (bg-hover-secondary "#aaeccf")
+      (bg-hl-line         "#ffd6e5")
+      (bg-region          "#eecfff")
+      (bg-paren           "#9fc0ef")
+      (bg-err             "#ffd0e6") ; check with err
+      (bg-warning         "#ffe5ba") ; check with warning
+      (bg-info            "#bbefda") ; check with info
 
       (border        "#c6bbc6")
       (cursor        "#cf0090")
@@ -158,8 +159,6 @@
 
       (link blue)
       (link-alt green-cooler)
-      (date cyan-cooler)
-      (weekend red-faint) ; for M-x calendar and Org agenda
       (name magenta-warmer)
       (keybind red-cooler)
       (identifier magenta-faint)
@@ -178,6 +177,29 @@
 
       (rx-escape cyan-cooler) ; compare with `string'
       (rx-construct red-cooler)
+
+;;;; Date mappings
+
+      (date-common cyan-cooler)
+      (date-deadline red-warmer)
+      (date-event fg-alt)
+      (date-holiday cyan-cooler)
+      (date-now fg-main)
+      (date-scheduled yellow)
+      (date-weekday cyan)
+      (date-weekend red-faint)
+
+;;;; Prose mappings
+
+      (prose-code yellow)
+      (prose-done green-cooler)
+      (prose-macro cyan-cooler)
+      (prose-metadata fg-dim)
+      (prose-metadata-value fg-alt)
+      (prose-table fg-alt)
+      (prose-tag yellow-faint)
+      (prose-todo red-warmer)
+      (prose-verbatim magenta-cooler)
 
       (accent-0 magenta-cooler)
       (accent-1 yellow)

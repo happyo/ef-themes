@@ -124,17 +124,18 @@
       (cyan-graph-1-bg    "#00808f")
 
       ;; Special hues
-      (bg-mode-line  "#2a2a75") (fg-mode-line  "#e0e0ff")
-      (bg-accent     "#25adff") (fg-accent     "#000000")
-      (bg-completion "#0f2d4a")
-      (bg-hover      "#004a5f")
-      (bg-hover-alt  "#551f5a")
-      (bg-hl-line    "#002435")
-      (bg-region     "#2a234a")
-      (bg-paren      "#20577a")
-      (bg-err        "#360d09") ; check with err
-      (bg-warning    "#332600") ; check with warning
-      (bg-info       "#002c12") ; check with info
+      (bg-mode-line       "#2a2a75")
+      (fg-mode-line       "#e0e0ff")
+      (bg-accent          "#25adff")
+      (bg-completion      "#0f2d4a")
+      (bg-hover           "#004a5f")
+      (bg-hover-secondary "#551f5a")
+      (bg-hl-line         "#002435")
+      (bg-region          "#2a234a")
+      (bg-paren           "#20577a")
+      (bg-err             "#360d09") ; check with err
+      (bg-warning         "#332600") ; check with warning
+      (bg-info            "#002c12") ; check with info
 
       (border        "#4f4f5f")
       (cursor        "#ff76ff")
@@ -158,8 +159,6 @@
 
       (link cyan)
       (link-alt magenta)
-      (date green-cooler)
-      (weekend red-faint) ; for M-x calendar and Org agenda
       (name blue-warmer)
       (keybind blue-cooler)
       (identifier magenta-faint)
@@ -178,6 +177,29 @@
 
       (rx-escape green-warmer) ; compare with `string'
       (rx-construct red)
+
+;;;; Date mappings
+
+      (date-common green-cooler)
+      (date-deadline red-warmer)
+      (date-event fg-alt)
+      (date-holiday green-cooler)
+      (date-now fg-main)
+      (date-scheduled yellow)
+      (date-weekday cyan)
+      (date-weekend red-faint)
+
+;;;; Prose mappings
+
+      (prose-code magenta-warmer)
+      (prose-done green)
+      (prose-macro green-cooler)
+      (prose-metadata fg-dim)
+      (prose-metadata-value fg-alt)
+      (prose-table fg-alt)
+      (prose-tag yellow-faint)
+      (prose-todo red-warmer)
+      (prose-verbatim blue)
 
       (accent-0 blue)
       (accent-1 magenta-warmer)

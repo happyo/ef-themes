@@ -124,17 +124,18 @@
       (cyan-graph-1-bg    "#00808f")
 
       ;; Special hues
-      (bg-mode-line  "#692a12") (fg-mode-line  "#feeeca")
-      (bg-accent     "#ffa200") (fg-accent     "#000000")
-      (bg-completion "#36213a")
-      (bg-hover      "#265f4a")
-      (bg-hover-alt  "#55345a")
-      (bg-hl-line    "#302a3a")
-      (bg-region     "#3f1020")
-      (bg-paren      "#2f6c4a")
-      (bg-err        "#391400") ; check with err
-      (bg-warning    "#332800") ; check with warning
-      (bg-info       "#152a00") ; check with info
+      (bg-mode-line       "#692a12")
+      (fg-mode-line       "#feeeca")
+      (bg-accent          "#ffa200")
+      (bg-completion      "#36213a")
+      (bg-hover           "#265f4a")
+      (bg-hover-secondary "#55345a")
+      (bg-hl-line         "#302a3a")
+      (bg-region          "#3f1020")
+      (bg-paren           "#2f6c4a")
+      (bg-err             "#391400") ; check with err
+      (bg-warning         "#332800") ; check with warning
+      (bg-info            "#152a00") ; check with info
 
       (border        "#58514f")
       (cursor        "#ffaa33")
@@ -158,8 +159,6 @@
 
       (link yellow)
       (link-alt cyan-cooler)
-      (date yellow-cooler)
-      (weekend red) ; for M-x calendar and Org agenda
       (name green-warmer)
       (keybind red-warmer)
       (identifier magenta-faint)
@@ -178,6 +177,29 @@
 
       (rx-escape green-cooler) ; compare with `string'
       (rx-construct magenta-cooler)
+
+;;;; Date mappings
+
+      (date-common yellow-cooler)
+      (date-deadline red-warmer)
+      (date-event fg-alt)
+      (date-holiday cyan-cooler)
+      (date-now fg-main)
+      (date-scheduled yellow)
+      (date-weekday cyan)
+      (date-weekend red-faint)
+
+;;;; Prose mappings
+
+      (prose-code yellow-warmer)
+      (prose-done green-cooler)
+      (prose-macro cyan-cooler)
+      (prose-metadata fg-dim)
+      (prose-metadata-value fg-alt)
+      (prose-table fg-alt)
+      (prose-tag fg-alt)
+      (prose-todo red-warmer)
+      (prose-verbatim green-cooler)
 
       (accent-0 green-cooler)
       (accent-1 yellow-warmer)

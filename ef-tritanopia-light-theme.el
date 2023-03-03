@@ -127,17 +127,18 @@
       (cyan-graph-1-bg    "#afefff")
 
       ;; Special hues
-      (bg-mode-line  "#ff99aa") (fg-mode-line  "#1a0a0f")
-      (bg-accent     "#2299cc") (fg-accent     "#000000")
-      (bg-completion "#ffcada")
-      (bg-hover      "#8fcfff")
-      (bg-hover-alt  "#eda9dc")
-      (bg-hl-line    "#ffdadf")
-      (bg-region     "#dadadf")
-      (bg-paren      "#8fc0cf")
-      (bg-err        "#ffbfca") ; check with err
-      (bg-warning    "#efcae6") ; check with warning
-      (bg-info       "#cfdfef") ; check with info
+      (bg-mode-line       "#ff99aa")
+      (fg-mode-line       "#1a0a0f")
+      (bg-accent          "#2299cc")
+      (bg-completion      "#ffcada")
+      (bg-hover           "#8fcfff")
+      (bg-hover-secondary "#eda9dc")
+      (bg-hl-line         "#ffdadf")
+      (bg-region          "#dadadf")
+      (bg-paren           "#8fc0cf")
+      (bg-err             "#ffbfca") ; check with err
+      (bg-warning         "#efcae6") ; check with warning
+      (bg-info            "#cfdfef") ; check with info
 
       (border        "#adadad")
       (cursor        "#bb0000")
@@ -161,8 +162,6 @@
 
       (link cyan)
       (link-alt magenta-cooler)
-      (date cyan-cooler)
-      (weekend red-faint) ; for M-x calendar and Org agenda
       (name magenta)
       (keybind red-cooler)
       (identifier magenta-faint)
@@ -181,6 +180,29 @@
 
       (rx-escape cyan-warmer) ; compare with `string'
       (rx-construct red-warmer)
+
+;;;; Date mappings
+
+      (date-common cyan-cooler)
+      (date-deadline red-warmer)
+      (date-event fg-alt)
+      (date-holiday cyan-warmer)
+      (date-now fg-main)
+      (date-scheduled magenta)
+      (date-weekday cyan)
+      (date-weekend red-faint)
+
+;;;; Prose mappings
+
+      (prose-code red)
+      (prose-done cyan)
+      (prose-macro cyan-warmer)
+      (prose-metadata fg-dim)
+      (prose-metadata-value fg-alt)
+      (prose-table fg-alt)
+      (prose-tag fg-alt)
+      (prose-todo red-warmer)
+      (prose-verbatim cyan)
 
       (accent-0 cyan)
       (accent-1 red)

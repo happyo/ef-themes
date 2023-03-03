@@ -127,17 +127,18 @@
       (cyan-graph-1-bg    "#00404f")
 
       ;; Special hues
-      (bg-mode-line  "#003f8f") (fg-mode-line  "#ffffff")
-      (bg-accent     "#ffaa33") (fg-accent     "#000000")
-      (bg-completion "#343420")
-      (bg-hover      "#4f4f00")
-      (bg-hover-alt  "#00405f")
-      (bg-hl-line    "#2e2e1b")
-      (bg-region     "#223848")
-      (bg-paren      "#0f4f9a")
-      (bg-err        "#342d09") ; check with err
-      (bg-warning    "#292900") ; check with warning
-      (bg-info       "#002252") ; check with info
+      (bg-mode-line       "#003f8f")
+      (fg-mode-line       "#ffffff")
+      (bg-accent          "#ffaa33")
+      (bg-completion      "#343420")
+      (bg-hover           "#4f4f00")
+      (bg-hover-secondary "#00405f")
+      (bg-hl-line         "#2e2e1b")
+      (bg-region          "#223848")
+      (bg-paren           "#0f4f9a")
+      (bg-err             "#342b00") ; check with err
+      (bg-warning         "#32351f") ; check with warning
+      (bg-info            "#002252") ; check with info
 
       (border        "#555a64")
       (cursor        "#ffff00")
@@ -156,13 +157,11 @@
 
       ;; Mappings
       (err yellow-warmer)
-      (warning yellow)
+      (warning yellow-cooler)
       (info blue-cooler)
 
       (link blue)
       (link-alt yellow-cooler)
-      (date yellow-cooler)
-      (weekend blue-faint) ; for M-x calendar and Org agenda
       (name blue-warmer)
       (keybind yellow-warmer)
       (identifier cyan-faint)
@@ -181,6 +180,29 @@
 
       (rx-escape yellow-faint) ; compare with `string'
       (rx-construct yellow-warmer)
+
+;;;; Date mappings
+
+      (date-common yellow-cooler)
+      (date-deadline yellow-warmer)
+      (date-event fg-alt)
+      (date-holiday cyan-warmer)
+      (date-now fg-main)
+      (date-scheduled yellow-cooler)
+      (date-weekday cyan)
+      (date-weekend magenta-faint)
+
+;;;; Prose mappings
+
+      (prose-code yellow-warmer)
+      (prose-done blue-cooler)
+      (prose-macro cyan-warmer)
+      (prose-metadata fg-dim)
+      (prose-metadata-value fg-alt)
+      (prose-table fg-alt)
+      (prose-tag fg-alt)
+      (prose-todo yellow-warmer)
+      (prose-verbatim blue-cooler)
 
       (accent-0 blue-cooler)
       (accent-1 yellow-warmer)

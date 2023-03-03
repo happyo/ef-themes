@@ -127,17 +127,18 @@
       (cyan-graph-1-bg    "#00808f")
 
       ;; Special hues
-      (bg-mode-line  "#352487") (fg-mode-line  "#dedeff")
-      (bg-accent     "#ffb250") (fg-accent     "#000000")
-      (bg-completion "#2f1a5f")
-      (bg-hover      "#664f4a")
-      (bg-hover-alt  "#264f4a")
-      (bg-hl-line    "#301a4f")
-      (bg-region     "#042a50")
-      (bg-paren      "#2f608e")
-      (bg-err        "#360d09") ; check with err
-      (bg-warning    "#332600") ; check with warning
-      (bg-info       "#002d12") ; check with info
+      (bg-mode-line       "#352487")
+      (fg-mode-line       "#dedeff")
+      (bg-accent          "#ffb250")
+      (bg-completion      "#2f1a5f")
+      (bg-hover           "#664f4a")
+      (bg-hover-secondary "#264f4a")
+      (bg-hl-line         "#301a4f")
+      (bg-region          "#042a50")
+      (bg-paren           "#2f608e")
+      (bg-err             "#360d09") ; check with err
+      (bg-warning         "#332600") ; check with warning
+      (bg-info            "#002d12") ; check with info
 
       (border        "#545f6f")
       (cursor        "#ef6f11")
@@ -161,8 +162,6 @@
 
       (link cyan-warmer)
       (link-alt green-cooler)
-      (date cyan-cooler)
-      (weekend red-faint) ; for M-x calendar and Org agenda
       (name blue)
       (keybind blue-cooler)
       (identifier red-faint)
@@ -181,6 +180,29 @@
 
       (rx-escape magenta-cooler) ; compare with `string'
       (rx-construct blue)
+
+;;;; Date mappings
+
+      (date-common cyan-cooler)
+      (date-deadline red)
+      (date-event fg-alt)
+      (date-holiday green-cooler)
+      (date-now fg-main)
+      (date-scheduled yellow)
+      (date-weekday cyan)
+      (date-weekend red-faint)
+
+;;;; Prose mappings
+
+      (prose-code yellow-warmer)
+      (prose-done green)
+      (prose-macro green-cooler)
+      (prose-metadata fg-dim)
+      (prose-metadata-value fg-alt)
+      (prose-table fg-alt)
+      (prose-tag yellow-faint)
+      (prose-todo red)
+      (prose-verbatim blue-warmer)
 
       (accent-0 blue-warmer)
       (accent-1 yellow-warmer)

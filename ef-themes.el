@@ -63,7 +63,6 @@
     ef-duo-light
     ef-frost
     ef-light
-    ef-my
     ef-spring
     ef-summer
     ef-trio-light
@@ -74,6 +73,7 @@
   '(ef-autumn
     ef-bio
     ef-cherie
+    ef-my
     ef-dark
     ef-deuteranopia-dark
     ef-duo-dark

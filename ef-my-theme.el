@@ -123,11 +123,12 @@
       (cyan-graph-1-bg    "#afefff")
 
       ;; Special hues
-      (bg-mode-line  "#93D5D7") (fg-mode-line  "#243228")
-      (bg-accent     "#880044") (fg-accent     "#FBECDE")
+      (bg-mode-line  "#93D5D7")
+      (fg-mode-line  "#243228")
+      (bg-accent     "#880044")
       (bg-completion "#ccedff")
       (bg-hover      "#ffc09f")
-      (bg-hover-alt  "#feb5ff")
+      (bg-hover-secondary "#feb5ff")
       (bg-hl-line    "#f9e0e5")
       (bg-region     "#d0e6ff")
       (bg-paren      "#7fddd0")
@@ -155,12 +156,10 @@
       (warning yellow-warmer)
       (info green)
 
-      (link cyan-cooler)
-      (link-alt yellow-cooler)
-      (date cyan)
-      (weekend red-faint) ; for M-x calendar and Org agenda
-      (name green-cooler)
-      (keybind magenta-warmer)
+      (link blue)
+      (link-alt magenta)
+      (name magenta-cooler)
+      (keybind blue-cooler)
       (identifier magenta-faint)
       (prompt green)
 
@@ -178,9 +177,32 @@
       (rx-escape cyan) ; compare with `string'
       (rx-construct magenta-warmer)
 
-      (accent-0 green)
-      (accent-1 red-cooler)
-      (accent-2 blue)
+;;;; Date mappings
+
+      (date-common cyan-cooler)
+      (date-deadline red)
+      (date-event fg-alt)
+      (date-holiday green-cooler)
+      (date-now fg-main)
+      (date-scheduled yellow)
+      (date-weekday cyan)
+      (date-weekend red-faint)
+
+;;;; Prose mappings
+
+      (prose-code magenta-warmer)
+      (prose-done green)
+      (prose-macro green-cooler)
+      (prose-metadata fg-dim)
+      (prose-metadata-value fg-alt)
+      (prose-table fg-alt)
+      (prose-tag green-faint)
+      (prose-todo red-warmer)
+      (prose-verbatim blue-warmer)
+
+      (accent-0 blue-warmer)
+      (accent-1 magenta-warmer)
+      (accent-2 green-cooler)
       (accent-3 yellow-warmer)
 
       (mail-0 green)
@@ -215,6 +237,6 @@ refer to `ef-themes-common-palette-overrides'.")
   (provide-theme 'ef-my))
 
 ;;;###theme-autoload
-(put 'ef-spring 'theme-properties '(:background-mode light :kind color-scheme :family ef))
+(put 'ef-my 'theme-properties '(:background-mode light :kind color-scheme :family ef))
 
 ;;; ef-my-theme.el ends here

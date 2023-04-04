@@ -44,7 +44,9 @@
     "Legible light theme, optimized for red-green color deficiency.")
 
   (defconst ef-deuteranopia-light-palette
-    '(;; Basic tones
+    '(
+;;; Basic values
+
       (bg-main     "#f5f5ff")
       (fg-main     "#1a1a2f")
       (bg-dim      "#e8e8ea")
@@ -55,7 +57,8 @@
       (bg-active   "#b3b3c0")
       (bg-inactive "#efeff5")
 
-      ;; Basic hues for foreground values
+;;; Basic hues for foreground values
+
       (red             "#d3303a")
       (red-warmer      "#e00033")
       (red-cooler      "#d50f7f")
@@ -81,7 +84,8 @@
       (cyan-cooler     "#1f77bb")
       (cyan-faint      "#506fa0")
 
-      ;; Basic hues for background values
+;;; Basic hues for background values
+
       (bg-red      "#cac200")
       (bg-green    "#9aaf80")
       (bg-yellow   "#fac200")
@@ -96,7 +100,8 @@
       (bg-magenta-subtle  "#ffddff")
       (bg-cyan-subtle     "#bfefff")
 
-      ;; Diffs
+;;; Diffs
+
       (bg-added          "#dbdbff")
       (bg-added-faint    "#e4e4ff")
       (bg-added-refine   "#c0c0ef")
@@ -112,7 +117,8 @@
       (bg-removed-refine "#f0da88")
       (fg-removed        "#553d00")
 
-      ;; Graphs
+;;; Graphs
+
       (red-graph-0-bg     "#b0b029")
       (red-graph-1-bg     "#e0cab4")
       (green-graph-0-bg   "#90b7c0")
@@ -126,7 +132,8 @@
       (cyan-graph-0-bg    "#6faad9")
       (cyan-graph-1-bg    "#bfe0ff")
 
-      ;; Special hues
+;;; Special hues
+
       (bg-mode-line       "#99c7ff")
       (fg-mode-line       "#0a0a1f")
       (bg-accent          "#eecc33")
@@ -152,10 +159,14 @@
       (underline-warning "#6f3f00")
       (underline-info    "#025f92")
 
-      ;; Conditional hues
+;;; Conditional hues
+
       (bg-region-intense "#cfcf9a")
 
-      ;; Mappings
+;;; Mappings
+
+;;;; General mappings
+
       (err yellow-warmer)
       (warning yellow-cooler)
       (info blue-cooler)
@@ -167,6 +178,8 @@
       (identifier cyan-faint)
       (prompt blue)
 
+;;;; Code mappings
+
       (builtin cyan)
       (comment yellow-faint)
       (constant yellow-cooler)
@@ -177,9 +190,15 @@
       (string yellow-warmer)
       (type yellow)
       (variable cyan-cooler)
-
       (rx-escape cyan-faint) ; compare with `string'
       (rx-construct blue-warmer)
+
+;;;; Accent mappings
+
+      (accent-0 blue-cooler)
+      (accent-1 yellow-warmer)
+      (accent-2 cyan)
+      (accent-3 yellow-cooler)
 
 ;;;; Date mappings
 
@@ -204,17 +223,18 @@
       (prose-todo yellow-warmer)
       (prose-verbatim blue-cooler)
 
-      (accent-0 blue-cooler)
-      (accent-1 yellow-warmer)
-      (accent-2 cyan)
-      (accent-3 yellow-cooler)
+;;;; Mail mappings
 
-      (mail-0 blue-warmer)
-      (mail-1 yellow-cooler)
-      (mail-2 cyan-cooler)
-      (mail-3 yellow)
-      (mail-4 cyan)
-      (mail-5 blue-cooler)
+      (mail-cite-0 blue-warmer)
+      (mail-cite-1 yellow-cooler)
+      (mail-cite-2 cyan-cooler)
+      (mail-cite-3 yellow)
+      (mail-part blue-faint)
+      (mail-recipient blue-warmer)
+      (mail-subject blue-cooler)
+      (mail-other cyan)
+
+;;;; Rainbow mappings
 
       (rainbow-0 blue)
       (rainbow-1 yellow)

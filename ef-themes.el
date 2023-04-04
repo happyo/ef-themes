@@ -6,7 +6,7 @@
 ;; Maintainer: Ef-Themes Development <~protesilaos/ef-themes@lists.sr.ht>
 ;; URL: https://git.sr.ht/~protesilaos/ef-themes
 ;; Mailing-List: https://lists.sr.ht/~protesilaos/ef-themes
-;; Version: 0.10.0
+;; Version: 0.11.0
 ;; Package-Requires: ((emacs "27.1"))
 ;; Keywords: faces, theme, accessibility
 
@@ -535,6 +535,10 @@ overrides."
        (?l "light" "Load a random light theme"))
      "Limit to the dark or light subset of the Ef themes collection."))))
 
+(defun ef-themes--annotate-theme (theme)
+  "Return completion annotation for THEME."
+  (format " -- %s" (car (split-string (get (intern theme) 'theme-documentation) "\\."))))
+
 (defvar ef-themes--select-theme-history nil
   "Minibuffer history of `ef-themes--select-prompt'.")
 
@@ -554,7 +558,8 @@ accordingly."
                    ;; `completing-read'.  With `read-multiple-choice'
                    ;; we never meet this condition, as far as I can
                    ;; tell.  But it does no harm to keep it here.
-                   (_ (ef-themes--list-known-themes)))))
+                   (_ (ef-themes--list-known-themes))))
+         (completion-extra-properties `(:annotation-function ,#'ef-themes--annotate-theme)))
     (intern
      (completing-read
       (or prompt "Select Ef Theme: ")
@@ -708,7 +713,8 @@ color mappings of the palette, instead of its named colors."
 (defun ef-themes--preview-colors-prompt ()
   "Prompt for Ef theme.
 Helper function for `ef-themes-preview-colors'."
-  (let ((def (format "%s" (ef-themes--current-theme))))
+  (let ((def (format "%s" (ef-themes--current-theme)))
+        (completion-extra-properties `(:annotation-function ,#'ef-themes--annotate-theme)))
     (completing-read
      (format "Use palette from theme [%s]: " def)
      (ef-themes--list-known-themes) nil t nil
@@ -813,7 +819,10 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(cursor ((,c :background ,cursor)))
     `(default ((,c :background ,bg-main :foreground ,fg-main)))
     `(italic ((,c :slant italic)))
+    `(menu ((,c :background ,bg-dim :foreground ,fg-main)))
     `(region ((,c ,@(ef-themes--region bg-region bg-alt bg-region-intense bg-active fg-intense))))
+    `(scroll-bar ((,c :background ,bg-dim :foreground ,fg-dim)))
+    `(tool-bar ((,c :background ,bg-dim :foreground ,fg-main)))
     `(vertical-border ((,c :foreground ,border)))
 ;;;;; all other basic faces
     `(button ((,c :foreground ,link :underline ,border)))
@@ -835,7 +844,8 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(link ((,c :foreground ,link :underline ,border)))
     `(link-visited ((,c :foreground ,link-alt :underline ,border)))
     `(minibuffer-prompt ((,c :foreground ,prompt)))
-    `(mm-command-output ((,c :foreground ,mail-5))) ; like message-mml
+    `(mm-command-output ((,c :foreground ,mail-part)))
+    `(mm-uu-extract ((,c :foreground ,mail-part)))
     `(pgtk-im-0 ((,c :inherit secondary-selection)))
     `(read-multiple-choice-face ((,c :inherit warning :background ,bg-warning)))
     `(rectangle-preview ((,c :inherit secondary-selection)))
@@ -1020,6 +1030,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(consult-imenu-prefix ((,c :inherit shadow)))
     `(consult-line-number ((,c :inherit shadow)))
     `(consult-line-number-prefix ((,c :inherit shadow)))
+    `(consult-preview-cursor ((,c :background ,cursor :foreground ,bg-main)))
     `(consult-separator ((,c :foreground ,border)))
 ;;;; corfu
     `(corfu-current ((,c :background ,bg-completion)))
@@ -1027,7 +1038,8 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(corfu-border ((,c :background ,bg-active)))
     `(corfu-default ((,c :background ,bg-inactive)))
 ;;;; custom (M-x customize)
-    `(custom-button ((,c :box ,fg-dim :background ,bg-active :foreground ,fg-intense)))
+    `(custom-button ((,c :box (:color ,border :style released-button)
+                         :background ,bg-active :foreground ,fg-intense)))
     `(custom-button-mouse ((,c :inherit (highlight custom-button))))
     `(custom-button-pressed ((,c :inherit (secondary-selection custom-button))))
     `(custom-changed ((,c :background ,bg-changed)))
@@ -1060,17 +1072,16 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(diff-hl-delete ((,c :background ,bg-removed-refine)))
     `(diff-hl-insert ((,c :background ,bg-added-refine)))
     `(diff-hl-reverted-hunk-highlight ((,c :background ,fg-main :foreground ,bg-main)))
-;;;; diff-mode
-    `(diff-added ((,c :background ,bg-added)))
-    `(diff-changed ((,c :background ,bg-changed :extend t)))
+    `(diff-added ((,c :background ,bg-added :foreground ,fg-added)))
+    `(diff-changed ((,c :background ,bg-changed :foreground ,fg-changed :extend t)))
     `(diff-changed-unspecified ((,c :inherit diff-changed)))
-    `(diff-removed ((,c :background ,bg-removed)))
-    `(diff-refine-added ((,c :background ,bg-added-refine :foreground ,fg-intense)))
-    `(diff-refine-changed ((,c :background ,bg-changed-refine :foreground ,fg-intense)))
-    `(diff-refine-removed ((,c :background ,bg-removed-refine :foreground ,fg-intense)))
-    `(diff-indicator-added ((,c :inherit success :background ,bg-added)))
-    `(diff-indicator-changed ((,c :inherit warning :background ,bg-changed)))
-    `(diff-indicator-removed ((,c :inherit error :background ,bg-removed)))
+    `(diff-removed ((,c :background ,bg-removed :foreground ,fg-removed)))
+    `(diff-refine-added ((,c :background ,bg-added-refine :foreground ,fg-added)))
+    `(diff-refine-changed ((,c :background ,bg-changed-refine :foreground ,fg-changed)))
+    `(diff-refine-removed ((,c :background ,bg-removed-refine :foreground ,fg-removed)))
+    `(diff-indicator-added ((,c :inherit diff-added :foreground ,fg-added)))
+    `(diff-indicator-changed ((,c :inherit diff-changed :foreground ,fg-changed)))
+    `(diff-indicator-removed ((,c :inherit diff-removed :foreground ,fg-removed)))
     `(diff-context (( )))
     `(diff-error ((,c :inherit error)))
     `(diff-file-header ((,c :inherit bold)))
@@ -1186,6 +1197,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(ediff-odd-diff-C ((,c :inherit ediff-even-diff-C)))
 ;;;; eglot
     `(eglot-mode-line ((,c :inherit bold :foreground ,modeline-info)))
+    `(eglot-diagnostic-tag-unnecessary-face ((,c :inherit ef-themes-underline-info)))
 ;;;; eldoc
     ;; NOTE: see https://github.com/purcell/package-lint/issues/187
     (list 'eldoc-highlight-function-argument `((,c :inherit warning :background ,bg-warning)))
@@ -1264,8 +1276,8 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(font-lock-keyword-face ((,c :inherit bold :foreground ,keyword)))
     `(font-lock-negation-char-face ((,c :inherit bold)))
     `(font-lock-preprocessor-face ((,c :foreground ,preprocessor)))
-    `(font-lock-regexp-grouping-backslash ((,c :inherit bold :foreground ,rx-escape)))
-    `(font-lock-regexp-grouping-construct ((,c :inherit bold :foreground ,rx-construct)))
+    `(font-lock-regexp-grouping-backslash ((,c :foreground ,rx-escape)))
+    `(font-lock-regexp-grouping-construct ((,c :foreground ,rx-construct)))
     `(font-lock-string-face ((,c :foreground ,string)))
     `(font-lock-type-face ((,c :foreground ,type)))
     `(font-lock-variable-name-face ((,c :foreground ,variable)))
@@ -1422,6 +1434,8 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(lazy-highlight ((,c :background ,bg-blue :foreground ,fg-intense)))
     `(match ((,c :background ,bg-warning)))
     `(query-replace ((,c :background ,bg-red :foreground ,fg-intense)))
+;;;; jit-spell
+    `(jit-spell-misspelling ((,c :inherit ef-themes-underline-error)))
 ;;;; keycast
     `(keycast-command ((,c :inherit bold)))
     `(keycast-key ((,c :inherit bold :background ,bg-hover :foreground ,fg-intense :box (:line-width -1 :color ,fg-dim))))
@@ -1588,19 +1602,19 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(markdown-table-face ((,c :inherit ef-themes-fixed-pitch :foreground ,prose-table)))
     `(markdown-url-face ((,c :foreground ,fg-alt)))
 ;;;; messages
-    `(message-cited-text-1 ((,c :foreground ,mail-0)))
-    `(message-cited-text-2 ((,c :foreground ,mail-1)))
-    `(message-cited-text-3 ((,c :foreground ,mail-2)))
-    `(message-cited-text-4 ((,c :foreground ,mail-3)))
+    `(message-cited-text-1 ((,c :foreground ,mail-cite-0)))
+    `(message-cited-text-2 ((,c :foreground ,mail-cite-1)))
+    `(message-cited-text-3 ((,c :foreground ,mail-cite-2)))
+    `(message-cited-text-4 ((,c :foreground ,mail-cite-3)))
     `(message-header-name ((,c :inherit bold)))
     `(message-header-newsgroups ((,c :inherit message-header-other)))
-    `(message-header-to ((,c :inherit bold :foreground ,mail-0)))
-    `(message-header-cc ((,c :foreground ,mail-1)))
-    `(message-header-subject ((,c :inherit bold :foreground ,mail-2)))
-    `(message-header-xheader ((,c :foreground ,mail-3)))
-    `(message-header-other ((,c :foreground ,mail-4)))
-    `(message-mml ((,c :foreground ,mail-5)))
-    `(message-separator ((,c :background ,bg-alt)))
+    `(message-header-to ((,c :inherit bold :foreground ,mail-recipient)))
+    `(message-header-cc ((,c :foreground ,mail-recipient)))
+    `(message-header-subject ((,c :inherit bold :foreground ,mail-subject)))
+    `(message-header-xheader ((,c :inherit message-header-other)))
+    `(message-header-other ((,c :foreground ,mail-other)))
+    `(message-mml ((,c :foreground ,mail-part)))
+    `(message-separator ((,c :background ,bg-active)))
 ;;;; mode-line
     `(mode-line ((,c :inherit ef-themes-ui-variable-pitch :background ,bg-mode-line :foreground ,fg-mode-line)))
     `(mode-line-active ((,c :inherit mode-line)))
@@ -1669,7 +1683,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(neo-vc-user-face ((,c :inherit warning)))
 ;;;; notmuch
     `(notmuch-crypto-decryption ((,c :inherit bold)))
-    `(notmuch-crypto-part-header ((,c :foreground ,mail-5))) ; like `message-mml'
+    `(notmuch-crypto-part-header ((,c :foreground ,mail-part))) ; like `message-mml'
     `(notmuch-crypto-signature-bad ((,c :inherit error)))
     `(notmuch-crypto-signature-good ((,c :inherit success)))
     `(notmuch-crypto-signature-good-key ((,c :inherit success)))
@@ -1679,7 +1693,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(notmuch-search-count ((,c :foreground ,fg-dim)))
     `(notmuch-search-date ((,c :foreground ,date-common)))
     `(notmuch-search-flagged-face ((,c :foreground ,err)))
-    `(notmuch-search-matching-authors ((,c :foreground ,name)))
+    `(notmuch-search-matching-authors ((,c :foreground ,mail-recipient)))
     `(notmuch-search-non-matching-authors ((,c :inherit shadow)))
     `(notmuch-search-subject ((,c :foreground ,fg-main)))
     `(notmuch-search-unread-face ((,c :inherit bold)))

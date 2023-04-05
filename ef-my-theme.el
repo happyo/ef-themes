@@ -130,7 +130,7 @@
 
 ;;; Special hues
 
-      (bg-mode-line  "#93D5D7")
+      (bg-mode-line  "#AFD7EC")
       (fg-mode-line  "#243228")
       (bg-accent     "#880044")
       (bg-completion "#ccedff")
@@ -260,3 +260,4 @@ refer to `ef-themes-common-palette-overrides'.")
 (put 'ef-my 'theme-properties '(:background-mode light :kind color-scheme :family ef))
 
 ;;; ef-my-theme.el ends here
+

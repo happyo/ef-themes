@@ -130,18 +130,17 @@
 
 ;;; Special hues
 
-      (bg-mode-line  "#AFD7EC")
-      (fg-mode-line  "#243228")
-      (bg-accent     "#880044")
-      (bg-completion "#ccedff")
-      (bg-hover      "#ffc09f")
-      (bg-hover-secondary "#feb5ff")
-      (bg-hl-line    "#f9e0e5")
-      (bg-region     "#d0e6ff")
-      (bg-paren      "#7fddd0")
-      (bg-err        "#ffe8e0") ; check with err
-      (bg-warning    "#ffecba") ; check with warning
-      (bg-info       "#ccf5dd") ; check with info
+      (bg-mode-line       "#AFD7EC")
+      (fg-mode-line       "#341f58")
+      (bg-completion      "#f4cfff")
+      (bg-hover           "#b4cfff")
+      (bg-hover-secondary "#aaeccf")
+      (bg-hl-line         "#ffd6e5")
+      (bg-region          "#eecfff")
+      (bg-paren           "#9fc0ef")
+      (bg-err             "#ffd0e6") ; check with err
+      (bg-warning         "#ffe5ba") ; check with warning
+      (bg-info            "#bbefda") ; check with info
 
       (border        "#b4c4c0")
       (cursor        "#BA2F7B")

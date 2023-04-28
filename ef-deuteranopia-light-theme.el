@@ -8,7 +8,7 @@
 ;; Mailing-List: https://lists.sr.ht/~protesilaos/ef-themes
 ;; Keywords: faces, theme, accessibility
 
-;; This file is part of GNU Emacs.
+;; This file is NOT part of GNU Emacs.
 
 ;; GNU Emacs is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -136,7 +136,6 @@
 
       (bg-mode-line       "#99c7ff")
       (fg-mode-line       "#0a0a1f")
-      (bg-accent          "#eecc33")
       (bg-completion      "#f0dacf")
       (bg-hover           "#eebb20")
       (bg-hover-secondary "#afafef")

@@ -37,8 +37,8 @@
 ;; is the opposite of dystopia (δυστοπία): a good place as opposed to
 ;; a bad place.
 ;;
-;; The backronym of the `ef-themes' is: Extremely Fatigued of Themes
-;; Having Exaggerated Markings, Embellishments, and Sparkles.
+;; The backronym of the `ef-themes' is: Eclectic Fashion in Themes
+;; Hides Exaggerated Markings, Embellishments, and Sparkles.
 
 ;;; Code:
 
@@ -62,6 +62,7 @@
     ef-deuteranopia-light
     ef-duo-light
     ef-frost
+    ef-kassio
     ef-light
     ef-spring
     ef-summer
@@ -78,6 +79,7 @@
     ef-deuteranopia-dark
     ef-duo-dark
     ef-night
+    ef-symbiosis
     ef-trio-dark
     ef-tritanopia-dark
     ef-winter)
@@ -542,23 +544,35 @@ overrides."
 (defvar ef-themes--select-theme-history nil
   "Minibuffer history of `ef-themes--select-prompt'.")
 
+(defun ef-themes--load-subset (subset)
+  "Return the `light' or `dark' SUBSET of the Ef themes.
+If SUBSET is neither `light' nor `dark', return all the known Ef themes."
+  (pcase subset
+    ('dark ef-themes-dark-themes)
+    ('light ef-themes-light-themes)
+    (_ (ef-themes--list-known-themes))))
+
+(defun ef-themes--maybe-prompt-subset (variant)
+  "Helper function for `ef-themes--select-prompt' VARIANT argument."
+  (cond
+   ((null variant))
+   ((or (eq variant 'light) (eq variant 'dark)) variant)
+   (t (ef-themes--choose-subset))))
+
 (defun ef-themes--select-prompt (&optional prompt variant)
   "Minibuffer prompt for `ef-themes-select'.
 With optional PROMPT string, use it.  Else use a generic prompt.
 
-With optional VARIANT, prompt for a subset of themes divided into
-light and dark variants.  Then limit the completion candidates
-accordingly."
-  (let* ((subset (when variant (ef-themes--choose-subset)))
-         (themes (pcase subset
-                   ('dark ef-themes-dark-themes)
-                   ('light ef-themes-light-themes)
-                   ;; NOTE 2022-11-02: This condition made sense when
-                   ;; the code now in `ef-themes--choose-subset' used
-                   ;; `completing-read'.  With `read-multiple-choice'
-                   ;; we never meet this condition, as far as I can
-                   ;; tell.  But it does no harm to keep it here.
-                   (_ (ef-themes--list-known-themes))))
+With optional VARIANT as a non-nil value, prompt for a subset of
+themes divided into light and dark variants.  Then limit the
+completion candidates accordingly.
+
+If VARIANT is either `light' or `dark' then use it directly
+instead of prompting the user for a choice.
+
+When VARIANT is nil, all Ef themes are candidates for completion."
+  (let* ((subset (ef-themes--maybe-prompt-subset variant))
+         (themes (ef-themes--load-subset subset))
          (completion-extra-properties `(:annotation-function ,#'ef-themes--annotate-theme)))
     (intern
      (completing-read
@@ -597,6 +611,40 @@ Run `ef-themes-post-load-hook' after loading the theme.
 When called from Lisp, THEME is the symbol of a theme.  VARIANT
 is ignored in this scenario."
   (interactive (list (ef-themes--select-prompt nil current-prefix-arg)))
+  (ef-themes--load-theme theme))
+
+;;;###autoload
+(defun ef-themes-select-light (theme)
+  "Load a light Ef THEME.
+Run `ef-themes-post-load-hook' after loading the theme.
+
+Also see `ef-themes-select-dark'.
+
+This command is the same as `ef-themes-select' except it only
+prompts for light themes when called interactively.  Calling it
+from Lisp behaves the same as `ef-themes-select' for the THEME
+argument, meaning that it loads the Ef THEME regardless of
+whether it is light or dark."
+  (interactive
+   (list
+    (ef-themes--select-prompt "Select light Ef theme: " 'light)))
+  (ef-themes--load-theme theme))
+
+;;;###autoload
+(defun ef-themes-select-dark (theme)
+  "Load a dark Ef THEME.
+Run `ef-themes-post-load-hook' after loading the theme.
+
+Also see `ef-themes-select-light'.
+
+This command is the same as `ef-themes-select' except it only
+prompts for light themes when called interactively.  Calling it
+from Lisp behaves the same as `ef-themes-select' for the THEME
+argument, meaning that it loads the Ef THEME regardless of
+whether it is light or dark."
+  (interactive
+   (list
+    (ef-themes--select-prompt "Select light Ef theme: " 'dark)))
   (ef-themes--load-theme theme))
 
 (defun ef-themes--toggle-theme-p ()
@@ -1144,7 +1192,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     ;; is for the `vertical-border'.  We want this to be more subtle.
     `(fill-column-indicator ((,c :height 1 :background ,bg-alt :foreground ,bg-alt)))
 ;;;; doom-modeline
-    `(doom-modeline-bar ((,c :background ,bg-accent)))
+    `(doom-modeline-bar ((,c :background ,keybind)))
     `(doom-modeline-bar-inactive ((,c :background ,bg-alt)))
     `(doom-modeline-battery-charging ((,c :foreground ,modeline-info)))
     `(doom-modeline-battery-critical ((,c :underline t :foreground ,modeline-err)))
@@ -1261,8 +1309,11 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(flycheck-warning ((,c :inherit ef-themes-underline-warning)))
 ;;;; flymake
     `(flymake-error ((,c :inherit ef-themes-underline-error)))
+    `(flymake-error-echo ((,c :inherit error)))
     `(flymake-note ((,c :inherit ef-themes-underline-info)))
+    `(flymake-note-echo ((,c :inherit success)))
     `(flymake-warning ((,c :inherit ef-themes-underline-warning)))
+    `(flymake-warning-echo ((,c :inherit warning)))
 ;;;; flyspell
     `(flyspell-duplicate ((,c :inherit ef-themes-underline-warning)))
     `(flyspell-incorrect ((,c :inherit ef-themes-underline-error)))
@@ -1416,7 +1467,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(image-dired-thumb-header-file-size ((,c :foreground ,info)))
     `(image-dired-thumb-mark ((,c :background ,info)))
 ;;;; info
-    `(Info-quoted ((,c :inherit ef-themes-fixed-pitch :foreground ,accent-0))) ; the capitalization is canonical
+    `(Info-quoted ((,c :inherit ef-themes-fixed-pitch :foreground ,prose-verbatim))) ; the capitalization is canonical
     `(info-header-node ((,c :inherit (shadow bold))))
     `(info-index-match ((,c :inherit match)))
     `(info-menu-header ((,c :inherit bold)))
@@ -1746,7 +1797,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(org-checkbox-statistics-done ((,c :inherit org-done)))
     `(org-checkbox-statistics-todo ((,c :inherit org-todo)))
     `(org-clock-overlay ((,c :background ,bg-hover-secondary)))
-    `(org-code ((,c :inherit ef-themes-fixed-pitch :foreground ,accent-1)))
+    `(org-code ((,c :inherit ef-themes-fixed-pitch :foreground ,prose-code)))
     `(org-column ((,c :inherit default :background ,bg-alt)))
     `(org-column-title ((,c :inherit (bold default) :underline t :background ,bg-alt)))
     `(org-date ((,c :inherit ef-themes-fixed-pitch :foreground ,date-common)))
@@ -1901,6 +1952,13 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(reb-match-3 ((,c :background ,bg-yellow :foreground ,fg-intense)))
     `(reb-regexp-grouping-backslash ((,c :inherit font-lock-regexp-grouping-backslash)))
     `(reb-regexp-grouping-construct ((,c :inherit font-lock-regexp-grouping-construct)))
+;;;;; rst-mode
+    `(rst-level-1 ((,c :inherit ef-themes-heading-1)))
+    `(rst-level-2 ((,c :inherit ef-themes-heading-2)))
+    `(rst-level-3 ((,c :inherit ef-themes-heading-3)))
+    `(rst-level-4 ((,c :inherit ef-themes-heading-4)))
+    `(rst-level-5 ((,c :inherit ef-themes-heading-5)))
+    `(rst-level-6 ((,c :inherit ef-themes-heading-6)))
 ;;;; ruler-mode
     `(ruler-mode-column-number ((,c :inherit ruler-mode-default)))
     `(ruler-mode-comment-column ((,c :inherit ruler-mode-default :foreground ,red)))

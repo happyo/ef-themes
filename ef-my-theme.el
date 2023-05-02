@@ -33,6 +33,7 @@
 ;;; Code:
 
 
+(require 'my-theme-utils)
 
 (eval-and-compile
   (require 'ef-themes)
@@ -40,10 +41,10 @@
   (deftheme ef-my "My light theme.")
 
   (defconst ef-my-palette
-    '(
+    `(
 ;;; Basic values
 
-      (bg-main     "#E8EDB9")
+      (bg-main     ,my-bg-main)
       (fg-main     "#22202E")
       (bg-dim      "#E9D7DF")
       (fg-dim      "#777294")
@@ -130,7 +131,7 @@
 
 ;;; Special hues
 
-      (bg-mode-line       "#AFD7EC")
+      (bg-mode-line       ,tcc-241-canglang)
       (fg-mode-line       "#341f58")
       (bg-completion      "#f4cfff")
       (bg-hover           "#b4cfff")

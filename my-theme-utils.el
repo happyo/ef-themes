@@ -22,5 +22,36 @@
 
 (setq my-bg-main tcc-351-ningzhi)
 
+;; 定义一个函数，用于创建 face
+(defun my-theme-utils--create-face (color)
+  (let ((face-name (intern (concat "my-theme-utils-face-" color))))
+    (eval `(defface ,face-name
+             '((t (:background ,color)))
+               ,(concat "Face for background color " color)
+               :group 'my-theme-utils))
+    face-name))
+
+;; 定义一个函数，用于获取 face 的 symbol
+(defun my-theme-utils--get-face (rgb)
+  (my-theme-utils--create-face (apply #'rgb-to-hex rgb)))
+
+(defvar colorize-rgb-to-hex-keywords
+  `((,(rx "(" (group "rgb-to-hex") (* whitespace) (group (1+ (in "0-9"))) (* whitespace) (group (1+ (in "0-9"))) (* whitespace) (group (1+ (in "0-9"))))
+     (1 (my-theme-utils--get-face (list (string-to-number (match-string 2)) (string-to-number (match-string 3)) (string-to-number (match-string 4)))) prepend))
+    (,(rx bow (group "tcc-") (1+ (in "0-9")) (0+ (in "a-z" "A-Z")) (* whitespace) "=" (* whitespace) (group "(" "rgb-to-hex"))
+     (1 (my-theme-utils--get-face (list (string-to-number (match-string 2)) (string-to-number (match-string 3)) (string-to-number (match-string 4)))) prepend))))
+
+(define-minor-mode colorize-rgb-to-hex
+  "Minor mode to colorize `rgb-to-hex' calls and variables with their respective colors."
+  :lighter " Colorize"
+  (if colorize-rgb-to-hex
+      (progn
+        (font-lock-add-keywords nil colorize-rgb-to-hex-keywords)
+        (font-lock-flush))
+    (font-lock-remove-keywords nil colorize-rgb-to-hex-keywords)
+    (font-lock-flush)))
+
+
+
 (provide 'my-theme-utils)
 ;;; my-theme-utils.el ends here

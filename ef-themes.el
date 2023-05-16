@@ -85,6 +85,9 @@
     ef-winter)
   "List of symbols with the dark Ef themes.")
 
+(defvaralias 'ef-themes-items 'ef-themes-collection
+  "Alias of `ef-themes-collection'.")
+
 (defconst ef-themes-collection
   (append ef-themes-light-themes ef-themes-dark-themes)
   "Symbols of all the Ef themes.")
@@ -1078,7 +1081,6 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(consult-imenu-prefix ((,c :inherit shadow)))
     `(consult-line-number ((,c :inherit shadow)))
     `(consult-line-number-prefix ((,c :inherit shadow)))
-    `(consult-preview-cursor ((,c :background ,cursor :foreground ,bg-main)))
     `(consult-separator ((,c :foreground ,border)))
 ;;;; corfu
     `(corfu-current ((,c :background ,bg-completion)))
@@ -1308,12 +1310,16 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(flycheck-info ((,c :inherit ef-themes-underline-info)))
     `(flycheck-warning ((,c :inherit ef-themes-underline-warning)))
 ;;;; flymake
+    `(flymake-end-of-line-diagnostics-face ((,c :inherit italic :height 0.85 :box ,border)))
     `(flymake-error ((,c :inherit ef-themes-underline-error)))
     `(flymake-error-echo ((,c :inherit error)))
+    `(flymake-error-echo-at-eol ((,c :inherit flymake-end-of-line-diagnostics-face :foreground ,err)))
     `(flymake-note ((,c :inherit ef-themes-underline-info)))
     `(flymake-note-echo ((,c :inherit success)))
+    `(flymake-note-echo-at-eol ((,c :inherit flymake-end-of-line-diagnostics-face :foreground ,info)))
     `(flymake-warning ((,c :inherit ef-themes-underline-warning)))
     `(flymake-warning-echo ((,c :inherit warning)))
+    `(flymake-note-echo-at-eol ((,c :inherit flymake-end-of-line-diagnostics-face :foreground ,warning)))
 ;;;; flyspell
     `(flyspell-duplicate ((,c :inherit ef-themes-underline-warning)))
     `(flyspell-incorrect ((,c :inherit ef-themes-underline-error)))
@@ -1487,6 +1493,8 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(query-replace ((,c :background ,bg-red :foreground ,fg-intense)))
 ;;;; jit-spell
     `(jit-spell-misspelling ((,c :inherit ef-themes-underline-error)))
+;;;;; jinx
+    `(jinx-misspelled ((,c :inherit ef-themes-underline-warning)))
 ;;;; keycast
     `(keycast-command ((,c :inherit bold)))
     `(keycast-key ((,c :inherit bold :background ,bg-hover :foreground ,fg-intense :box (:line-width -1 :color ,fg-dim))))
@@ -1769,6 +1777,7 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(orderless-match-face-2 ((,c :inherit bold :foreground ,accent-2)))
     `(orderless-match-face-3 ((,c :inherit bold :foreground ,accent-3)))
 ;;;; org
+    `(org-agenda-calendar-daterange ((,c :foreground ,date-range)))
     `(org-agenda-calendar-event ((,c :foreground ,date-event)))
     `(org-agenda-calendar-sexp ((,c :inherit (italic org-agenda-calendar-event))))
     `(org-agenda-clocking ((,c :background ,bg-warning :foreground ,warning)))
@@ -1852,14 +1861,14 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(org-verse ((,c :inherit org-block)))
     `(org-warning ((,c :inherit warning)))
 ;;;; org-habit
-    `(org-habit-alert-face ((,c :background ,yellow-graph-0-bg :foreground "black"))) ; special case
-    `(org-habit-alert-future-face ((,c :background ,yellow-graph-1-bg)))
-    `(org-habit-clear-face ((,c :background ,blue-graph-0-bg :foreground "black"))) ; special case
-    `(org-habit-clear-future-face ((,c :background ,blue-graph-1-bg)))
-    `(org-habit-overdue-face ((,c :background ,red-graph-0-bg)))
-    `(org-habit-overdue-future-face ((,c :background ,red-graph-1-bg)))
-    `(org-habit-ready-face ((,c :background ,green-graph-0-bg :foreground "black"))) ; special case
-    `(org-habit-ready-future-face ((,c :background ,green-graph-1-bg)))
+    `(org-habit-alert-face ((,c :background ,bg-graph-yellow-0 :foreground "black"))) ; special case
+    `(org-habit-alert-future-face ((,c :background ,bg-graph-yellow-1)))
+    `(org-habit-clear-face ((,c :background ,bg-graph-blue-0 :foreground "black"))) ; special case
+    `(org-habit-clear-future-face ((,c :background ,bg-graph-blue-1)))
+    `(org-habit-overdue-face ((,c :background ,bg-graph-red-0)))
+    `(org-habit-overdue-future-face ((,c :background ,bg-graph-red-1)))
+    `(org-habit-ready-face ((,c :background ,bg-graph-green-0 :foreground "black"))) ; special case
+    `(org-habit-ready-future-face ((,c :background ,bg-graph-green-1)))
 ;;;; org-modern
     `(org-modern-date-active ((,c :inherit (ef-themes-fixed-pitch org-modern-label) :background ,bg-alt)))
     `(org-modern-date-inactive ((,c :inherit (ef-themes-fixed-pitch org-modern-label) :background ,bg-dim :foreground ,fg-dim)))
@@ -1898,6 +1907,24 @@ Optional prefix argument MAPPINGS has the same meaning as for
     `(package-status-unsigned ((,c :inherit error)))
 ;;;; perspective
     `(persp-selected-face ((,c :inherit mode-line-emphasis)))
+;;;;; proced
+    `(proced-cpu ((,c :foreground ,keyword)))
+    `(proced-emacs-pid ((,c :foreground ,identifier :underline t)))
+    `(proced-executable ((,c :foreground ,name)))
+    `(proced-interruptible-sleep-status-code ((,c :inherit shadow)))
+    `(proced-mem ((,c :foreground ,type)))
+    `(proced-memory-high-usage ((,c :foreground ,err)))
+    `(proced-memory-low-usage ((,c :foreground ,info)))
+    `(proced-memory-medium-usage ((,c :foreground ,warning)))
+    `(proced-pgrp ((,c :inherit proced-pid)))
+    `(proced-pid ((,c :foreground ,identifier)))
+    `(proced-ppid ((,c :inherit proced-pid)))
+    `(proced-run-status-code ((,c :inherit success)))
+    `(proced-sess ((,c :inherit proced-pid)))
+    `(proced-session-leader-pid ((,c :inherit bold :foreground ,identifier)))
+    `(proced-time-colon (( )))
+    `(proced-uninterruptible-sleep-status-code ((,c :inherit error)))
+    `(proced-user (( )))
 ;;;; powerline
     `(powerline-active0 ((,c :background ,fg-dim :foreground ,bg-main)))
     `(powerline-active1 ((,c :inherit mode-line)))
@@ -2098,6 +2125,23 @@ Optional prefix argument MAPPINGS has the same meaning as for
 ;;;; vertico
     `(vertico-current ((,c :background ,bg-completion)))
     `(vertico-group-title ((,c :inherit bold :foreground ,name)))
+;;;;; vterm
+    `(vterm-color-black ((,c :background "gray35" :foreground "black")))
+    `(vterm-color-blue ((,c :background ,blue-warmer :foreground ,blue)))
+    `(vterm-color-cyan ((,c :background ,cyan-cooler :foreground ,cyan)))
+    `(vterm-color-default ((,c :background ,bg-main :foreground ,fg-main)))
+    `(vterm-color-green ((,c :background ,green-cooler :foreground ,green)))
+    `(vterm-color-inverse-video ((,c :background ,bg-main :inverse-video t)))
+    `(vterm-color-magenta ((,c :background ,magenta-cooler :foreground ,magenta)))
+    `(vterm-color-red ((,c :background ,red-warmer :foreground ,red)))
+    `(vterm-color-underline ((,c :underline t)))
+    `(vterm-color-white ((,c :background "white" :foreground "gray65")))
+    `(vterm-color-yellow ((,c :background ,yellow-warmer :foreground ,yellow)))
+;;;; vundo
+    `(vundo-default ((,c :inherit shadow)))
+    `(vundo-highlight ((,c :inherit (bold vundo-node) :foreground ,err)))
+    `(vundo-last-saved ((,c :inherit (bold vundo-node) :foreground ,fg-intense)))
+    `(vundo-saved ((,c :inherit vundo-node :foreground ,fg-intense)))
 ;;;; wgrep
     `(wgrep-delete-face ((,c :inherit warning)))
     `(wgrep-done-face ((,c :background ,bg-info :foreground ,info)))
@@ -2140,8 +2184,8 @@ Optional prefix argument MAPPINGS has the same meaning as for
   '(
 ;;;; chart
     `(chart-face-color-list
-      '( ,red-graph-0-bg ,green-graph-0-bg ,yellow-graph-0-bg ,blue-graph-0-bg ,magenta-graph-0-bg ,cyan-graph-0-bg
-         ,red-graph-1-bg ,green-graph-1-bg ,yellow-graph-1-bg ,blue-graph-1-bg ,magenta-graph-1-bg ,cyan-graph-1-bg))
+      '( ,bg-graph-red-0 ,bg-graph-green-0 ,bg-graph-yellow-0 ,bg-graph-blue-0 ,bg-graph-magenta-0 ,bg-graph-cyan-0
+         ,bg-graph-red-1 ,bg-graph-green-1 ,bg-graph-yellow-1 ,bg-graph-blue-1 ,bg-graph-magenta-1 ,bg-graph-cyan-1))
 ;;;; flymake fringe indicators
     `(flymake-error-bitmap '(flymake-double-exclamation-mark ef-themes-mark-delete))
     `(flymake-warning-bitmap '(exclamation-mark ef-themes-mark-other))

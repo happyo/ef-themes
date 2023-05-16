@@ -45,7 +45,7 @@
 ;;; Basic values
 
       (bg-main     ,my-bg-main)
-      (fg-main     "#22202E")
+      (fg-main     "#282828")
       (bg-dim      "#E9D7DF")
       (fg-dim      "#777294")
       (bg-alt      "#CCCCD6")
@@ -145,7 +145,7 @@
 
       (border        "#b4c4c0")
       (cursor        "#BA2F7B")
-      (fg-intense    "#000000")
+      (fg-intense    "#282828")
 
       (modeline-err     red)
       (modeline-warning yellow)
